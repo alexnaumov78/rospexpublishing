@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QFT Complete Bundle — Rospex Publishing</title>
+<meta name="description" content="Quantum Field Theory for Experimentalists and Beyond — Complete Edition, Volumes I &amp; II by Dmitry V. Naumov. 1,068 pages. Save 14%.">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:20px;transition:color 0.2s}
+.back-link:hover{color:var(--cream)}
+.savings-badge{display:inline-block;background:rgba(120,200,100,0.15);border:1px solid rgba(120,200,100,0.3);color:#7CC876;font-size:12px;font-weight:600;padding:4px 12px;border-radius:100px;margin-left:10px}
+.includes-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:20px}
+.includes-box h4{font-family:'Playfair Display',serif;font-size:14px;color:var(--cream);margin-bottom:12px}
+.vol-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.vol-row:last-child{border-bottom:none}
+.vol-title{font-size:13px;color:var(--cream);font-weight:500}
+.vol-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.vol-price{font-size:13px;color:var(--muted);text-decoration:line-through}
+.bundle-total{display:flex;align-items:center;justify-content:space-between;padding-top:12px;margin-top:4px}
+.bundle-total-label{font-size:13px;color:var(--muted)}
+.bundle-total-price{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo" aria-label="Rospex Publishing home">
+    <img src="../assets/images/logo.png" alt="Rospex Publishing">
+  </a>
+  <ul class="nav-center">
+    <li><a href="../index.html#books" data-i18n="nav_books">Books</a></li>
+    <li><a href="../index.html#author" data-i18n="nav_author">About the Author</a></li>
+    <li><a href="../index.html#publisher" data-i18n="nav_about">About Us</a></li>
+    <li><a href="../index.html#contact" data-i18n="nav_contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
+    <button class="nav-cart" onclick="openCartModal()">🛒 <span data-i18n="nav_cart">Cart</span><span class="cart-count" id="cart-count-nav"></span></button>
+    <a href="../index.html#books" class="nav-browse" data-i18n="nav_browse">Browse Books</a>
+  </div>
+</nav>
+
+<div class="book-detail-hero">
+  <div class="book-detail-grid">
+
+    <div class="book-detail-cover">
+      <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="400" fill="#181208"/>
+        <rect x="0" y="0" width="8" height="400" fill="#C9953A"/>
+        <rect x="32" y="44" width="182" height="240" rx="3" fill="#0A1825" stroke="rgba(201,149,58,0.22)" stroke-width="1"/>
+        <rect x="42" y="54" width="182" height="240" rx="3" fill="#0E1A12" stroke="rgba(78,154,106,0.22)" stroke-width="1"/>
+        <rect x="52" y="64" width="182" height="240" rx="3" fill="#100E06" stroke="rgba(201,149,58,0.38)" stroke-width="1.5"/>
+        <text x="143" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="40" font-style="italic" fill="rgba(201,149,58,0.18)">QFT</text>
+        <text x="143" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="rgba(201,149,58,0.12)">Vol. I + II</text>
+        <rect x="24" y="320" width="252" height="2" fill="rgba(201,149,58,0.4)"/>
+        <text x="36" y="345" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#C9953A">COMPLETE EDITION</text>
+        <text x="36" y="363" font-family="Georgia,serif" font-size="10" fill="#7A93AA">Volumes I &amp; II — Russian</text>
+        <rect x="196" y="330" width="68" height="22" rx="3" fill="rgba(120,200,100,0.12)" stroke="rgba(120,200,100,0.3)" stroke-width="1"/>
+        <text x="230" y="344" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7CC876">BUNDLE</text>
+        <text x="36" y="388" font-family="Georgia,serif" font-size="9" fill="#3A5570">ROSPEX PUBLISHING</text>
+      </svg>
+      <div style="padding:16px;border-top:1px solid var(--border)">
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:8px" onclick="openBuyModal('QFT Bundle (Russian)','https://play.google.com/store/books')" data-i18n="btn_buy">Buy Now →</button>
+        <button class="btn btn-ghost" style="width:100%;justify-content:center;font-size:13px;margin-top:8px" onclick="addToCart('qft-bundle-ru','QFT Bundle (Russian)','59.99','Russian PDF – Vol. I + II')">+ Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="book-detail-content">
+      <a href="../index.html#books" class="back-link">← <span data-i18n="nav_books">Books</span></a>
+
+      <div class="book-meta-row">
+        <span class="badge badge-ru">Russian</span>
+        <span class="badge badge-bundle">Bundle — Save 14%</span>
+        <span class="badge badge-vol">1,068 pages total</span>
+        <span class="badge badge-vol">PDF · Fixed Layout</span>
+      </div>
+
+      <h1 class="book-detail-title">QFT Complete Edition — Volumes I &amp; II <span class="savings-badge">Save $9.98</span></h1>
+      <div class="book-detail-subtitle" data-i18n="qft_author">Dmitry V. Naumov</div>
+
+      <div class="book-detail-price-block">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Complete Digital Edition (2 PDFs)</div>
+        <div class="book-detail-price">$59.99 <span>instead of $69.98</span></div>
+        <div class="buy-actions">
+          <button class="btn btn-primary" onclick="openBuyModal('QFT Bundle (Russian)','https://play.google.com/store/books')" data-i18n="btn_buy">Buy Bundle →</button>
+          <button class="btn btn-ghost" onclick="addToCart('qft-bundle-ru','QFT Bundle (Russian)','59.99','Russian PDF – Vol. I + II')">+ Add to Cart</button>
+        </div>
+
+        <div class="includes-box">
+          <h4>What's included</h4>
+          <div class="vol-row">
+            <div><div class="vol-title">QFT Vol. I — Russian</div><div class="vol-sub">554 pages · ISBN 978-5-4344-1081-6</div></div>
+            <div class="vol-price">$34.99</div>
+          </div>
+          <div class="vol-row">
+            <div><div class="vol-title">QFT Vol. II — Russian</div><div class="vol-sub">514 pages · ISBN 978-5-4344-1082-3</div></div>
+            <div class="vol-price">$34.99</div>
+          </div>
+          <div class="bundle-total">
+            <span class="bundle-total-label">Bundle price</span>
+            <span class="bundle-total-price">$59.99</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-desc">
+        <h3>About the Series</h3>
+        <p>The complete two-volume graduate textbook on quantum field theory by Dmitry V. Naumov — Breakthrough Prize laureate (2016), EPS Prize winner (2023), and Deputy Director of the Dzhelepov Laboratory of Nuclear Problems at JINR, Dubna.</p>
+        <p>Together, the two volumes form a complete program from the foundations of QFT through the full Standard Model. The series is distinguished by its rigorous treatment grounded in physical reasoning — written for physicists who work with experiment, not abstract formalism.</p>
+
+        <h3>Volume I covers</h3>
+        <ul>
+          <li>Classical field theory, canonical quantization, Feynman rules</li>
+          <li>Loop corrections, regularization, renormalization theory</li>
+          <li>Abelian gauge theories and quantum electrodynamics</li>
+        </ul>
+
+        <h3>Volume II covers</h3>
+        <ul>
+          <li>Path integral formalism and generating functionals</li>
+          <li>Non-abelian gauge theories, Yang-Mills, BRST symmetry</li>
+          <li>Spontaneous symmetry breaking and the Higgs mechanism</li>
+          <li>Electroweak theory, QCD, renormalization group</li>
+        </ul>
+
+        <h3>Format Note</h3>
+        <p>Both volumes are fixed-layout PDFs delivered separately. All mathematical typesetting, Feynman diagrams, and figures are preserved exactly as in the print editions. Best on tablet or laptop. Not optimized for e-ink.</p>
+      </div>
+
+      <div class="book-specs">
+        <div class="spec-row"><span class="spec-key">Language</span><span class="spec-val">Russian (Русский)</span></div>
+        <div class="spec-row"><span class="spec-key">Total pages</span><span class="spec-val">1,068 (554 + 514)</span></div>
+        <div class="spec-row"><span class="spec-key">Format</span><span class="spec-val">2 × Fixed-Layout PDF</span></div>
+        <div class="spec-row"><span class="spec-key">Publisher</span><span class="spec-val">Rospex Publishing</span></div>
+        <div class="spec-row"><span class="spec-key">Author</span><span class="spec-val">Dmitry V. Naumov</span></div>
+        <div class="spec-row"><span class="spec-key">Also available</span><span class="spec-val"><a href="qft-volume-1.html" style="color:var(--gold-lt);text-decoration:none">Volume I only</a> · <a href="qft-volume-2.html" style="color:var(--gold-lt);text-decoration:none">Volume II only</a></span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-brand-logo">
+        <img src="../assets/images/logo.png" alt="Rospex Publishing" class="footer-logo-img">
+        <span class="footer-brand-name">ROSPEX <span>PUBLISHING</span></span>
+      </a>
+      <p data-i18n="footer_brand_desc">An independent publisher of digital books on science, economics, and business, operating globally.</p>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_col1">Books</div>
+      <ul class="footer-links">
+        <li><a href="qft-volume-1.html" data-i18n="footer_link_qft1">QFT Vol. I — Russian</a></li>
+        <li><a href="qft-volume-2.html" data-i18n="footer_link_qft2">QFT Vol. II — Russian</a></li>
+        <li><a href="qft-bundle.html" data-i18n="footer_link_bundle">QFT Bundle</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_col2">Contact &amp; Info</div>
+      <ul class="footer-links">
+        <li><a href="mailto:books@rospexpublishing.com" data-i18n="footer_link_email">books@rospexpublishing.com</a></li>
+        <li><a href="https://naumov.jinr.ru" target="_blank" rel="noopener" data-i18n="footer_link_author">Author's Academic Page</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="family-bar">
+    <span class="family-label" data-i18n="family_label">Part of the Rospex family:</span>
+    <a href="https://rospexholdings.com" target="_blank" rel="noopener" class="family-link">Rospex Holdings</a>
+    <span class="family-sep">·</span>
+    <a href="https://www.rospexconsulting.com" target="_blank" rel="noopener" class="family-link">Rospex Consulting</a>
+    <span class="family-sep">·</span>
+    <a href="https://rospexpublishing.com" class="family-link current">Rospex Publishing</a>
+  </div>
+  <div class="footer-bottom"><span data-i18n="footer_copy">© <span id="current-year">2026</span> Rospex Holdings LLC. All rights reserved.</span></div>
+</footer>
+
+<div class="modal-backdrop" id="buy-modal"><div class="modal"><button class="modal-close" onclick="closeBuyModal()">×</button><h2 id="modal-book-title">Buy This Book</h2><p><span data-i18n="modal_buy_note">Direct checkout coming soon. Available on</span> <strong style="color:var(--gold-lt)" data-i18n="modal_buy_note2">Google Play Books</strong>.</p><p style="font-size:12px;margin-top:8px" data-i18n="modal_buy_soon">Direct purchase coming within weeks.</p><div class="modal-actions"><a id="modal-google-link" href="#" target="_blank" rel="noopener" class="btn-google"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C33.9 6.5 29.2 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 19.6-13.4 19.6-20c0-1.3-.1-2.7-.4-4z"/><path fill="#34A853" d="M6.3 14.7l6.6 4.8C14.5 15.2 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C33.9 6.5 29.2 4 24 4c-7.8 0-14.5 4.3-17.7 10.7z"/><path fill="#FBBC05" d="M24 44c5.2 0 9.8-1.7 13.4-4.7l-6.2-5.2C29.4 35.3 26.8 36 24 36c-5.3 0-9.7-3-11.3-7.2l-6.6 4.8C9.5 39.7 16.2 44 24 44z"/><path fill="#EA4335" d="M43.6 20H24v8h11.3c-.9 2.5-2.5 4.6-4.7 6.1l6.2 5.2C40.6 36.2 44 30.5 44 24c0-1.3-.1-2.7-.4-4z"/></svg> <span data-i18n="modal_google_btn">Buy on Google Play Books</span></a><button onclick="closeBuyModal()" class="btn btn-ghost" style="font-size:13px;padding:9px 16px" data-i18n="modal_close">Close</button></div></div></div>
+<div class="modal-backdrop" id="cart-modal"><div class="modal cart-modal"><button class="modal-close" onclick="closeCartModal()">×</button><h2 data-i18n="modal_cart_title">Your Cart</h2><div id="cart-body"></div><div id="cart-footer" style="display:none;flex-direction:column;gap:12px;margin-top:16px"><div class="cart-total"><span data-i18n="modal_cart_total">Total</span><strong id="cart-total-val">$0.00</strong></div><button class="btn btn-primary" onclick="openBuyModal('Cart','https://play.google.com/store/books')" data-i18n="modal_cart_checkout">Checkout</button></div></div></div>
+<div id="cart-toast"></div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
