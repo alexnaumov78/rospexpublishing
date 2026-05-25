@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authors - Rospex Publishing</title>
+<meta name="description" content="Meet the authors published by Rospex Publishing. Rigorous science and education books written by leading researchers.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.authors-hero {
+  padding: 100px 48px 36px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.authors-hero .section-title { margin-bottom: 8px; }
+.authors-hero p { font-size: 15px; color: var(--muted); max-width: 720px; line-height: 1.75; }
+.authors-body { padding: 56px 48px; background: var(--bg); }
+.for-authors-bottom {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px; margin-top: 40px;
+  display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+}
+.for-authors-bottom-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--cream); margin-bottom: 8px;
+}
+.for-authors-bottom-text p { font-size: 13px; color: var(--muted); line-height: 1.75; max-width: 540px; }
+@media (max-width: 900px) {
+  .authors-hero { padding: 90px 24px 28px; }
+  .authors-body { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="Rospex Publishing - Home">
+    <img src="assets/images/logo.png" alt="Rospex Publishing">
+  </a>
+  <ul class="nav-center">
+    <li><a href="index.html#books" data-i18n="nav_books">Books</a></li>
+    <li><a href="authors.html" data-i18n="nav_authors">Authors</a></li>
+    <li><a href="index.html#publisher" data-i18n="nav_about">About Us</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
+    <a href="index.html#books" class="nav-browse" data-i18n="nav_browse">Browse Books</a>
+  </div>
+</nav>
+
+<div class="authors-hero">
+  <div class="section-label" data-i18n="nav_authors">Authors</div>
+  <h1 class="section-title" data-i18n="auth_intro_title">The people behind our books</h1>
+  <p data-i18n="auth_intro_text">Rospex Publishing works with leading researchers and educators. We are actively expanding our author roster. More renowned scientists and educators are joining in the coming months.</p>
+</div>
+
+<div class="authors-body">
+
+  <!-- DMITRY V. NAUMOV -->
+  <div class="author-card" id="dmitry-naumov">
+    <div class="author-card-header">
+      <div class="author-card-photo">
+        <img src="assets/images/dmitry-naumov.jpg" alt="Dmitry V. Naumov">
+      </div>
+      <div>
+        <div class="author-card-name" data-i18n="author_title">Dmitry V. Naumov</div>
+        <div class="author-card-title">Doctor of Physical and Mathematical Sciences, Deputy Director, Dzhelepov Laboratory of Nuclear Problems, JINR</div>
+        <div class="accolade-row">
+          <div class="accolade"><span class="accolade-icon">🏆</span><div><div class="accolade-label" data-i18n="prize1_label">Prize</div><div class="accolade-value" data-i18n="prize1_val">Breakthrough Prize in Fundamental Physics, 2016</div></div></div>
+          <div class="accolade"><span class="accolade-icon">🔬</span><div><div class="accolade-label" data-i18n="prize2_label">Prize</div><div class="accolade-value" data-i18n="prize2_val">European Physical Society Prize, 2023</div></div></div>
+          <div class="accolade"><span class="accolade-icon">📚</span><div><div class="accolade-label" data-i18n="pubs_label">Publications</div><div class="accolade-value" data-i18n="pubs_val">200+ peer-reviewed scientific papers</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="author-bio">
+      <p data-i18n-html="bio1"></p>
+      <p data-i18n="bio_new">Dmitry V. Naumov is a physicist who works both as a theorist and experimentalist, a rare combination in modern physics. He is a leading expert in neutrino physics, elementary particle physics, and astrophysics, and heads the Neutrino Programme at JINR. He has lectured on quantum field theory at Moscow State University and JINR for over 20 years.</p>
+      <p data-i18n-html="bio2"></p>
+      <p data-i18n-html="bio3"></p>
+    </div>
+    <div class="author-links" style="margin-top:20px">
+      <a href="https://naumov.jinr.ru" target="_blank" rel="noopener" class="author-link">🌐 <span data-i18n="link_web">naumov.jinr.ru</span></a>
+      <a href="https://neutrinohit.github.io/" target="_blank" rel="noopener" class="author-link">🔗 <span data-i18n="link_neutrinohit">neutrinohit.github.io</span></a>
+      <a href="https://www.youtube.com/@dmitrynaumov6099" target="_blank" rel="noopener" class="author-link">▶ <span data-i18n="link_yt">YouTube Channel</span></a>
+      <a href="https://t.me/NeutrinoHit" target="_blank" rel="noopener" class="author-link">✈ <span data-i18n="link_tg">Telegram: NeutrinoHit</span></a>
+    </div>
+
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+      <div class="section-label" style="margin-bottom:14px" data-i18n="auth_books_label">Books by this author</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="books/qft-volume-1.html" class="btn btn-ghost" style="font-size:12px;padding:8px 16px">QFT Vol. I - Russian</a>
+        <a href="books/qft-volume-2.html" class="btn btn-ghost" style="font-size:12px;padding:8px 16px">QFT Vol. II - Russian</a>
+        <a href="books/qft-bundle.html" class="btn btn-ghost" style="font-size:12px;padding:8px 16px">QFT Bundle</a>
+        <span class="btn btn-ghost" style="font-size:12px;padding:8px 16px;opacity:0.5;cursor:default">Solar Neutrino - Coming Soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLACEHOLDER AUTHOR 1 -->
+  <div class="author-card-placeholder">
+    <div class="author-card-header">
+      <div class="author-card-photo">
+        <span class="placeholder-icon">👤</span>
+      </div>
+      <div>
+        <div class="placeholder-tag" data-i18n="placeholder_tag">Joining Soon</div>
+        <div class="author-card-name" data-i18n="placeholder_name">Renowned Author</div>
+        <div class="author-card-title" data-i18n="placeholder_field_a">Astrophysics &amp; Cosmology</div>
+        <p class="placeholder-text" data-i18n="placeholder_text">We are in active discussions with leading Russian scientists and educators about bringing their work to international readers. Profiles will be added as agreements are finalized.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLACEHOLDER AUTHOR 2 -->
+  <div class="author-card-placeholder">
+    <div class="author-card-header">
+      <div class="author-card-photo">
+        <span class="placeholder-icon">👤</span>
+      </div>
+      <div>
+        <div class="placeholder-tag" data-i18n="placeholder_tag">Joining Soon</div>
+        <div class="author-card-name" data-i18n="placeholder_name">Renowned Author</div>
+        <div class="author-card-title" data-i18n="placeholder_field_b">Particle Physics &amp; High Energy</div>
+        <p class="placeholder-text" data-i18n="placeholder_text">We are in active discussions with leading Russian scientists and educators about bringing their work to international readers. Profiles will be added as agreements are finalized.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLACEHOLDER AUTHOR 3 -->
+  <div class="author-card-placeholder">
+    <div class="author-card-header">
+      <div class="author-card-photo">
+        <span class="placeholder-icon">👤</span>
+      </div>
+      <div>
+        <div class="placeholder-tag" data-i18n="placeholder_tag">Joining Soon</div>
+        <div class="author-card-name" data-i18n="placeholder_name">Renowned Author</div>
+        <div class="author-card-title" data-i18n="placeholder_field_c">Popular Science &amp; Education</div>
+        <p class="placeholder-text" data-i18n="placeholder_text">We are in active discussions with leading Russian scientists and educators about bringing their work to international readers. Profiles will be added as agreements are finalized.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOR AUTHORS BOTTOM CTA -->
+  <div class="for-authors-bottom">
+    <div style="font-size:32px">✉</div>
+    <div class="for-authors-bottom-text">
+      <h3>Interested in publishing with us?</h3>
+      <p>We invite researchers and educators with serious scientific or educational works to reach out. We focus on digital distribution with global reach and straightforward revenue sharing. Contact us to discuss your project.</p>
+      <div style="margin-top:14px">
+        <a href="contact.html" class="btn btn-primary" style="font-size:13px" data-i18n="fa_contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-brand-logo">
+        <img src="assets/images/logo.png" alt="Rospex Publishing" class="footer-logo-img">
+        <span class="footer-brand-name">ROSPEX <span>PUBLISHING</span></span>
+      </a>
+      <p data-i18n="footer_desc">An independent publisher of digital books on science and education, operating globally. A curated showcase of Russia's leading science authors for readers worldwide.</p>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_col2">Contact and Info</div>
+      <ul class="footer-links">
+        <li><a href="contact.html" data-i18n="footer_link_contact">Contact Us</a></li>
+        <li><a href="authors.html" data-i18n="footer_link_authors">All Authors</a></li>
+        <li><a href="index.html#publisher" data-i18n="footer_link_about">About Us</a></li>
+        <li><a href="index.html#notify" data-i18n="footer_link_notify">Launch Notifications</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="family-bar">
+    <span class="family-label" data-i18n="family_label">Part of the Rospex family:</span>
+    <a href="https://rospex.com" target="_blank" rel="noopener" class="family-link">Rospex Holdings</a>
+    <span class="family-sep">·</span>
+    <a href="https://www.rospexconsulting.com" target="_blank" rel="noopener" class="family-link">Rospex Consulting</a>
+    <span class="family-sep">·</span>
+    <a href="https://rospexpublishing.com" class="family-link current">Rospex Publishing</a>
+  </div>
+  <div class="footer-bottom">&copy; <span id="current-year">2026</span> <span data-i18n="footer_copy">Rospex Holdings LLC. All rights reserved.</span></div>
+</footer>
+
+<!-- NOTIFY MODAL -->
+<div class="modal-backdrop" id="notify-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeNotifyModal()">×</button>
+    <h2 data-i18n="notify_title">Get notified at launch</h2>
+    <p id="notify-modal-book" style="color:var(--gold-lt);font-size:12px;margin-bottom:4px"></p>
+    <p data-i18n="modal_notify_sub">Enter your email and we will send one notification when this book launches.</p>
+    <div class="notify-form" style="margin-top:14px">
+      <input type="email" class="notify-input" id="notify-modal-email" placeholder="your@email.com">
+      <button class="btn btn-primary" onclick="submitNotifyModal()" data-i18n="notify_btn">Notify Me</button>
+    </div>
+    <div class="notify-confirm" id="notify-modal-confirm" data-i18n="notify_ok" style="margin-top:10px;display:none"></div>
+  </div>
+</div>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

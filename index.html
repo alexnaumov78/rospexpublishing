@@ -3,316 +3,424 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rospex Publishing — Scientific Books by Dmitry Naumov</title>
-<meta name="description" content="An independent publisher of digital books on science, economics, and business, operating globally. Books by Dmitry V. Naumov — Breakthrough Prize laureate.">
+<title>Rospex Publishing - Russia's best science books for curious readers everywhere</title>
+<meta name="description" content="A curated showcase of Russia's best science and education books. Textbooks and popular science in physics, astrophysics, cosmology, particle physics, and modern science. Available worldwide.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <style>
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,149,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,149,58,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)}
-.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,149,58,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.hero-content{position:relative;max-width:700px}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--badge-en);border:1px solid var(--gold-dim);color:var(--gold-lt);font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:28px}
-.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,58px);font-weight:700;line-height:1.12;color:var(--cream);margin-bottom:24px}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:17px;font-weight:300;color:var(--muted);max-width:540px;margin-bottom:40px;line-height:1.75}
-.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.books-section{background:var(--surface)}
-.notify-section{background:var(--surface);text-align:center}
-.notify-section .section-sub{margin:0 auto 32px}
-.publisher-section{background:var(--bg)}
-.author-section{background:var(--bg)}
-#cart-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--gold-dim);color:var(--gold-lt);font-size:13px;font-weight:500;padding:10px 24px;border-radius:100px;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:300}
+.hero {
+  padding: 88px 48px 32px;
+  position: relative; overflow: hidden;
+  background: var(--bg);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,149,58,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,149,58,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 100% at 35% 50%, black 20%, transparent 100%);
+}
+.hero-inner {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 380px;
+  gap: 36px; align-items: center;
+  max-width: 1200px;
+}
+.hero-text { max-width: 580px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--badge-en); border: 1px solid var(--gold-dim);
+  color: var(--gold-lt); font-size: 10px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 100px; margin-bottom: 14px;
+}
+.hero-eyebrow::before { content:''; width:5px;height:5px;border-radius:50%;background:var(--gold); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.4vw, 40px); font-weight: 700;
+  line-height: 1.15; color: var(--cream); margin-bottom: 12px;
+}
+.hero-sub {
+  font-size: 14px; font-weight: 300; color: var(--muted);
+  max-width: 540px; margin-bottom: 22px; line-height: 1.75;
+}
+.hero-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.hero-actions .btn { padding: 9px 20px; font-size: 13px; }
+.hero-visual { position: relative; aspect-ratio: 1/1; max-width: 380px; }
+.hero-visual svg { width: 100%; height: 100%; display: block; }
+
+.books-section { background: var(--surface); }
+.notify-section { background: var(--surface); text-align: center; }
+.notify-section .section-sub { margin: 0 auto 28px; }
+.publisher-section { background: var(--bg); }
+.coming-section { background: var(--bg); }
+.for-authors-section { background: var(--surface); }
+.about-prose p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 12px; max-width: 760px; }
+.about-prose p:last-child { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .hero { padding: 84px 24px 28px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+  .hero-visual { max-width: 320px; margin: 0 auto; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo" aria-label="Rospex Publishing home">
+  <a href="index.html" class="nav-logo" aria-label="Rospex Publishing - Home">
     <img src="assets/images/logo.png" alt="Rospex Publishing">
   </a>
   <ul class="nav-center">
     <li><a href="#books" data-i18n="nav_books">Books</a></li>
-    <li><a href="#author" data-i18n="nav_author">About the Author</a></li>
+    <li><a href="authors.html" data-i18n="nav_authors">Authors</a></li>
     <li><a href="#publisher" data-i18n="nav_about">About Us</a></li>
-    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-toggle">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="ru">RU</button>
     </div>
-    <button class="nav-cart" onclick="openCartModal()">🛒 <span data-i18n="nav_cart">Cart</span><span class="cart-count" id="cart-count-nav"></span></button>
     <a href="#books" class="nav-browse" data-i18n="nav_browse">Browse Books</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-grid"></div><div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow" data-i18n="hero_eyebrow">Scientific Books — Available Worldwide</div>
-    <h1><span data-i18n="hero_h1_a">Physics at the</span> <em data-i18n="hero_h1_em">highest level</em><span data-i18n="hero_h1_b">, for those who demand it</span></h1>
-    <p class="hero-sub" data-i18n="hero_sub">Graduate-level textbooks and popular science from Dmitry V. Naumov — Breakthrough Prize laureate, physicist at JINR, and one of the world's leading experts in neutrino physics.</p>
-    <div class="hero-actions">
-      <a href="#books" class="btn btn-primary" data-i18n="hero_cta1">Browse All Books ↓</a>
-      <a href="#author" class="btn btn-ghost" data-i18n="hero_cta2">About the Author</a>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow" data-i18n="hero_eyebrow">Science and Education Books</div>
+      <h1 data-i18n="hero_h1">Russia's best science books for curious readers everywhere</h1>
+      <p class="hero-sub" data-i18n="hero_sub">Curated textbooks and popular science in physics, astrophysics, cosmology, particle physics, and modern science, by Russia's leading scientists and researchers, available worldwide.</p>
+      <div class="hero-actions">
+        <a href="#books" class="btn btn-primary" data-i18n="hero_cta1">Browse All Books</a>
+        <a href="authors.html" class="btn btn-ghost" data-i18n="hero_cta2">Our Authors</a>
+      </div>
+    </div>
+    <!-- HERO VISUAL: particle collision tracks + 6 visible equations -->
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="vertex-glow" cx="50%" cy="50%" r="40%">
+            <stop offset="0%" stop-color="#C9953A" stop-opacity="0.5"/>
+            <stop offset="60%" stop-color="#C9953A" stop-opacity="0.08"/>
+            <stop offset="100%" stop-color="#C9953A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Glow behind vertex -->
+        <circle cx="200" cy="220" r="120" fill="url(#vertex-glow)"/>
+
+        <!-- Particle tracks (contained within central area) -->
+        <g fill="none" stroke-linecap="round">
+          <path d="M 200 220 Q 160 170, 90 130" stroke="#C9953A" stroke-width="1.3" opacity="0.75"/>
+          <path d="M 200 220 Q 180 175, 175 100" stroke="#DDB865" stroke-width="1.0" opacity="0.65"/>
+          <path d="M 200 220 Q 230 175, 245 100" stroke="#DDB865" stroke-width="1.1" opacity="0.7"/>
+          <path d="M 200 220 Q 260 175, 320 135" stroke="#C9953A" stroke-width="1.2" opacity="0.75"/>
+          <path d="M 200 220 C 270 230, 320 245, 365 268" stroke="#6AAED6" stroke-width="0.9" opacity="0.6"/>
+          <path d="M 200 220 C 250 280, 290 330, 320 380" stroke="#6AAED6" stroke-width="1.0" opacity="0.65"/>
+          <path d="M 200 220 C 175 280, 140 330, 105 380" stroke="#6AAED6" stroke-width="1.0" opacity="0.6"/>
+          <path d="M 200 220 C 145 230, 95 245, 50 268" stroke="#DDB865" stroke-width="0.9" opacity="0.6"/>
+          <path d="M 200 220 Q 220 195, 215 165" stroke="#EDE0C8" stroke-width="0.6" opacity="0.45"/>
+          <path d="M 200 220 Q 180 195, 185 165" stroke="#EDE0C8" stroke-width="0.6" opacity="0.45"/>
+
+          <!-- End-point dots -->
+          <circle cx="90"  cy="130" r="2.2" fill="#C9953A" opacity="0.85"/>
+          <circle cx="175" cy="100" r="2"   fill="#DDB865" opacity="0.8"/>
+          <circle cx="245" cy="100" r="2"   fill="#DDB865" opacity="0.8"/>
+          <circle cx="320" cy="135" r="2.2" fill="#C9953A" opacity="0.85"/>
+          <circle cx="365" cy="268" r="2"   fill="#6AAED6" opacity="0.75"/>
+          <circle cx="320" cy="380" r="2"   fill="#6AAED6" opacity="0.75"/>
+          <circle cx="105" cy="380" r="2"   fill="#6AAED6" opacity="0.7"/>
+          <circle cx="50"  cy="268" r="2"   fill="#DDB865" opacity="0.7"/>
+        </g>
+
+        <!-- Central vertex - collision point -->
+        <circle cx="200" cy="220" r="14" fill="none" stroke="#C9953A" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="200" cy="220" r="8"  fill="none" stroke="#C9953A" stroke-width="0.8" opacity="0.5"/>
+        <circle cx="200" cy="220" r="4"  fill="#FFFFFF" opacity="0.95"/>
+
+        <!-- Equations (top layer, visible) -->
+        <g opacity="0.6" font-family="Georgia, serif" fill="#EDE0C8" font-style="italic">
+          <text x="20"  y="40"  font-size="20">E = mc²</text>
+          <text x="245" y="40"  font-size="15">iℏ ∂ψ/∂t = Ĥψ</text>
+          <text x="10"  y="225" font-size="14">λ = h/p</text>
+          <text x="305" y="225" font-size="13">Δx · Δp ≥ ℏ/2</text>
+          <text x="20"  y="385" font-size="14">(iγ<tspan baseline-shift="super" font-size="10">μ</tspan>∂<tspan baseline-shift="sub" font-size="10">μ</tspan> − m)ψ = 0</text>
+          <text x="290" y="385" font-size="14">S = k log W</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- AVAILABLE BOOKS -->
 <section class="books-section" id="books">
-  <div class="section-label" data-i18n="books_label">Available Now</div>
-  <h2 class="section-title" data-i18n="books_title">Quantum Field Theory Series</h2>
-  <p class="section-sub" data-i18n="books_sub">Two comprehensive graduate-level volumes — rigorous, practical, and designed for working physicists and experimentalists.</p>
+  <div class="section-label" data-i18n="avail_label">Available Now</div>
+  <h2 class="section-title" data-i18n="avail_title">Quantum Field Theory Series</h2>
+  <p class="section-sub" data-i18n="avail_sub">Two comprehensive graduate-level volumes, rigorous and practical, written for physicists who work with experiment.</p>
+
   <div class="books-grid">
 
     <div class="book-card">
-      <a href="books/qft-volume-1.html" style="display:block;text-decoration:none">
-        <div class="book-cover"><svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="400" fill="#0A1825"/><rect x="0" y="0" width="8" height="400" fill="#C9953A"/><line x1="0" y1="133" x2="300" y2="133" stroke="rgba(201,149,58,0.07)" stroke-width="1"/><line x1="0" y1="266" x2="300" y2="266" stroke="rgba(201,149,58,0.07)" stroke-width="1"/><text x="150" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="72" font-style="italic" fill="rgba(201,149,58,0.14)">ψ</text><text x="150" y="230" text-anchor="middle" font-family="Georgia,serif" font-size="32" fill="rgba(201,149,58,0.09)">∫ℒ d⁴x</text><rect x="24" y="282" width="252" height="2" fill="rgba(201,149,58,0.35)"/><text x="36" y="308" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#C9953A" letter-spacing="0.5">КВАНТОВАЯ ТЕОРИЯ ПОЛЯ</text><text x="36" y="326" font-family="Georgia,serif" font-size="9" fill="#7A93AA">для экспериментаторов и не только</text><text x="36" y="350" font-family="Georgia,serif" font-size="10" fill="#7A93AA">Д. В. Наумов</text><rect x="228" y="336" width="48" height="20" rx="3" fill="rgba(201,149,58,0.18)" stroke="rgba(201,149,58,0.4)" stroke-width="1"/><text x="252" y="349" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#C9953A">Том I</text><text x="36" y="386" font-family="Georgia,serif" font-size="8" fill="#3A5570">ROSPEX PUBLISHING</text></svg></div>
+      <a href="books/qft-volume-1.html" class="book-card-link">
+        <div class="book-cover"><img src="assets/images/covers/qft-vol1-ru.png" alt="QFT Volume I Russian"></div>
       </a>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-vol">Volume I</span></div>
-        <div class="book-title" data-i18n="qft_title">Quantum Field Theory for Experimentalists and Beyond</div>
+        <div class="book-title" data-i18n="qft_title_ru">Quantum Field Theory for Experimentalists and Beyond</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
-        <div class="book-desc" data-i18n="qft1_desc">554 pages. Foundations through advanced QFT — Feynman diagrams, renormalization, gauge theories.</div>
+        <div class="book-desc" data-i18n="qft1_ru_desc">554 pages. Foundations through advanced QFT.</div>
         <div class="book-footer">
-          <div class="book-price">$34.99 <span>/ vol</span></div>
+          <div class="book-price">$34.99</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="btn-buy" onclick="openBuyModal('QFT Vol. I (Russian)','https://play.google.com/store/books')" data-i18n="btn_buy">Buy Now →</button>
-            <button class="btn-notify" onclick="openPreview('assets/pdfs/qft-vol1-preview.pdf','QFT Vol. I')" style="font-size:11px;padding:7px 10px" data-i18n="btn_preview">Preview</button>
+            <a href="https://buy.stripe.com/5kQ6oA7Tjdth4d7g127kc00" target="_blank" rel="noopener" class="btn-buy" data-i18n="btn_buy">Buy Now</a>
+            <button class="btn-notify" onclick="openPreview('assets/pdfs/qft-vol1-ru-preview.pdf','QFT Vol. I')" data-i18n="btn_preview">Preview</button>
           </div>
         </div>
       </div>
     </div>
 
     <div class="book-card">
-      <a href="books/qft-volume-2.html" style="display:block;text-decoration:none">
-        <div class="book-cover"><svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="400" fill="#0E1A12"/><rect x="0" y="0" width="8" height="400" fill="#4E9A6A"/><line x1="0" y1="133" x2="300" y2="133" stroke="rgba(78,154,106,0.07)" stroke-width="1"/><line x1="0" y1="266" x2="300" y2="266" stroke="rgba(78,154,106,0.07)" stroke-width="1"/><text x="150" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="66" font-style="italic" fill="rgba(78,154,106,0.14)">𝒮</text><text x="150" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="rgba(78,154,106,0.09)">e^{iS/ℏ}</text><rect x="24" y="282" width="252" height="2" fill="rgba(78,154,106,0.35)"/><text x="36" y="308" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#4E9A6A" letter-spacing="0.5">КВАНТОВАЯ ТЕОРИЯ ПОЛЯ</text><text x="36" y="326" font-family="Georgia,serif" font-size="9" fill="#7A93AA">для экспериментаторов и не только</text><text x="36" y="350" font-family="Georgia,serif" font-size="10" fill="#7A93AA">Д. В. Наумов</text><rect x="222" y="336" width="54" height="20" rx="3" fill="rgba(78,154,106,0.18)" stroke="rgba(78,154,106,0.4)" stroke-width="1"/><text x="249" y="349" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#4E9A6A">Том II</text><text x="36" y="386" font-family="Georgia,serif" font-size="8" fill="#3A5570">ROSPEX PUBLISHING</text></svg></div>
+      <a href="books/qft-volume-2.html" class="book-card-link">
+        <div class="book-cover"><img src="assets/images/covers/qft-vol2-ru.png" alt="QFT Volume II Russian"></div>
       </a>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-vol">Volume II</span></div>
-        <div class="book-title" data-i18n="qft_title">Quantum Field Theory for Experimentalists and Beyond</div>
+        <div class="book-title" data-i18n="qft_title_ru">Quantum Field Theory for Experimentalists and Beyond</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
-        <div class="book-desc" data-i18n="qft2_desc">514 pages. Path integrals, QED, non-abelian gauge theories, and the Standard Model.</div>
+        <div class="book-desc" data-i18n="qft2_ru_desc">514 pages. Path integrals, QED, and the Standard Model.</div>
         <div class="book-footer">
-          <div class="book-price">$34.99 <span>/ vol</span></div>
+          <div class="book-price">$34.99</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="btn-buy" onclick="openBuyModal('QFT Vol. II (Russian)','https://play.google.com/store/books')" data-i18n="btn_buy">Buy Now →</button>
-            <button class="btn-notify" onclick="openPreview('assets/pdfs/qft-vol2-preview.pdf','QFT Vol. II')" style="font-size:11px;padding:7px 10px" data-i18n="btn_preview">Preview</button>
+            <a href="https://buy.stripe.com/eVqaEQb5v3SHfVP2ac7kc01" target="_blank" rel="noopener" class="btn-buy" data-i18n="btn_buy">Buy Now</a>
+            <button class="btn-notify" onclick="openPreview('assets/pdfs/qft-vol2-ru-preview.pdf','QFT Vol. II')" data-i18n="btn_preview">Preview</button>
           </div>
         </div>
       </div>
     </div>
 
     <div class="book-card">
-      <a href="books/qft-bundle.html" style="display:block;text-decoration:none">
-        <div class="book-cover"><svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="400" fill="#181208"/><rect x="0" y="0" width="8" height="400" fill="#C9953A"/><rect x="32" y="44" width="182" height="240" rx="3" fill="#0A1825" stroke="rgba(201,149,58,0.22)" stroke-width="1"/><rect x="42" y="54" width="182" height="240" rx="3" fill="#0E1A12" stroke="rgba(78,154,106,0.22)" stroke-width="1"/><rect x="52" y="64" width="182" height="240" rx="3" fill="#100E06" stroke="rgba(201,149,58,0.38)" stroke-width="1.5"/><text x="143" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="40" font-style="italic" fill="rgba(201,149,58,0.18)">QFT</text><text x="143" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="rgba(201,149,58,0.12)">Vol. I + II</text><rect x="24" y="320" width="252" height="2" fill="rgba(201,149,58,0.4)"/><text x="36" y="345" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#C9953A">COMPLETE EDITION</text><text x="36" y="363" font-family="Georgia,serif" font-size="9" fill="#7A93AA">Volumes I &amp; II — Russian</text><rect x="198" y="330" width="66" height="20" rx="3" fill="rgba(120,200,100,0.12)" stroke="rgba(120,200,100,0.3)" stroke-width="1"/><text x="231" y="343" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7CC876">BUNDLE</text><text x="36" y="386" font-family="Georgia,serif" font-size="8" fill="#3A5570">ROSPEX PUBLISHING</text></svg></div>
+      <a href="books/qft-bundle.html" class="book-card-link">
+        <div class="book-cover"><img src="assets/images/covers/qft-bundle-ru.png" alt="QFT Bundle Russian"></div>
       </a>
       <div class="book-body">
-        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-bundle" data-i18n="bundle_save">Bundle — Save 14%</span></div>
-        <div class="book-title" data-i18n="bundle_title">QFT Complete Edition — Volumes I &amp; II</div>
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-bundle" data-i18n="bundle_save">Bundle, save 14%</span></div>
+        <div class="book-title" data-i18n="bundle_ru_title">QFT Complete Edition: Volumes I and II</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
-        <div class="book-desc" data-i18n="bundle_desc">Both volumes at a reduced price. 1,068 pages — from foundations to the Standard Model.</div>
+        <div class="book-desc" data-i18n="bundle_ru_desc">Both volumes at a reduced price. 1,068 pages.</div>
         <div class="book-footer">
           <div class="book-price">$59.99</div>
-          <button class="btn-buy" onclick="openBuyModal('QFT Bundle (Russian)','https://play.google.com/store/books')" data-i18n="btn_buy">Buy Now →</button>
+          <a href="https://buy.stripe.com/7sYdR26Pf1Kz8tn8yA7kc02" target="_blank" rel="noopener" class="btn-buy" data-i18n="btn_buy">Buy Now</a>
         </div>
       </div>
     </div>
 
   </div>
+</section>
 
-  <div style="margin-top:64px">
-    <div class="section-label" data-i18n="coming_label">Coming Soon — 3 to 4 Weeks</div>
-    <h2 class="section-title" data-i18n="coming_title">Upcoming Releases</h2>
-    <p class="section-sub" data-i18n="coming_sub">English editions of the QFT series and a popular science book — sign up for launch notifications.</p>
-    <div class="books-grid">
+<div class="divider"></div>
 
-      <div class="book-card" style="opacity:0.82">
-        <div class="coming-overlay" data-i18n="cs_soon">Coming Soon</div>
-        <div class="book-cover" style="opacity:0.55"><svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="400" fill="#0A1825"/><rect x="0" y="0" width="8" height="400" fill="#5A3A10"/><text x="150" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="72" font-style="italic" fill="rgba(201,149,58,0.07)">ψ</text><rect x="24" y="282" width="252" height="2" fill="rgba(201,149,58,0.18)"/><text x="36" y="308" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#5A3A10">QUANTUM FIELD THEORY</text><text x="36" y="326" font-family="Georgia,serif" font-size="9" fill="#3A5570">for Experimentalists and Beyond</text><text x="36" y="350" font-family="Georgia,serif" font-size="10" fill="#3A5570">D. V. Naumov</text><text x="36" y="386" font-family="Georgia,serif" font-size="8" fill="#2A3A50">ROSPEX PUBLISHING</text></svg></div>
-        <div class="book-body">
-          <div class="book-badges"><span class="badge badge-en">English</span><span class="badge badge-vol">Vol. I + II</span></div>
-          <div class="book-title" data-i18n="qft_title">Quantum Field Theory for Experimentalists and Beyond</div>
-          <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
-          <div class="book-desc" data-i18n="qft_en_desc">Complete English translation. Expected in 3–4 weeks.</div>
-          <div class="book-footer"><div class="price-coming"><span data-i18n="price_from">From </span>$44.99</div><button class="btn-notify" onclick="openNotifyModal('QFT English Edition')" data-i18n="btn_notify">Notify Me</button></div>
-        </div>
+<!-- COMING SOON -->
+<section class="coming-section" id="coming">
+  <div class="section-label" data-i18n="coming_label">Coming Soon</div>
+  <h2 class="section-title" data-i18n="coming_title">Upcoming Releases</h2>
+  <p class="section-sub" data-i18n="coming_sub">English editions of the QFT series and the Solar Neutrino popular science book.</p>
+
+  <div class="books-grid">
+
+    <div class="book-card" style="opacity:0.82">
+      <div class="coming-overlay">3-4 Weeks</div>
+      <div class="book-cover"><img src="assets/images/covers/qft-vol1-en.png" alt="QFT Volume I English" style="opacity:0.7"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-en">English</span><span class="badge badge-vol">Volume I</span></div>
+        <div class="book-title" data-i18n="qft_title_en">Quantum Field Theory for Experimentalists and Beyond</div>
+        <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
+        <div class="book-desc" data-i18n="qft_en_desc">Complete English translation.</div>
+        <div class="book-footer"><div class="price-coming">$44.99</div><button class="btn-notify" onclick="openNotifyModal('QFT Vol. I, English')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
+    </div>
 
-      <div class="book-card" style="opacity:0.82">
-        <div class="coming-overlay" data-i18n="cs_soon">Coming Soon</div>
-        <div class="book-cover" style="opacity:0.55"><svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="400" fill="#0D1822"/><rect x="0" y="0" width="8" height="400" fill="#1E4070"/><circle cx="70" cy="80" r="3" fill="rgba(58,110,181,0.3)"/><circle cx="180" cy="55" r="2" fill="rgba(58,110,181,0.2)"/><circle cx="240" cy="115" r="4" fill="rgba(58,110,181,0.25)"/><ellipse cx="150" cy="170" rx="46" ry="14" fill="none" stroke="rgba(58,110,181,0.16)" stroke-width="1.5"/><ellipse cx="150" cy="170" rx="46" ry="14" fill="none" stroke="rgba(58,110,181,0.16)" stroke-width="1.5" transform="rotate(60 150 170)"/><rect x="24" y="282" width="252" height="2" fill="rgba(58,110,181,0.22)"/><text x="36" y="308" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#2A5080">[НАЗВАНИЕ КНИГИ]</text><text x="36" y="326" font-family="Georgia,serif" font-size="9" fill="#3A5570">научно-популярная книга</text><text x="36" y="350" font-family="Georgia,serif" font-size="10" fill="#3A5570">Д. В. Наумов</text><text x="36" y="386" font-family="Georgia,serif" font-size="8" fill="#2A3A50">ROSPEX PUBLISHING</text></svg></div>
-        <div class="book-body">
-          <div class="book-badges"><span class="badge badge-ru">Russian</span></div>
-          <div class="book-title" data-i18n="kids_ru_title">[Popular Science Book Title]</div>
-          <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
-          <div class="book-desc" data-i18n="kids_ru_desc">Bestselling popular science for young readers. Digital edition coming soon.</div>
-          <div class="book-footer"><div class="price-coming">~$19.99</div><button class="btn-notify" onclick="openNotifyModal('Popular Science (Russian)')" data-i18n="btn_notify">Notify Me</button></div>
-        </div>
+    <div class="book-card" style="opacity:0.82">
+      <div class="coming-overlay">3-4 Weeks</div>
+      <div class="book-cover"><img src="assets/images/covers/qft-vol2-en.png" alt="QFT Volume II English" style="opacity:0.7"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-en">English</span><span class="badge badge-vol">Volume II</span></div>
+        <div class="book-title" data-i18n="qft_title_en">Quantum Field Theory for Experimentalists and Beyond</div>
+        <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
+        <div class="book-desc" data-i18n="qft_en_desc">Complete English translation.</div>
+        <div class="book-footer"><div class="price-coming">$44.99</div><button class="btn-notify" onclick="openNotifyModal('QFT Vol. II, English')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
+    </div>
 
-      <div class="book-card" style="opacity:0.7">
-        <div class="coming-overlay" data-i18n="cs_months">Coming in 2–3 Months</div>
-        <div class="book-cover" style="opacity:0.45"><svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="400" fill="#0D1822"/><rect x="0" y="0" width="8" height="400" fill="#162838"/><ellipse cx="150" cy="170" rx="46" ry="14" fill="none" stroke="rgba(42,64,96,0.16)" stroke-width="1.5"/><ellipse cx="150" cy="170" rx="46" ry="14" fill="none" stroke="rgba(42,64,96,0.16)" stroke-width="1.5" transform="rotate(60 150 170)"/><rect x="24" y="282" width="252" height="2" fill="rgba(42,64,96,0.25)"/><text x="36" y="308" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1A3050">[ENGLISH TITLE]</text><text x="36" y="326" font-family="Georgia,serif" font-size="9" fill="#2A4060">Popular Science</text><text x="36" y="350" font-family="Georgia,serif" font-size="10" fill="#2A4060">D. V. Naumov</text><text x="36" y="386" font-family="Georgia,serif" font-size="8" fill="#1A2840">ROSPEX PUBLISHING</text></svg></div>
-        <div class="book-body">
-          <div class="book-badges"><span class="badge badge-en">English</span></div>
-          <div class="book-title" data-i18n="kids_en_title">[Popular Science] — English</div>
-          <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
-          <div class="book-desc" data-i18n="kids_en_desc">English translation of the bestselling popular science book. Illustrated.</div>
-          <div class="book-footer"><div class="price-coming">~$24.99</div><button class="btn-notify" onclick="openNotifyModal('Popular Science (English)')" data-i18n="btn_notify">Notify Me</button></div>
-        </div>
+    <div class="book-card" style="opacity:0.82">
+      <div class="coming-overlay">3-4 Weeks</div>
+      <div class="book-cover"><img src="assets/images/covers/qft-bundle-en.png" alt="QFT Bundle English" style="opacity:0.7"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-en">English</span><span class="badge badge-bundle">Bundle</span></div>
+        <div class="book-title" data-i18n="bundle_ru_title">QFT Complete Edition: Volumes I and II</div>
+        <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
+        <div class="book-desc" data-i18n="qft_en_desc">Complete English translation.</div>
+        <div class="book-footer"><div class="price-coming">$74.99</div><button class="btn-notify" onclick="openNotifyModal('QFT Bundle, English')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
+    </div>
 
+    <div class="book-card" style="opacity:0.82">
+      <div class="coming-overlay">Coming Soon</div>
+      <div class="book-cover"><img src="assets/images/covers/solar-neutrino-ru.png" alt="Solar Neutrino Russian" style="opacity:0.75"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span></div>
+        <div class="book-title" data-i18n="solar_ru_title">Solar Neutrino</div>
+        <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
+        <div class="book-desc" data-i18n="solar_ru_desc">Popular science. Russian edition.</div>
+        <div class="book-footer"><div class="price-coming">$19.99</div><button class="btn-notify" onclick="openNotifyModal('Solar Neutrino, Russian')" data-i18n="btn_notify">Notify Me</button></div>
+      </div>
+    </div>
+
+    <div class="book-card" style="opacity:0.72">
+      <div class="coming-overlay" style="border-color:rgba(141,173,196,0.3);color:var(--muted)">2-3 Months</div>
+      <div class="book-cover"><img src="assets/images/covers/solar-neutrino-en.png" alt="Solar Neutrino English" style="opacity:0.6"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-en">English</span></div>
+        <div class="book-title" data-i18n="solar_en_title">Solar Neutrino</div>
+        <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
+        <div class="book-desc" data-i18n="solar_en_desc">English edition.</div>
+        <div class="book-footer"><div class="price-coming">$24.99</div><button class="btn-notify" onclick="openNotifyModal('Solar Neutrino, English')" data-i18n="btn_notify">Notify Me</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOR AUTHORS -->
+<section class="for-authors-section">
+  <div class="section-label" data-i18n="fa_label">For Authors</div>
+  <h2 class="section-title" data-i18n="fa_title">Publishing with Rospex</h2>
+  <div class="for-authors-cta">
+    <div class="for-authors-cta-icon">✍</div>
+    <div class="for-authors-cta-body">
+      <p data-i18n="fa_text">We work with researchers and educators on serious science and education books. Independent, transparent, with global digital distribution. We invite proposals.</p>
+    </div>
+    <div class="for-authors-cta-actions">
+      <button class="btn btn-ghost" style="font-size:13px" onclick="openLearnMoreModal()" data-i18n="fa_btn">Learn More</button>
+      <a href="contact.html" class="btn btn-primary" style="font-size:13px" data-i18n="fa_contact">Contact Us</a>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section class="author-section" id="author">
-  <div class="author-layout">
-    <div>
-      <div class="author-photo-frame">
-        <img src="assets/images/dmitry-naumov.jpg" alt="Dmitry V. Naumov — physicist at JINR">
-      </div>
-    </div>
-    <div class="author-bio">
-      <div class="section-label" data-i18n="author_label">About the Author</div>
-      <h2 class="section-title" data-i18n="author_title">Dmitry Vadimovich Naumov</h2>
-      <div class="accolade-row">
-        <div class="accolade"><span class="accolade-icon">🏆</span><div><div class="accolade-label" data-i18n="prize1_label">Prize</div><div class="accolade-value" data-i18n="prize1_val">Breakthrough Prize in Fundamental Physics, 2016</div></div></div>
-        <div class="accolade"><span class="accolade-icon">🔬</span><div><div class="accolade-label" data-i18n="prize2_label">Prize</div><div class="accolade-value" data-i18n="prize2_val">European Physical Society Prize, 2023</div></div></div>
-        <div class="accolade"><span class="accolade-icon">📚</span><div><div class="accolade-label" data-i18n="pubs_label">Publications</div><div class="accolade-value" data-i18n="pubs_val">200+ peer-reviewed scientific papers</div></div></div>
-        <div class="accolade"><span class="accolade-icon">🏛️</span><div><div class="accolade-label" data-i18n="pos_label">Position</div><div class="accolade-value" data-i18n="pos_val">Deputy Director, Dzhelepov Laboratory, JINR</div></div></div>
-      </div>
-      <p data-i18n-html="bio1"></p>
-      <p data-i18n-html="bio2"></p>
-      <p data-i18n-html="bio3"></p>
-      <div class="author-links">
-        <a href="https://naumov.jinr.ru" target="_blank" rel="noopener" class="author-link">🌐 <span data-i18n="link_web">naumov.jinr.ru</span></a>
-        <a href="https://www.youtube.com/@dmitrynaumov6099" target="_blank" rel="noopener" class="author-link">▶ <span data-i18n="link_yt">YouTube Channel</span></a>
-        <a href="https://t.me/NeutrinoHit" target="_blank" rel="noopener" class="author-link">✈ <span data-i18n="link_tg">Telegram: NeutrinoHit</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
+<!-- NOTIFY -->
 <section class="notify-section" id="notify">
   <div class="section-label" data-i18n="notify_label">Stay Updated</div>
   <h2 class="section-title" data-i18n="notify_title">Get notified at launch</h2>
-  <p class="section-sub" data-i18n="notify_sub">Be the first to know when the English QFT edition and popular science books become available.</p>
+  <p class="section-sub" data-i18n="notify_sub">Be the first to know when English editions and new titles become available.</p>
   <div class="notify-form">
     <input type="email" class="notify-input" id="notify-email-input" placeholder="your@email.com">
     <button class="btn btn-primary" onclick="submitNotify()" data-i18n="notify_btn">Notify Me</button>
   </div>
-  <div class="notify-confirm" id="notify-confirm-msg" data-i18n="notify_ok">✓ You're on the list.</div>
+  <div class="notify-confirm" id="notify-confirm-msg" data-i18n="notify_ok" style="margin-top:12px;display:none"></div>
 </section>
 
 <div class="divider"></div>
 
+<!-- ABOUT PUBLISHER - EXPANDED -->
 <section class="publisher-section" id="publisher">
   <div class="section-label" data-i18n="pub_label">About Us</div>
   <h2 class="section-title" data-i18n="pub_title">Rospex Publishing</h2>
-  <p class="section-sub" data-i18n="pub_sub">An independent publisher of digital books on science, economics, and business, operating globally.</p>
+  <div class="about-prose">
+    <p data-i18n="pub_sub_p1">An independent publisher of digital books on science and education, operating globally.</p>
+    <p data-i18n="pub_sub_p2">We are a small, specialized showcase of strong authors, not a mass publisher covering everything. Our focus is curated textbooks and popular science in physics, astrophysics, cosmology, particle physics, and modern science.</p>
+    <p data-i18n="pub_sub_p3">Our readers are Russian-speaking scientists, students, teachers, parents, schoolchildren, and curious minds worldwide who want quality science literature in Russian, with English translations becoming available for selected titles.</p>
+    <p data-i18n="pub_sub_p4">Our mission is to make strong Russian-language science books accessible to readers everywhere, in a clear legal format with transparent payment and respect for author rights.</p>
+  </div>
   <div class="publisher-grid">
     <div class="publisher-card"><div class="publisher-card-icon">🌍</div><div class="publisher-card-title" data-i18n="pub_c1_title">Global Distribution</div><div class="publisher-card-text" data-i18n="pub_c1_text">We sell to readers in 135+ countries.</div></div>
     <div class="publisher-card"><div class="publisher-card-icon">📄</div><div class="publisher-card-title" data-i18n="pub_c2_title">Fixed-Layout PDF</div><div class="publisher-card-text" data-i18n="pub_c2_text">High-quality typeset PDFs preserving all notation and diagrams.</div></div>
-    <div class="publisher-card"><div class="publisher-card-icon">🔐</div><div class="publisher-card-title" data-i18n="pub_c3_title">Secure Downloads</div><div class="publisher-card-text" data-i18n="pub_c3_text">Personalized, watermarked PDF links unique to your purchase.</div></div>
+    <div class="publisher-card"><div class="publisher-card-icon">🔐</div><div class="publisher-card-title" data-i18n="pub_c3_title">Secure Downloads</div><div class="publisher-card-text" data-i18n="pub_c3_text">Personalized, watermarked PDF links within minutes of payment.</div></div>
     <div class="publisher-card"><div class="publisher-card-icon">📬</div><div class="publisher-card-title" data-i18n="pub_c4_title">Instant Delivery</div><div class="publisher-card-text" data-i18n="pub_c4_text">Your book arrives by email within minutes. No account required.</div></div>
   </div>
 </section>
 
-<footer id="contact">
+<!-- FOOTER -->
+<footer>
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="index.html" class="footer-brand-logo">
         <img src="assets/images/logo.png" alt="Rospex Publishing" class="footer-logo-img">
         <span class="footer-brand-name">ROSPEX <span>PUBLISHING</span></span>
       </a>
-      <p data-i18n="footer_brand_desc">An independent publisher of digital books on science, economics, and business, operating globally.</p>
+      <p data-i18n="footer_desc">An independent publisher of digital books on science and education, operating globally. A curated showcase of Russia's leading science authors for readers worldwide.</p>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="footer_col1">Books</div>
+      <div class="footer-col-title" data-i18n="footer_col2">Contact and Info</div>
       <ul class="footer-links">
-        <li><a href="books/qft-volume-1.html" data-i18n="footer_link_qft1">QFT Vol. I — Russian</a></li>
-        <li><a href="books/qft-volume-2.html" data-i18n="footer_link_qft2">QFT Vol. II — Russian</a></li>
-        <li><a href="books/qft-bundle.html" data-i18n="footer_link_bundle">QFT Bundle</a></li>
-        <li><a href="#books" data-i18n="footer_link_qften">QFT English (Coming Soon)</a></li>
-        <li><a href="#books" data-i18n="footer_link_kids">Popular Science (Coming Soon)</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title" data-i18n="footer_col2">Contact &amp; Info</div>
-      <ul class="footer-links">
-        <li><a href="mailto:books@rospexpublishing.com" data-i18n="footer_link_email">books@rospexpublishing.com</a></li>
-        <li><a href="https://naumov.jinr.ru" target="_blank" rel="noopener" data-i18n="footer_link_author">Author's Academic Page</a></li>
-        <li><a href="https://www.youtube.com/@dmitrynaumov6099" target="_blank" rel="noopener" data-i18n="footer_link_yt">YouTube Channel</a></li>
-        <li><a href="https://t.me/NeutrinoHit" target="_blank" rel="noopener" data-i18n="footer_link_tg">Telegram Channel</a></li>
-        <li><a href="#notify" data-i18n="footer_link_notify">Get Launch Notifications</a></li>
+        <li><a href="contact.html" data-i18n="footer_link_contact">Contact Us</a></li>
+        <li><a href="authors.html" data-i18n="footer_link_authors">All Authors</a></li>
+        <li><a href="#publisher" data-i18n="footer_link_about">About Us</a></li>
+        <li><a href="#notify" data-i18n="footer_link_notify">Launch Notifications</a></li>
       </ul>
     </div>
   </div>
-
   <div class="family-bar">
     <span class="family-label" data-i18n="family_label">Part of the Rospex family:</span>
-    <a href="https://rospexholdings.com" target="_blank" rel="noopener" class="family-link">Rospex Holdings</a>
+    <a href="https://rospex.com" target="_blank" rel="noopener" class="family-link">Rospex Holdings</a>
     <span class="family-sep">·</span>
     <a href="https://www.rospexconsulting.com" target="_blank" rel="noopener" class="family-link">Rospex Consulting</a>
     <span class="family-sep">·</span>
     <a href="https://rospexpublishing.com" class="family-link current">Rospex Publishing</a>
   </div>
-
-  <div class="footer-bottom">
-    <span data-i18n="footer_copy">© <span id="current-year">2026</span> Rospex Holdings LLC. All rights reserved.</span>
-  </div>
+  <div class="footer-bottom">&copy; <span id="current-year">2026</span> <span data-i18n="footer_copy">Rospex Holdings LLC. All rights reserved.</span></div>
 </footer>
-
-<!-- BUY MODAL -->
-<div class="modal-backdrop" id="buy-modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeBuyModal()">×</button>
-    <h2 id="modal-book-title">Buy This Book</h2>
-    <p><span data-i18n="modal_buy_note">Direct checkout is coming soon. For now this title is available on</span> <strong style="color:var(--gold-lt)" data-i18n="modal_buy_note2">Google Play Books</strong> — <span data-i18n="modal_buy_note3">purchase there and receive your e-book immediately.</span></p>
-    <p style="font-size:12px;margin-top:8px" data-i18n="modal_buy_soon">Direct purchase (Stripe + PayPal) will be available on this site within a few weeks.</p>
-    <div class="modal-actions">
-      <a id="modal-google-link" href="#" target="_blank" rel="noopener" class="btn-google"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C33.9 6.5 29.2 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 19.6-13.4 19.6-20c0-1.3-.1-2.7-.4-4z"/><path fill="#34A853" d="M6.3 14.7l6.6 4.8C14.5 15.2 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C33.9 6.5 29.2 4 24 4c-7.8 0-14.5 4.3-17.7 10.7z"/><path fill="#FBBC05" d="M24 44c5.2 0 9.8-1.7 13.4-4.7l-6.2-5.2C29.4 35.3 26.8 36 24 36c-5.3 0-9.7-3-11.3-7.2l-6.6 4.8C9.5 39.7 16.2 44 24 44z"/><path fill="#EA4335" d="M43.6 20H24v8h11.3c-.9 2.5-2.5 4.6-4.7 6.1l6.2 5.2C40.6 36.2 44 30.5 44 24c0-1.3-.1-2.7-.4-4z"/></svg> <span data-i18n="modal_google_btn">Buy on Google Play Books</span></a>
-      <button onclick="closeBuyModal()" class="btn btn-ghost" style="font-size:13px;padding:9px 16px" data-i18n="modal_close">Close</button>
-    </div>
-  </div>
-</div>
 
 <!-- NOTIFY MODAL -->
 <div class="modal-backdrop" id="notify-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeNotifyModal()">×</button>
     <h2 data-i18n="notify_title">Get notified at launch</h2>
-    <p id="notify-modal-book" style="color:var(--gold-lt);font-size:13px;margin-bottom:6px"></p>
-    <p data-i18n="modal_notify_sub">Enter your email and we'll send one notification when this book launches.</p>
-    <div class="notify-form" style="margin-top:16px">
+    <p id="notify-modal-book" style="color:var(--gold-lt);font-size:12px;margin-bottom:4px"></p>
+    <p data-i18n="modal_notify_sub">Enter your email and we will send one notification when this book launches.</p>
+    <div class="notify-form" style="margin-top:14px">
       <input type="email" class="notify-input" id="notify-modal-email" placeholder="your@email.com">
       <button class="btn btn-primary" onclick="submitNotifyModal()" data-i18n="notify_btn">Notify Me</button>
     </div>
-    <div class="notify-confirm" id="notify-modal-confirm" data-i18n="notify_ok">✓ You're on the list.</div>
+    <div class="notify-confirm" id="notify-modal-confirm" data-i18n="notify_ok" style="margin-top:10px;display:none"></div>
   </div>
 </div>
 
-<!-- CART MODAL -->
-<div class="modal-backdrop" id="cart-modal">
-  <div class="modal cart-modal">
-    <button class="modal-close" onclick="closeCartModal()">×</button>
-    <h2 data-i18n="modal_cart_title">Your Cart</h2>
-    <div id="cart-body"></div>
-    <div id="cart-footer" style="display:none;flex-direction:column;gap:12px;margin-top:16px">
-      <div class="cart-total"><span data-i18n="modal_cart_total">Total</span><strong id="cart-total-val">$0.00</strong></div>
-      <button class="btn btn-primary" onclick="openBuyModal('Cart Items','https://play.google.com/store/books')" data-i18n="modal_cart_checkout">Proceed to Checkout</button>
+<!-- LEARN MORE MODAL -->
+<div class="modal-backdrop" id="learn-more-modal">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeLearnMoreModal()">×</button>
+    <h2 data-i18n="lm_title">Publishing with Rospex</h2>
+    <p data-i18n="lm_intro">We work with researchers and educators on serious science and education books. Here is how the process works:</p>
+
+    <h3 data-i18n="lm_h1">Distribution channels</h3>
+    <p data-i18n="lm_p1">Your book appears on rospexpublishing.com for direct sales, and on major international platforms including Google Play Books, Amazon Kindle, and Kobo.</p>
+
+    <h3 data-i18n="lm_h2">Rights and agreement</h3>
+    <p data-i18n="lm_p2">A standard publishing agreement covers digital distribution outside Russia and CIS, with 2 to 3 year terms and quarterly transparent reporting.</p>
+
+    <h3 data-i18n="lm_h3">Royalties</h3>
+    <p data-i18n="lm_p3">65% of net revenue on direct sales. Platform fees apply on top for other channels.</p>
+
+    <h3 data-i18n="lm_h4">Marketing support</h3>
+    <p data-i18n="lm_p4">We handle metadata, product pages, launch coordination, and provide promotion recommendations.</p>
+
+    <div class="modal-note" data-i18n="lm_note">Important: authors must confirm in writing they hold the digital distribution rights being granted. If a publisher holds those rights, we can help with the negotiation.</div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" style="font-size:13px" onclick="closeLearnMoreModal()" data-i18n="lm_close">Close</button>
+      <a href="contact.html" class="btn btn-primary" style="font-size:13px" data-i18n="lm_contact">Contact Us</a>
     </div>
   </div>
 </div>
@@ -321,20 +429,18 @@
 <div class="modal-backdrop" id="preview-modal">
   <div class="modal preview-modal">
     <button class="modal-close" onclick="closePreview()">×</button>
-    <h2 id="preview-title" style="font-size:16px;margin-bottom:10px">Preview</h2>
+    <h2 id="preview-title" style="font-size:15px;margin-bottom:8px">Preview</h2>
     <div class="preview-controls">
       <div class="preview-nav">
-        <button onclick="pdfPrevPage()">← Prev</button>
+        <button onclick="pdfPrevPage()">Prev</button>
         <span id="pdf-page-info"></span>
-        <button onclick="pdfNextPage()">Next →</button>
+        <button onclick="pdfNextPage()">Next</button>
       </div>
-      <span class="preview-note">First 50 pages — preview only</span>
+      <span class="preview-note">First 50 pages, preview only</span>
     </div>
-    <div class="modal-body" style="margin-top:12px"><div id="pdf-canvas-container"></div></div>
+    <div class="modal-body" style="margin-top:10px"><div id="pdf-canvas-container"></div></div>
   </div>
 </div>
-
-<div id="cart-toast"></div>
 
 <script src="js/i18n.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
