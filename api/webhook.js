@@ -9,21 +9,39 @@ const resend  = new Resend(process.env.RESEND_API_KEY);
 
 const MASTER_PDFS = {
   'qft-vol1-ru': {
-    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/QFT_D-Naumov_Vol1_RUS_light-qfg9827med5x1g29Jd3IAU6ZpTh1de.pdf',
-    filename: 'QFT-Volume-I-Naumov.pdf',
-    title:    'Квантовая теория поля, Том I',
+    url:          'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/QFT_D-Naumov_Vol1_RUS_light-qfg9827med5x1g29Jd3IAU6ZpTh1de.pdf',
+    filename:     'QFT-Volume-I-Naumov.pdf',
+    title:        'Квантовая теория поля, Том I',
   },
   'qft-vol2-ru': {
-    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/QFT_D-Naumov_Vol2_RUS_light-nEn9BwZkJuZ7XMQ7SqjxrBmvc3BMXq.pdf',
-    filename: 'QFT-Volume-II-Naumov.pdf',
-    title:    'Квантовая теория поля, Том II',
+    url:          'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/QFT_D-Naumov_Vol2_RUS_light-nEn9BwZkJuZ7XMQ7SqjxrBmvc3BMXq.pdf',
+    filename:     'QFT-Volume-II-Naumov.pdf',
+    title:        'Квантовая теория поля, Том II',
   },
 };
 
 const PRODUCTS = {
-  'qft-vol1-ru':   { pdfs: ['qft-vol1-ru'],                name: 'Quantum Field Theory, Volume I (Russian Edition)' },
-  'qft-vol2-ru':   { pdfs: ['qft-vol2-ru'],                name: 'Quantum Field Theory, Volume II (Russian Edition)' },
-  'qft-bundle-ru': { pdfs: ['qft-vol1-ru', 'qft-vol2-ru'], name: 'Quantum Field Theory, Volumes I & II (Russian Edition)' },
+  'qft-vol1-ru': {
+    pdfs:         ['qft-vol1-ru'],
+    name:         'Quantum Field Theory, Volume I (Russian Edition)',
+    displayTitle: 'Quantum Field Theory for Experimentalists and Beyond',
+    subtitle:     'Volume I (Russian Edition) · Dmitry V. Naumov',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/qft-vol1-ru.png',
+  },
+  'qft-vol2-ru': {
+    pdfs:         ['qft-vol2-ru'],
+    name:         'Quantum Field Theory, Volume II (Russian Edition)',
+    displayTitle: 'Quantum Field Theory for Experimentalists and Beyond',
+    subtitle:     'Volume II (Russian Edition) · Dmitry V. Naumov',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/qft-vol2-ru.png',
+  },
+  'qft-bundle-ru': {
+    pdfs:         ['qft-vol1-ru', 'qft-vol2-ru'],
+    name:         'Quantum Field Theory, Volumes I & II (Russian Edition)',
+    displayTitle: 'Quantum Field Theory for Experimentalists and Beyond',
+    subtitle:     'Volumes I & II (Russian Edition) · Dmitry V. Naumov',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/qft-bundle-ru.png',
+  },
 };
 
 async function getRawBody(req) {
@@ -93,19 +111,14 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
 }
 
 async function encryptPdf(pdfBuffer, userPassword) {
-  // Step 1: upload to PDF.co
   const uploadResp = await fetch('https://api.pdf.co/v1/file/upload/base64', {
     method:  'POST',
     headers: { 'x-api-key': process.env.PDFCO_API_KEY, 'Content-Type': 'application/json' },
-    body:    JSON.stringify({
-      name: 'protected.pdf',
-      file: pdfBuffer.toString('base64'),
-    }),
+    body:    JSON.stringify({ name: 'protected.pdf', file: pdfBuffer.toString('base64') }),
   });
   const uploadData = await uploadResp.json();
   if (!uploadData.url) throw new Error(`PDF.co upload failed: ${JSON.stringify(uploadData)}`);
 
-  // Step 2: request AES-256 encryption
   const encResp = await fetch('https://api.pdf.co/v1/pdf/security/add', {
     method:  'POST',
     headers: { 'x-api-key': process.env.PDFCO_API_KEY, 'Content-Type': 'application/json' },
@@ -120,19 +133,14 @@ async function encryptPdf(pdfBuffer, userPassword) {
   const encData = await encResp.json();
   if (!encData.url) throw new Error(`PDF.co encryption failed: ${JSON.stringify(encData)}`);
 
-  // Step 3: download encrypted PDF
   const dlResp = await fetch(encData.url);
   if (!dlResp.ok) throw new Error(`PDF.co download failed: HTTP ${dlResp.status}`);
   return Buffer.from(await dlResp.arrayBuffer());
 }
 
 async function alreadyProcessed(blobPath) {
-  try {
-    await head(blobPath);
-    return true;
-  } catch {
-    return false;
-  }
+  try { await head(blobPath); return true; }
+  catch { return false; }
 }
 
 export default async function handler(req, res) {
@@ -204,13 +212,13 @@ export default async function handler(req, res) {
 
       deliveries.push({
         filename:    master.filename,
-        title:       master.title,
+        volumeLabel: master.title,
         downloadUrl: `https://www.rospexpublishing.com/api/download?token=${token}`,
       });
     }
 
     console.log('[STAGE 5] Sending email');
-    await sendEmail(buyerEmail, buyerName, txId, purchaseDate, product.name, deliveries);
+    await sendEmail(buyerEmail, buyerName, txId, purchaseDate, product, deliveries);
 
     console.log('[DONE]', txId);
     return res.status(200).json({ success: true });
@@ -221,52 +229,198 @@ export default async function handler(req, res) {
   }
 }
 
-async function sendEmail(buyerEmail, buyerName, txId, purchaseDate, productName, deliveries) {
-  const buttons = deliveries.map(d => `
-    <p style="margin:0 0 16px;">
-      <a href="${d.downloadUrl}"
-         style="display:inline-block;background:#1A6B4A;color:#fff;padding:13px 28px;border-radius:6px;text-decoration:none;font-weight:600;font-size:14px;">
-        ⬇ ${d.filename}
-      </a><br>
-      <span style="font-size:11px;color:#6A8AA0;">Link expires in 72 hours</span>
-    </p>`).join('');
+async function sendEmail(buyerEmail, buyerName, txId, purchaseDate, product, deliveries) {
+  const isBundle  = deliveries.length > 1;
 
-  const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0A1628;font-family:Georgia,serif;color:#C8D8E8;">
-<div style="max-width:600px;margin:0 auto;padding:40px 24px;">
-  <h1 style="color:#DDB865;font-size:22px;margin:0 0 8px;">Your purchase is ready</h1>
-  <p style="color:#8DADC4;font-size:14px;margin:0 0 32px;">Thank you, ${buyerName}. Your files are ready to download.</p>
-  <div style="background:#0F2035;border:1px solid #1E3048;border-radius:8px;padding:24px;margin:0 0 20px;">
-    <p style="margin:0 0 4px;font-size:11px;color:#6A8AA0;text-transform:uppercase;letter-spacing:1px;">YOUR PURCHASE</p>
-    <p style="margin:0 0 20px;font-size:15px;color:#C8D8E8;">${productName}</p>
-    ${buttons}
-  </div>
-  <div style="background:#0F2035;border:1px solid #1E3048;border-radius:8px;padding:18px;margin:0 0 20px;">
-    <p style="margin:0 0 6px;font-size:13px;color:#DDB865;">🔒 Your PDF password</p>
-    <p style="margin:0;font-size:13px;color:#C8D8E8;">Your PDF is protected. When prompted, enter the email address you used for this purchase:<br>
-    <strong style="color:#DDB865;">${buyerEmail}</strong></p>
-  </div>
-  <div style="background:#0F2035;border:1px solid #1E3048;border-radius:8px;padding:18px;margin:0 0 24px;">
-    <p style="margin:0;font-size:12px;color:#8DADC4;line-height:1.7;">
-      This copy is licensed to you personally. Each copy carries a unique identifier
-      linked to this purchase. We ask that you keep it for your own use.
-    </p>
-  </div>
-  <p style="font-size:12px;color:#6A8AA0;line-height:1.8;">
-    Order reference: ${txId}<br>Purchase date: ${purchaseDate}<br>
-    Questions? <a href="mailto:alex.naumov@rospex.com" style="color:#DDB865;">alex.naumov@rospex.com</a>
-  </p>
-  <hr style="border:none;border-top:1px solid #1E3048;margin:24px 0;">
-  <p style="font-size:11px;color:#4A6A80;">Rospex Holdings LLC · rospexpublishing.com<br>
-  This email was sent to ${buyerEmail} following a purchase on rospexpublishing.com.</p>
-</div></body></html>`;
+  const buttons = deliveries.map((d, i) => `
+    <tr>
+      <td style="padding:0 24px ${i < deliveries.length - 1 ? '10' : '4'}px;">
+        <a href="${d.downloadUrl}"
+           style="display:block;background-color:#1A6B4A;color:#ffffff;padding:14px 24px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:bold;text-align:center;font-family:Arial,Helvetica,sans-serif;">
+          ⬇ ${isBundle ? `Download ${d.volumeLabel} (PDF)` : 'Click here to download your e-book (PDF)'}
+        </a>
+      </td>
+    </tr>`).join('');
 
-  // NOTE: 'from' uses onboarding@resend.dev until Resend domain verification completes.
-  // Switch to 'books@rospexpublishing.com' once Resend shows "Verified".
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background-color:#0A1628;font-family:Georgia,serif;color:#C8D8E8;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0A1628;">
+<tr><td align="center" style="padding:24px 16px 40px;">
+
+  <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
+
+    <!-- Wordmark -->
+    <tr>
+      <td style="padding:0 0 6px;text-align:center;">
+        <a href="https://www.rospexpublishing.com" style="text-decoration:none;">
+          <span style="font-family:Georgia,serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#DDB865;">ROSPEX PUBLISHING</span>
+        </a>
+      </td>
+    </tr>
+
+    <!-- Thank you line -->
+    <tr>
+      <td style="padding:0 0 24px;text-align:center;">
+        <p style="margin:0;font-size:15px;color:#8DADC4;">
+          Thank you for your purchase from
+          <a href="https://www.rospexpublishing.com" style="color:#DDB865;text-decoration:none;">Rospex Publishing</a>
+        </p>
+      </td>
+    </tr>
+
+    <!-- Main card -->
+    <tr>
+      <td>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0"
+               style="background-color:#0F2035;border:1px solid #1E3048;border-radius:8px;">
+
+          <!-- Cover image -->
+          <tr>
+            <td style="padding:28px 24px 16px;text-align:center;">
+              <img src="${product.coverUrl}"
+                   alt="${product.displayTitle}"
+                   width="160"
+                   style="max-width:160px;height:auto;border-radius:4px;display:block;margin:0 auto;" />
+            </td>
+          </tr>
+
+          <!-- Book title -->
+          <tr>
+            <td style="padding:0 24px 24px;text-align:center;">
+              <p style="margin:0 0 6px;font-size:16px;font-weight:bold;color:#DDB865;font-family:Georgia,serif;">${product.displayTitle}</p>
+              <p style="margin:0;font-size:13px;color:#8DADC4;font-family:Arial,Helvetica,sans-serif;">${product.subtitle}</p>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr><td style="padding:0 24px;"><div style="border-top:1px solid #1E3048;"></div></td></tr>
+
+          <!-- YOUR DOWNLOAD label -->
+          <tr>
+            <td style="padding:20px 24px 4px;">
+              <p style="margin:0 0 4px;font-size:10px;color:#6A8AA0;text-transform:uppercase;letter-spacing:2px;font-family:Arial,Helvetica,sans-serif;">Your Download</p>
+              <p style="margin:0 0 16px;font-size:13px;color:#8DADC4;font-family:Arial,Helvetica,sans-serif;">Ready to read on any device, fully offline.</p>
+            </td>
+          </tr>
+
+          <!-- Download button(s) -->
+          ${buttons}
+
+          <!-- Expiry note -->
+          <tr>
+            <td style="padding:12px 24px 24px;">
+              <p style="margin:0;font-size:12px;color:#6A8AA0;line-height:1.7;font-family:Arial,Helvetica,sans-serif;">
+                Your link expires in 72 hours. If you miss it, contact us at
+                <a href="mailto:books@rospexpublishing.com" style="color:#DDB865;text-decoration:none;">books@rospexpublishing.com</a>
+                with your order reference below and we will generate a new link for you at no charge.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+
+    <!-- OPENING YOUR FILE -->
+    <tr>
+      <td style="padding:12px 0 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0"
+               style="background-color:#0F2035;border:1px solid #1E3048;border-radius:8px;">
+          <tr>
+            <td style="padding:20px 24px;">
+              <p style="margin:0 0 12px;font-size:12px;font-weight:bold;color:#DDB865;text-transform:uppercase;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;">🔒 Opening Your File</p>
+              <p style="margin:0 0 10px;font-size:13px;color:#C8D8E8;line-height:1.7;font-family:Arial,Helvetica,sans-serif;">
+                Your PDF is protected with AES-256 encryption. When your reader asks for a password,
+                enter the email address you used for this purchase:
+              </p>
+              <p style="margin:0 0 14px;font-size:15px;font-weight:bold;color:#DDB865;font-family:Arial,Helvetica,sans-serif;">${buyerEmail}</p>
+              <p style="margin:0;font-size:12px;color:#8DADC4;line-height:1.7;font-family:Arial,Helvetica,sans-serif;">
+                We added password protection to honor your rights as a licensee and the author's rights as
+                the creator. The file is otherwise fully functional: bookmarked, searchable, navigable by
+                table of contents; and it opens on any device or PDF app, online or offline.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- YOUR LICENSE -->
+    <tr>
+      <td style="padding:12px 0 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0"
+               style="background-color:#0F2035;border:1px solid #1E3048;border-radius:8px;">
+          <tr>
+            <td style="padding:20px 24px;">
+              <p style="margin:0 0 12px;font-size:12px;font-weight:bold;color:#DDB865;text-transform:uppercase;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;">📋 Your License</p>
+              <p style="margin:0;font-size:12px;color:#8DADC4;line-height:1.7;font-family:Arial,Helvetica,sans-serif;">
+                This copy is licensed exclusively to you. It may not be shared, forwarded, or posted in
+                any public space. Each file carries both visible and invisible watermarks uniquely tied
+                to this purchase. They protect both your rights as a licensee and the author's rights.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Divider -->
+    <tr><td style="padding:28px 0 0;"><div style="border-top:1px solid #1E3048;"></div></td></tr>
+
+    <!-- ABOUT ROSPEX PUBLISHING -->
+    <tr>
+      <td style="padding:20px 0 0;">
+        <p style="margin:0 0 2px;font-size:10px;color:#6A8AA0;text-transform:uppercase;letter-spacing:2px;font-family:Arial,Helvetica,sans-serif;">About Rospex Publishing</p>
+        <a href="https://www.rospexpublishing.com" style="text-decoration:none;">
+          <p style="margin:0 0 10px;font-size:12px;color:#DDB865;font-family:Arial,Helvetica,sans-serif;">rospexpublishing.com</p>
+        </a>
+        <p style="margin:0;font-size:12px;color:#8DADC4;line-height:1.7;font-family:Arial,Helvetica,sans-serif;">
+          An independent digital publisher of curated science and education books in physics,
+          astrophysics, cosmology, and modern science, by Russia's leading researchers,
+          made accessible to readers everywhere.
+        </p>
+      </td>
+    </tr>
+
+    <!-- Order details -->
+    <tr>
+      <td style="padding:20px 0 0;">
+        <p style="margin:0;font-size:12px;color:#6A8AA0;line-height:2.0;font-family:Arial,Helvetica,sans-serif;">
+          Order reference: ${txId}<br>
+          Purchase date: ${purchaseDate}<br>
+          Questions? <a href="mailto:books@rospexpublishing.com" style="color:#DDB865;text-decoration:none;">books@rospexpublishing.com</a>
+        </p>
+      </td>
+    </tr>
+
+    <!-- Footer -->
+    <tr>
+      <td style="padding:20px 0 0;">
+        <div style="border-top:1px solid #1E3048;margin:0 0 16px;"></div>
+        <p style="margin:0;font-size:11px;color:#4A6A80;line-height:1.8;font-family:Arial,Helvetica,sans-serif;">
+          Rospex Holdings LLC ·
+          <a href="https://www.rospexpublishing.com" style="color:#4A6A80;text-decoration:none;">rospexpublishing.com</a><br>
+          This email was sent to ${buyerEmail} following a purchase on rospexpublishing.com.
+        </p>
+      </td>
+    </tr>
+
+  </table>
+
+</td></tr>
+</table>
+
+</body>
+</html>`;
+
   await resend.emails.send({
     from:    'Rospex Publishing <books@rospexpublishing.com>',
     to:      buyerEmail,
-    replyTo: 'alex.naumov@rospex.com',
-    subject: `Your download: ${productName}`,
+    replyTo: 'books@rospexpublishing.com',
+    subject: `Your download: ${product.name}`,
     html,
   });
 }
