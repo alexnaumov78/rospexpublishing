@@ -29,7 +29,9 @@ export default async function handler(req, res) {
       );
     }
 
-    const pdfResp = await fetch(blobUrl);
+    const pdfResp = await fetch(blobUrl, {
+  headers: { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` }
+});
     if (!pdfResp.ok) return res.status(404).send('File not found.');
 
     const filename = decodeURIComponent(blobUrl.split('/').pop().split('?')[0]);
