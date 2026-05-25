@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { Resend } from 'resend';
-import { put, download } from '@vercel/blob';
+import { put, head } from '@vercel/blob';
 import { createHmac } from 'crypto';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -9,12 +9,12 @@ const resend  = new Resend(process.env.RESEND_API_KEY);
 
 const MASTER_PDFS = {
   'qft-vol1-ru': {
-    url:      'https://anqymorratb6wylo.private.blob.vercel-storage.com/QFT_D-Naumov_Vol1_RUS_light-Vom3JZ0HJ4iOiKp8yvZDPylldXOvzn.pdf',
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/QFT_D-Naumov_Vol1_RUS_light-qfg9827med5x1g29Jd3IAU6ZpTh1de.pdf',
     filename: 'QFT-Volume-I-Naumov.pdf',
     title:    'Квантовая теория поля, Том I',
   },
   'qft-vol2-ru': {
-    url:      'https://anqymorratb6wylo.private.blob.vercel-storage.com/QFT_D-Naumov_Vol2_RUS_light-ER9i2ryxC1G0DgbPkloFiCMWFJp1jV.pdf',
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/QFT_D-Naumov_Vol2_RUS_light-nEn9BwZkJuZ7XMQ7SqjxrBmvc3BMXq.pdf',
     filename: 'QFT-Volume-II-Naumov.pdf',
     title:    'Квантовая теория поля, Том II',
   },
@@ -41,6 +41,12 @@ function makeDownloadToken(blobUrl, expiryMs) {
   return Buffer.from(payload).toString('base64url') + '.' + sig;
 }
 
+async function fetchMasterPdf(url) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error(`fetch master PDF failed: HTTP ${resp.status}`);
+  return Buffer.from(await resp.arrayBuffer());
+}
+
 async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDate) {
   const pdfDoc = await PDFDocument.load(pdfBytes, { ignoreEncryption: true });
   const pages  = pdfDoc.getPages();
@@ -52,7 +58,7 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
   for (const page of pages) {
     const { width, height } = page.getSize();
 
-    // Layer 1 — visible footer watermark
+    // Layer 1: visible footer
     const fontSize  = 7;
     const textWidth = font.widthOfTextAtSize(visibleText, fontSize);
     page.drawText(visibleText, {
@@ -64,7 +70,7 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
       opacity: 0.65,
     });
 
-    // Layer 2 — invisible watermark (white text in top margin)
+    // Layer 2a: invisible watermark in top margin
     page.drawText(invisibleText, {
       x:       8,
       y:       height - 6,
@@ -75,7 +81,7 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
     });
   }
 
-  // Layer 2 — embed buyer identity in PDF metadata
+  // Layer 2b: embed buyer identity in PDF metadata
   pdfDoc.setTitle(`Licensed to ${buyerName}`);
   pdfDoc.setAuthor('Dmitry V. Naumov / Rospex Publishing');
   pdfDoc.setSubject(`TxID:${txId} | ${buyerEmail} | ${purchaseDate}`);
@@ -87,7 +93,7 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
 }
 
 async function encryptPdf(pdfBuffer, userPassword) {
-  // Layer 3 — AES-256 password encryption via PDF.co API
+  // Step 1: upload to PDF.co
   const uploadResp = await fetch('https://api.pdf.co/v1/file/upload/base64', {
     method:  'POST',
     headers: { 'x-api-key': process.env.PDFCO_API_KEY, 'Content-Type': 'application/json' },
@@ -99,24 +105,34 @@ async function encryptPdf(pdfBuffer, userPassword) {
   const uploadData = await uploadResp.json();
   if (!uploadData.url) throw new Error(`PDF.co upload failed: ${JSON.stringify(uploadData)}`);
 
+  // Step 2: request AES-256 encryption
   const encResp = await fetch('https://api.pdf.co/v1/pdf/security/add', {
     method:  'POST',
     headers: { 'x-api-key': process.env.PDFCO_API_KEY, 'Content-Type': 'application/json' },
     body:    JSON.stringify({
-      url:           uploadData.url,
-      ownerPassword: process.env.PDF_OWNER_PASSWORD,
-      userPassword:  userPassword,
+      url:                 uploadData.url,
+      ownerPassword:       process.env.PDF_OWNER_PASSWORD,
+      userPassword:        userPassword,
       EncryptionAlgorithm: 'AES256',
-      async:         false,
+      async:               false,
     }),
   });
   const encData = await encResp.json();
   if (!encData.url) throw new Error(`PDF.co encryption failed: ${JSON.stringify(encData)}`);
 
-  // Download the encrypted PDF back
+  // Step 3: download encrypted PDF
   const dlResp = await fetch(encData.url);
-  if (!dlResp.ok) throw new Error(`Failed to download encrypted PDF from PDF.co`);
+  if (!dlResp.ok) throw new Error(`PDF.co download failed: HTTP ${dlResp.status}`);
   return Buffer.from(await dlResp.arrayBuffer());
+}
+
+async function alreadyProcessed(blobPath) {
+  try {
+    await head(blobPath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export default async function handler(req, res) {
@@ -129,12 +145,12 @@ export default async function handler(req, res) {
   try {
     event = stripe.webhooks.constructEvent(rawBody, sig, process.env.STRIPE_WEBHOOK_SECRET);
   } catch (err) {
-    console.error('Stripe signature error:', err.message);
+    console.error('[STRIPE SIG] Failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
   if (event.type !== 'checkout.session.completed') {
-    return res.status(200).json({ received: true });
+    return res.status(200).json({ received: true, ignored: event.type });
   }
 
   const session      = event.data.object;
@@ -144,8 +160,10 @@ export default async function handler(req, res) {
   const productId    = session.metadata?.product_id;
   const purchaseDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
+  console.log('[ORDER]', { txId, productId, buyerEmail, buyerName });
+
   if (!productId || !PRODUCTS[productId]) {
-    console.error('Unknown product_id:', productId);
+    console.error('[PRODUCT] Unknown product_id:', productId);
     return res.status(400).json({ error: 'Unknown product' });
   }
 
@@ -154,41 +172,51 @@ export default async function handler(req, res) {
     const deliveries = [];
 
     for (const pdfKey of product.pdfs) {
-      const master = MASTER_PDFS[pdfKey];
+      const master   = MASTER_PDFS[pdfKey];
+      const blobPath = `deliveries/${txId}/${master.filename}`;
 
-      // Fetch master PDF from private blob store
-      const blobDownload = await download(master.url, { token: process.env.BLOB_READ_WRITE_TOKEN });
-const pdfBytes = await blobDownload.arrayBuffer();
+      let storedUrl;
+      if (await alreadyProcessed(blobPath)) {
+        console.log('[IDEMPOTENT] Already processed:', master.filename);
+        const meta = await head(blobPath);
+        storedUrl  = meta.url;
+      } else {
+        console.log('[STAGE 1] Fetching master PDF:', master.filename);
+        const pdfBytes = await fetchMasterPdf(master.url);
 
-      // Layer 1 + 2: watermarks and metadata
-      const watermarked = await applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDate);
+        console.log('[STAGE 2] Applying watermarks');
+        const watermarked = await applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDate);
 
-      // Layer 3: AES-256 password encryption (buyer's email = password)
-      const encrypted = await encryptPdf(watermarked, buyerEmail);
+        console.log('[STAGE 3] Encrypting via PDF.co');
+        const encrypted = await encryptPdf(watermarked, buyerEmail);
 
-      // Store final PDF in blob
-      const stored = await put(`deliveries/${txId}/${master.filename}`, encrypted, {
-        access:          'public',
-        contentType:     'application/pdf',
-        addRandomSuffix: false,
-      });
+        console.log('[STAGE 4] Storing in blob');
+        const stored = await put(blobPath, encrypted, {
+          access:          'public',
+          contentType:     'application/pdf',
+          addRandomSuffix: false,
+        });
+        storedUrl = stored.url;
+      }
 
-      // Create 72-hour signed download token
       const expiryMs = Date.now() + 72 * 60 * 60 * 1000;
-      const token    = makeDownloadToken(stored.url, expiryMs);
+      const token    = makeDownloadToken(storedUrl, expiryMs);
 
       deliveries.push({
         filename:    master.filename,
         title:       master.title,
-        downloadUrl: `https://rospexpublishing.com/api/download?token=${token}`,
+        downloadUrl: `https://www.rospexpublishing.com/api/download?token=${token}`,
       });
     }
 
+    console.log('[STAGE 5] Sending email');
     await sendEmail(buyerEmail, buyerName, txId, purchaseDate, product.name, deliveries);
+
+    console.log('[DONE]', txId);
     return res.status(200).json({ success: true });
 
   } catch (err) {
-    console.error('Processing error:', err);
+    console.error('[ERROR]', err.message, err.stack);
     return res.status(500).json({ error: err.message });
   }
 }
@@ -225,16 +253,19 @@ async function sendEmail(buyerEmail, buyerName, txId, purchaseDate, productName,
   </div>
   <p style="font-size:12px;color:#6A8AA0;line-height:1.8;">
     Order reference: ${txId}<br>Purchase date: ${purchaseDate}<br>
-    Questions? <a href="mailto:books@rospexpublishing.com" style="color:#DDB865;">books@rospexpublishing.com</a>
+    Questions? <a href="mailto:alex.naumov@rospex.com" style="color:#DDB865;">alex.naumov@rospex.com</a>
   </p>
   <hr style="border:none;border-top:1px solid #1E3048;margin:24px 0;">
   <p style="font-size:11px;color:#4A6A80;">Rospex Holdings LLC · rospexpublishing.com<br>
   This email was sent to ${buyerEmail} following a purchase on rospexpublishing.com.</p>
 </div></body></html>`;
 
+  // NOTE: 'from' uses onboarding@resend.dev until Resend domain verification completes.
+  // Switch to 'books@rospexpublishing.com' once Resend shows "Verified".
   await resend.emails.send({
     from:    'Rospex Publishing <onboarding@resend.dev>',
     to:      buyerEmail,
+    replyTo: 'alex.naumov@rospex.com',
     subject: `Your download: ${productName}`,
     html,
   });
