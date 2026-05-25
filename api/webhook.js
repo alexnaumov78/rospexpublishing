@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { Resend } from 'resend';
-import { put } from '@vercel/blob';
+import { put, download } from '@vercel/blob';
 import { createHmac } from 'crypto';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -157,11 +157,8 @@ export default async function handler(req, res) {
       const master = MASTER_PDFS[pdfKey];
 
       // Fetch master PDF from private blob store
-      const fetchResp = await fetch(master.url, {
-        headers: { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` },
-      });
-      if (!fetchResp.ok) throw new Error(`Failed to fetch master PDF: ${master.filename} (${fetchResp.status})`);
-      const pdfBytes = await fetchResp.arrayBuffer();
+      const blobDownload = await download(master.url, { token: process.env.BLOB_READ_WRITE_TOKEN });
+const pdfBytes = await blobDownload.arrayBuffer();
 
       // Layer 1 + 2: watermarks and metadata
       const watermarked = await applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDate);
@@ -171,7 +168,7 @@ export default async function handler(req, res) {
 
       // Store final PDF in blob
       const stored = await put(`deliveries/${txId}/${master.filename}`, encrypted, {
-        access:          'private',
+        access:          'public',
         contentType:     'application/pdf',
         addRandomSuffix: false,
       });
