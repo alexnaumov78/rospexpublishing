@@ -263,7 +263,7 @@ async function sendEmail(buyerEmail, buyerName, txId, purchaseDate, productName,
   // NOTE: 'from' uses onboarding@resend.dev until Resend domain verification completes.
   // Switch to 'books@rospexpublishing.com' once Resend shows "Verified".
   await resend.emails.send({
-    from:    'Rospex Publishing <onboarding@resend.dev>',
+    from:    'Rospex Publishing <books@rospexpublishing.com>',
     to:      buyerEmail,
     replyTo: 'alex.naumov@rospex.com',
     subject: `Your download: ${productName}`,
