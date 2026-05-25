@@ -236,7 +236,7 @@ async function sendEmail(buyerEmail, buyerName, txId, purchaseDate, productName,
 </div></body></html>`;
 
   await resend.emails.send({
-    from:    'Rospex Publishing <books@rospexpublishing.com>',
+    from:    'Rospex Publishing <onboarding@resend.dev>',
     to:      buyerEmail,
     subject: `Your download: ${productName}`,
     html,
