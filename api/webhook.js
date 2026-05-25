@@ -171,7 +171,7 @@ export default async function handler(req, res) {
 
       // Store final PDF in blob
       const stored = await put(`deliveries/${txId}/${master.filename}`, encrypted, {
-        access:          'public',
+        access:          'private',
         contentType:     'application/pdf',
         addRandomSuffix: false,
       });
