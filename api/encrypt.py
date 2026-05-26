@@ -12,7 +12,7 @@ Flow:
 """
 
 from http.server import BaseHTTPRequestHandler
-import os, io, json, traceback, sys
+import os, io, json, traceback
 import pikepdf
 import requests
 
@@ -29,7 +29,7 @@ def encrypt_pdf(pdf_bytes: bytes, user_password: str, owner_password: str) -> by
             encryption=pikepdf.Encryption(
                 user=user_password,
                 owner=owner_password,
-                R=6,
+                R=6,  # AES-256
                 allow=pikepdf.Permissions(
                     print_highres=True,
                     print_lowres=True,
@@ -45,12 +45,17 @@ def encrypt_pdf(pdf_bytes: bytes, user_password: str, owner_password: str) -> by
 
 
 def fetch_blob(url: str, token: str) -> bytes:
-    resp = requests.get(url, headers={"Authorization": f"Bearer {token}"}, timeout=30)
+    resp = requests.get(
+        url,
+        headers={"Authorization": f"Bearer {token}"},
+        timeout=30
+    )
     resp.raise_for_status()
     return resp.content
 
 
 def upload_blob(destination_path: str, data: bytes, token: str) -> str:
+    """Upload to Vercel Blob. Returns the public URL."""
     resp = requests.put(
         f"{BLOB_API}/{destination_path}",
         data=data,
@@ -68,6 +73,7 @@ def upload_blob(destination_path: str, data: bytes, token: str) -> str:
 
 
 def delete_blob(url: str, token: str):
+    """Best-effort cleanup of staging blob."""
     try:
         requests.delete(
             f"{BLOB_API}?url={url}",
@@ -89,22 +95,6 @@ class handler(BaseHTTPRequestHandler):
         owner_password   = self.headers.get("X-Owner-Password", "")
         staging_url      = self.headers.get("X-Staging-Url", "")
         destination_path = self.headers.get("X-Destination-Path", "")
-
-        # ── DEBUG LOGGING (remove after diagnosing) ────────────────────────
-        print(f"[DEBUG] env_secret_present:  {bool(internal_secret)}", flush=True)
-        print(f"[DEBUG] env_secret_length:   {len(internal_secret)}", flush=True)
-        if internal_secret:
-            print(f"[DEBUG] env_first4_last4:    {repr(internal_secret[:4])}...{repr(internal_secret[-4:])}", flush=True)
-        print(f"[DEBUG] provided_length:     {len(provided_secret)}", flush=True)
-        if provided_secret:
-            print(f"[DEBUG] prov_first4_last4:   {repr(provided_secret[:4])}...{repr(provided_secret[-4:])}", flush=True)
-        print(f"[DEBUG] match_exact:         {provided_secret == internal_secret}", flush=True)
-        print(f"[DEBUG] match_stripped:      {provided_secret.strip() == internal_secret.strip()}", flush=True)
-        print(f"[DEBUG] blob_token_present:  {bool(blob_token)}", flush=True)
-        relevant_keys = sorted([k for k in os.environ.keys() if k.startswith(('ENCRYPT', 'BLOB', 'STRIPE', 'RESEND', 'PDF'))])
-        print(f"[DEBUG] relevant_env_keys:   {relevant_keys}", flush=True)
-        sys.stdout.flush()
-        # ───────────────────────────────────────────────────────────────────
 
         if not internal_secret or provided_secret != internal_secret:
             self._respond(401, {"error": "Unauthorized"})
