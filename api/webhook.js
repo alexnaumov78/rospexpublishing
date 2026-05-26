@@ -110,32 +110,47 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
   return Buffer.from(await pdfDoc.save());
 }
 
-async function encryptPdf(pdfBuffer, userPassword) {
-  const uploadResp = await fetch('https://api.pdf.co/v1/file/upload/base64', {
-    method:  'POST',
-    headers: { 'x-api-key': process.env.PDFCO_API_KEY, 'Content-Type': 'application/json' },
-    body:    JSON.stringify({ name: 'protected.pdf', file: pdfBuffer.toString('base64') }),
+// ── Layer 3: encrypt via internal Python endpoint (replaces PDF.co) ──────────
+// Flow:
+//   1. Upload watermarked PDF to a staging blob (Vercel's 4.5MB function body
+//      limit prevents sending the PDF directly in the request)
+//   2. Call /api/encrypt with the staging URL + final destination path
+//   3. /api/encrypt downloads, encrypts with AES-256, uploads to final path,
+//      cleans up the staging blob, and returns the final URL
+async function encryptAndStore(watermarkedBytes, userPassword, finalBlobPath, txId, filename) {
+  // Step 1: Upload watermarked PDF to staging
+  const stagingPath = `staging/${txId}/${filename}`;
+  const stagingBlob = await put(stagingPath, watermarkedBytes, {
+    access:          'public',
+    contentType:     'application/pdf',
+    addRandomSuffix: false,
+    allowOverwrite:  true,
   });
-  const uploadData = await uploadResp.json();
-  if (!uploadData.url) throw new Error(`PDF.co upload failed: ${JSON.stringify(uploadData)}`);
 
-  const encResp = await fetch('https://api.pdf.co/v1/pdf/security/add', {
-    method:  'POST',
-    headers: { 'x-api-key': process.env.PDFCO_API_KEY, 'Content-Type': 'application/json' },
-    body:    JSON.stringify({
-      url:                 uploadData.url,
-      ownerPassword:       process.env.PDF_OWNER_PASSWORD,
-      userPassword:        userPassword,
-      EncryptionAlgorithm: 'AES256',
-      async:               false,
-    }),
+  // Step 2: Call internal /api/encrypt
+  const baseUrl = `https://${process.env.VERCEL_URL}`;
+  const resp = await fetch(`${baseUrl}/api/encrypt`, {
+    method: 'POST',
+    headers: {
+      'X-Internal-Secret':  process.env.ENCRYPT_INTERNAL_SECRET,
+      'X-User-Password':    userPassword,
+      'X-Owner-Password':   process.env.PDF_OWNER_PASSWORD,
+      'X-Staging-Url':      stagingBlob.url,
+      'X-Destination-Path': finalBlobPath,
+    },
   });
-  const encData = await encResp.json();
-  if (!encData.url) throw new Error(`PDF.co encryption failed: ${JSON.stringify(encData)}`);
 
-  const dlResp = await fetch(encData.url);
-  if (!dlResp.ok) throw new Error(`PDF.co download failed: HTTP ${dlResp.status}`);
-  return Buffer.from(await dlResp.arrayBuffer());
+  if (!resp.ok) {
+    const errBody = await resp.text();
+    throw new Error(`encrypt.py failed (HTTP ${resp.status}): ${errBody}`);
+  }
+
+  const data = await resp.json();
+  if (!data.url) {
+    throw new Error(`encrypt.py returned no URL: ${JSON.stringify(data)}`);
+  }
+
+  return data.url;
 }
 
 async function alreadyProcessed(blobPath) {
@@ -195,16 +210,8 @@ export default async function handler(req, res) {
         console.log('[STAGE 2] Applying watermarks');
         const watermarked = await applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDate);
 
-        console.log('[STAGE 3] Encrypting via PDF.co');
-        const encrypted = await encryptPdf(watermarked, buyerEmail);
-
-        console.log('[STAGE 4] Storing in blob');
-        const stored = await put(blobPath, encrypted, {
-          access:          'public',
-          contentType:     'application/pdf',
-          addRandomSuffix: false,
-        });
-        storedUrl = stored.url;
+        console.log('[STAGE 3] Encrypting via internal Python endpoint');
+        storedUrl = await encryptAndStore(watermarked, buyerEmail, blobPath, txId, master.filename);
       }
 
       const expiryMs = Date.now() + 72 * 60 * 60 * 1000;
@@ -217,7 +224,7 @@ export default async function handler(req, res) {
       });
     }
 
-    console.log('[STAGE 5] Sending email');
+    console.log('[STAGE 4] Sending email');
     await sendEmail(buyerEmail, buyerName, txId, purchaseDate, product, deliveries);
 
     console.log('[DONE]', txId);
