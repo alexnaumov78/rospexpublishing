@@ -7,8 +7,16 @@ let currentLang = localStorage.getItem('rp_lang') || 'en';
 function t(key) { return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || key; }
 
 function setLang(lang) {
+  const previousLang = currentLang;
   currentLang = lang;
   localStorage.setItem('rp_lang', lang);
+  /* Analytics: track real user-initiated switches only (W5). setLang is called
+     on every page-init to apply translations — that call would otherwise fire
+     a phantom event on every pageview. Comparing against the previous value
+     filters out the init no-op while still catching every real EN↔RU toggle. */
+  if (previousLang !== lang && typeof window.plausible === 'function') {
+    window.plausible('Language Switch', { props: { from: previousLang, to: lang } });
+  }
   document.querySelectorAll('[data-i18n]').forEach(el => {
     el.textContent = t(el.getAttribute('data-i18n'));
   });
@@ -238,6 +246,15 @@ let pdfDoc = null, pdfCurrentPage = 1, pdfTotalPages = 50;
 async function openPreview(pdfPath, bookTitle) {
   const modal = document.getElementById('preview-modal');
   if (!modal) return;
+  /* Analytics: track preview opens by book (W5). Derive book id from the
+     filename so we know which volume / bundle preview was opened. */
+  if (typeof window.plausible === 'function') {
+    let book = 'unknown';
+    if (pdfPath.includes('vol1')) book = 'qft-vol1';
+    else if (pdfPath.includes('vol2')) book = 'qft-vol2';
+    else if (pdfPath.includes('bundle')) book = 'qft-bundle';
+    window.plausible('Preview Opened', { props: { book: book } });
+  }
   modal.classList.add('open');
   document.getElementById('preview-title').textContent = bookTitle + ' - Preview';
   const container = document.getElementById('pdf-canvas-container');
@@ -396,4 +413,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (year) year.textContent = new Date().getFullYear();
   const contactForm = document.getElementById('contact-form');
   if (contactForm) contactForm.addEventListener('submit', submitContactForm);
+
+  /* Analytics: track Buy / Buy Bundle clicks (W5).
+     Listens once on document for any anchor pointing at buy.stripe.com,
+     so it works for every Buy button on every page (Buy Now, Buy Bundle,
+     and any future Stripe link) without per-button wiring. The Stripe
+     URL contains the product, so we tag the event with which book. */
+  document.addEventListener('click', function(e) {
+    const a = e.target.closest('a[href*="buy.stripe.com"]');
+    if (!a || typeof window.plausible !== 'function') return;
+    const p = location.pathname;
+    let book = 'unknown';
+    if (p.includes('qft-volume-1')) book = 'qft-vol1';
+    else if (p.includes('qft-volume-2')) book = 'qft-vol2';
+    else if (p.includes('qft-bundle')) book = 'qft-bundle';
+    window.plausible('Buy Click', { props: { book: book } });
+  });
 });
