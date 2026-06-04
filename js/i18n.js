@@ -44,6 +44,8 @@ const TRANSLATIONS = {
     btn_buy_bundle:  "Buy Bundle",
     btn_notify:      "Notify Me",
     btn_preview:     "Preview",
+    btn_preview_vol1: "Preview Vol. I",
+    btn_preview_vol2: "Preview Vol. II",
 
     /* BOOK PAGE – subtitles (Change 1) */
     qft1_book_subtitle:    "Volume 1. Practical course with examples, problems, and solutions",
@@ -179,6 +181,20 @@ const TRANSLATIONS = {
     fa_btn:      "Learn More",
     fa_contact:  "Contact Us",
 
+    /* AUTHORS PAGE — bottom publishing CTA (was hardcoded English) */
+    authors_bottom_title: "Interested in publishing with us?",
+    authors_bottom_text:  "We invite researchers and educators with serious scientific or educational works to reach out. We focus on digital distribution with global reach and straightforward revenue sharing. Contact us to discuss your project.",
+
+    /* REVIEWS / ACCLAIM */
+    reviews_label:        "Acclaim from Physicists",
+    reviews_title:        "What readers and reviewers say",
+    reviews_sub:          "Independent feedback from physicists and readers of the Quantum Field Theory series.",
+    reviews_label_book:   "Reviews",
+    reviews_title_book:   "What reviewers say",
+    review_read_full:     "Read Full Review",
+    review_read_less:     "Show Less",
+    review_translated_note: "Translated from Russian.",
+
     /* LEARN MORE MODAL */
     lm_title:   "Publishing with Rospex",
     lm_intro:   "We work with researchers and educators on serious science and education books. Here is how the process works:",
@@ -187,7 +203,7 @@ const TRANSLATIONS = {
     lm_h2:      "Rights and agreement",
     lm_p2:      "A standard publishing agreement covers digital distribution outside Russia and CIS, with 2 to 3 year terms and quarterly transparent reporting. Authors confirm in writing that they hold the digital rights being granted. We can help negotiate with existing publishers if rights are held by them.",
     lm_h3:      "Royalties",
-    lm_p3:      "65% of net revenue on direct sales through rospexpublishing.com. Platform fees apply on top for other channels (Google, Amazon, Kobo). Payments are made quarterly with full reporting.",
+    lm_p3:      "You get a bigger share of the net proceeds on direct sales through rospexpublishing.com. Platform fees apply on top for other channels (Google, Amazon, Kobo, etc.). Payments are made quarterly or as agreed with full reporting.",
     lm_h4:      "Marketing support",
     lm_p4:      "We handle metadata, product pages, and launch coordination. We provide recommendations for promotion through your own networks (academic, social media, talks) and can help amplify announcements at launch.",
     lm_note:    "Important: authors must confirm in writing they hold the digital distribution rights being granted. If a publisher holds those rights, we can help with the negotiation.",
@@ -213,6 +229,7 @@ const TRANSLATIONS = {
     bio2: "He is a laureate of the <strong>Breakthrough Prize in Fundamental Physics (2016)</strong>, awarded to the Daya Bay collaboration for the discovery of electron neutrino disappearance and precise measurement of the mixing angle. In 2023 he received the <strong>European Physical Society Prize</strong> for contributions to neutrino physics.",
     bio3: "Naumov has authored over <strong>200 scientific publications</strong> and brings the same rigorous approach to his textbooks, written as complete treatments for physicists who wish to master the subject in full.",
     link_web:         "naumov.jinr.ru",
+    link_inspire:     "INSPIRE-HEP profile",
     link_neutrinohit: "neutrinohit.github.io",
     link_yt:          "YouTube Channel",
     link_tg:          "Telegram: NeutrinoHit",
@@ -318,6 +335,8 @@ const TRANSLATIONS = {
     btn_buy_bundle:  "Купить комплект",
     btn_notify:      "Уведомить меня",
     btn_preview:     "Предпросмотр",
+    btn_preview_vol1: "Просмотр Том I",
+    btn_preview_vol2: "Просмотр Том II",
 
     /* BOOK PAGE – subtitles */
     qft1_book_subtitle:    "Том 1. Практический курс с примерами, задачами и решениями",
@@ -452,6 +471,20 @@ const TRANSLATIONS = {
     fa_btn:      "Подробнее",
     fa_contact:  "Связаться",
 
+    /* AUTHORS PAGE — bottom publishing CTA */
+    authors_bottom_title: "Хотите издаваться с нами?",
+    authors_bottom_text:  "Приглашаем исследователей и преподавателей с серьёзными научными и образовательными работами обратиться к нам. Мы специализируемся на цифровой дистрибуции с глобальным охватом и прозрачным распределением доходов. Свяжитесь с нами, чтобы обсудить ваш проект.",
+
+    /* REVIEWS / ACCLAIM */
+    reviews_label:        "Отзывы физиков",
+    reviews_title:        "Что говорят читатели и рецензенты",
+    reviews_sub:          "Независимые отзывы физиков и читателей о серии «Квантовая теория поля».",
+    reviews_label_book:   "Отзывы",
+    reviews_title_book:   "Что говорят рецензенты",
+    review_read_full:     "Читать полностью",
+    review_read_less:     "Свернуть",
+    review_translated_note: "Перевод с русского.",
+
     /* LEARN MORE MODAL */
     lm_title:   "Издание с Rospex",
     lm_intro:   "Мы работаем с учёными и преподавателями над серьёзной научной и образовательной литературой. Вот как устроен процесс:",
@@ -460,7 +493,7 @@ const TRANSLATIONS = {
     lm_h2:      "Права и договор",
     lm_p2:      "Стандартный издательский договор охватывает цифровую дистрибуцию за пределами России и СНГ, сроком на 2-3 года, с ежеквартальной прозрачной отчётностью. Автор письменно подтверждает, что обладает передаваемыми цифровыми правами. При необходимости помогаем вести переговоры с действующим издательством.",
     lm_h3:      "Роялти",
-    lm_p3:      "65% чистой выручки от прямых продаж на rospexpublishing.com. Для других каналов (Google, Amazon, Kobo) дополнительно применяются комиссии платформ. Выплаты ежеквартально с полной отчётностью.",
+    lm_p3:      "Вы получаете бóльшую долю чистой выручки от прямых продаж через rospexpublishing.com. Для других каналов (Google, Amazon, Kobo и др.) сверху применяются комиссии платформ. Выплаты производятся ежеквартально или по договорённости, с полной отчётностью.",
     lm_h4:      "Поддержка маркетинга",
     lm_p4:      "Мы оформляем метаданные, страницы товара, координируем запуск. Даём рекомендации по продвижению через ваши сети (академические, социальные, выступления) и помогаем с анонсами при запуске.",
     lm_note:    "Важно: автор должен письменно подтвердить, что обладает передаваемыми цифровыми правами. Если права у издательства, мы можем помочь с переговорами.",
@@ -486,6 +519,7 @@ const TRANSLATIONS = {
     bio2: "Наумов является лауреатом <strong>премии «Прорыв» по фундаментальной физике (2016)</strong>, присуждённой коллаборации Daya Bay за открытие исчезновения электронных нейтрино и точное измерение угла смешивания. В 2023 году он был удостоен <strong>Премии Европейского физического общества</strong> за вклад в физику нейтрино.",
     bio3: "Наумов является автором более <strong>200 научных публикаций</strong> и применяет тот же строгий подход в своих учебниках, созданных как полные курсы для физиков, стремящихся освоить предмет в полном объёме.",
     link_web:         "naumov.jinr.ru",
+    link_inspire:     "Профиль INSPIRE-HEP",
     link_neutrinohit: "neutrinohit.github.io",
     link_yt:          "Канал на YouTube",
     link_tg:          "Telegram: NeutrinoHit",
@@ -550,3 +584,173 @@ const TRANSLATIONS = {
     modal_close:      "Закрыть",
   }
 };
+
+/* ════════════════════════════════════════════
+   REVIEWS — single source of truth
+   ────────────────────────────────────────────
+   Each review object renders bilingually on book detail pages
+   (filtered by `books` array). Reviews do NOT render on the
+   homepage — the homepage is positioned as a multi-author publisher
+   showcase, so book-specific reviews live on book pages only.
+
+   Required fields per object:
+     id             stable identifier
+     author         display name in English/Latin (e.g. "V. A. Bednyakov")
+     author_ru      Russian/Cyrillic rendering (e.g. "В. А. Бедняков")
+     personal_url   URL of reviewer's official/personal page
+                    — the name AND a small link below the affiliation both go here
+     personal_host  display label for the small link (e.g. "bedny.jinr.ru")
+     source_url     URL or local path to the original review (opens in new tab)
+                    — for PDFs, a path under assets/reviews/; for web pages, an https URL
+     source_label_en, source_label_ru  label for the "View original" link
+                                       (e.g. "Original (PDF)" or "Original on naumov.jinr.ru")
+     affiliation_en, affiliation_ru
+     date           ISO YYYY-MM-DD — leave as empty string "" if the source has no date
+     rating         integer 1..5 (5 gold stars rendered)
+     books          array — which books this review applies to. Values:
+                    "qft-vol1", "qft-vol2", "qft-bundle", "all-qft"
+     quote_en, quote_ru   pull-quote (1–2 sentences) — shown immediately
+     full_en, full_ru     full review HTML (paragraphs in <p>…</p>) — shown after toggle
+     original_lang        "en" or "ru" — if reader's lang differs, a translation note is shown
+   ════════════════════════════════════════════ */
+const REVIEWS = [
+  /* ── Akhmedov — Head of the Landau Department of Theoretical Physics, MIPT ── */
+  {
+    id: "akhmedov-2026-02-22",
+    author: "Emil T. Akhmedov",
+    author_ru: "Эмиль Т. Ахмедов",
+    personal_url: "https://inspirehep.net/authors/1034455",
+    personal_host: "inspirehep.net",
+    source_url: "../assets/reviews/Official_Review_by_Akhmedov.pdf",
+    source_label_en: "Original review (PDF)",
+    source_label_ru: "Оригинал рецензии (PDF)",
+    affiliation_en: "Doctor of Physical and Mathematical Sciences, Professor; Head of the L. D. Landau Department of Theoretical Physics, MIPT",
+    affiliation_ru: "Доктор физико-математических наук, профессор; заведующий кафедрой теоретической физики им. Л. Д. Ландау, МФТИ",
+    date: "2026-02-22",
+    rating: 5,
+    books: ["all-qft"],
+    original_lang: "ru",
+    quote_en: "Particular value is given to this work by the fact that it was written by a practicing experimental physicist, while textbooks on quantum field theory have traditionally been created by theorists.",
+    quote_ru: "Особую ценность этой работе придаёт тот факт, что она написана практикующим физиком-экспериментатором, в то время как традиционно учебники по квантовой теории поля создаются теоретиками.",
+    full_en: "<p>This textbook is based on the author's many years of experience teaching lectures at the Joint Institute for Nuclear Research (JINR, Dubna) and at M. V. Lomonosov Moscow State University. It fully meets the high requirements for training students and graduate students specializing in high-energy physics and related disciplines.</p>" +
+             "<p>Particular value is given to this work by the fact that it was written by a practicing experimental physicist, while textbooks on quantum field theory have traditionally been created by theorists. This unique perspective makes the material extraordinarily useful not only for students, but also for established scientists, allowing them to better understand the connection between abstract theoretical constructions and real experimental problems.</p>" +
+             "<p>Among the textbook's undoubted strengths:</p>" +
+             "<ul><li><strong>Breadth of scope:</strong> the book will be useful not only to specialists in elementary particle physics, but also to researchers from other areas of physics.</li>" +
+             "<li><strong>Accessibility of exposition:</strong> the author moves masterfully from the simple to the complex, first giving an intuitive understanding of a phenomenon and then reinforcing it with rigorous derivations. The boundaries of applicability of approximations are discussed in detail, and all stages of calculations are carefully worked through.</li>" +
+             "<li><strong>Emphasis on physical intuition:</strong> a vivid example is the detailed treatment of wave packets in place of plane waves, which clarifies the specifics of fermionic commutation relations and the correct construction of scattering amplitudes. Another is the discussion of the interaction potential energy between charges in different theories in the non-relativistic approximation.</li>" +
+             "<li><strong>Connection with experiment:</strong> the book provides detailed treatments of the fundamental experiments that laid the foundations of modern elementary particle physics.</li>" +
+             "<li><strong>Practical orientation:</strong> an important feature is the large number of carefully selected problems with detailed solutions, which is indispensable for independent study.</li>" +
+             "<li><strong>Modern format:</strong> the textbook includes high-quality illustrations, interesting historical excursions, and the use of QR codes for access to animations, which significantly enhances the clarity of complex concepts.</li></ul>" +
+             "<p>After my reading of the manuscript, the author was informed of some minor inaccuracies, which were promptly and competently corrected.</p>" +
+             "<p>Taking all of the above into account, this textbook will undoubtedly fill an important niche in scientific and educational literature and will be in demand by a wide audience. I look forward with great pleasure to the publication of this truly thorough work.</p>",
+    full_ru: "<p>Данное пособие основано на многолетнем опыте чтения автором лекций в Объединённом институте ядерных исследований (ОИЯИ, Дубна) и в МГУ имени М. В. Ломоносова. Оно полностью соответствует высоким требованиям к подготовке студентов и аспирантов, специализирующихся в области физики высоких энергий и смежных дисциплин.</p>" +
+             "<p>Особую ценность этой работе придаёт тот факт, что она написана практикующим физиком-экспериментатором, в то время как традиционно учебники по квантовой теории поля создаются теоретиками. Такой уникальный взгляд делает материал чрезвычайно полезным не только для учащихся, но и для состоявшихся учёных, позволяя им глубже понять связь абстрактных теоретических построений с реальными экспериментальными задачами.</p>" +
+             "<p>К несомненным достоинствам пособия относятся:</p>" +
+             "<ul><li><strong>Широта охвата:</strong> книга будет полезна не только специалистам по физике элементарных частиц, но и исследователям из других областей физики.</li>" +
+             "<li><strong>Доступность изложения:</strong> автор мастерски переходит от простого к сложному, сначала давая интуитивное понимание явления, а затем подкрепляя его строгими выкладками. Детально обсуждаются границы применимости приближений и тщательно разбираются все этапы вычислений.</li>" +
+             "<li><strong>Акцент на физическую интуицию:</strong> ярким примером является подробный разбор использования волновых пакетов вместо плоских волн, что проясняет специфику коммутационных соотношений для фермионов и корректное построение амплитуд рассеяния. Другим примером является обсуждение потенциальной энергии взаимодействия между зарядами в различных теориях в нерелятивистском приближении.</li>" +
+             "<li><strong>Связь с экспериментом:</strong> в книге детально разбираются фундаментальные эксперименты, заложившие основы современной физики элементарных частиц.</li>" +
+             "<li><strong>Практическая направленность:</strong> важной особенностью является наличие большого числа тщательно отобранных задач с подробными решениями, что незаменимо для самостоятельной работы.</li>" +
+             "<li><strong>Современный формат:</strong> пособие включает качественные иллюстрации, интересные исторические экскурсы, а также использование QR-кодов для доступа к анимационным материалам, что значительно повышает наглядность сложных концепций.</li></ul>" +
+             "<p>После моего ознакомления с рукописью автору были указаны на некоторые частные погрешности, которые были им оперативно и качественно исправлены.</p>" +
+             "<p>Учитывая всё вышесказанное, данное учебное пособие, без сомнения, заполнит важную нишу в научно-образовательной литературе и будет востребовано широкой аудиторией. Я с большим удовольствием ожидаю публикацию этой действительно основательной работы.</p>"
+  },
+
+  /* ── Serbo — Professor, Department of Theoretical Physics, Novosibirsk State University ── */
+  {
+    id: "serbo-2026-02-20",
+    author: "Valeriy G. Serbo",
+    author_ru: "Валерий Г. Сербо",
+    personal_url: "https://pure.nsu.ru/portal/en/persons/--(47efdb2a-9705-463d-945a-777e36661e83).html",
+    personal_host: "pure.nsu.ru",
+    source_url: "../assets/reviews/Official_Review_by_Serbo.pdf",
+    source_label_en: "Original review (PDF)",
+    source_label_ru: "Оригинал рецензии (PDF)",
+    affiliation_en: "Doctor of Physical and Mathematical Sciences, Professor of the Department of Theoretical Physics, Novosibirsk State University",
+    affiliation_ru: "Доктор физико-математических наук, профессор кафедры теоретической физики Новосибирского государственного университета",
+    date: "2026-02-20",
+    rating: 5,
+    books: ["all-qft"],
+    original_lang: "ru",
+    quote_en: "This course is not a purely theoretical exercise; it bears directly on the daily work of modern experimental and theoretical physicists, and one feels in it the breath of modern physics.",
+    quote_ru: "Этот курс не относится к варианту чисто теоретической теории, он имеет непосредственное отношение к повседневной жизни современных физиков-экспериментаторов и физиков-теоретиков, в нём чувствуется дыхание современной физики.",
+    full_en: "<p>The proposed textbook is an original work based on the author's many years of experience teaching the corresponding courses at the Joint Institute for Nuclear Research (JINR, Dubna). It meets the high requirements expected of the knowledge of students and graduate students working at JINR.</p>" +
+             "<p>Despite the existence of such excellent texts on this subject as Berestetskii, Lifshitz, Pitaevskii's <em>Quantum Electrodynamics</em> and Peskin and Schroeder's <em>An Introduction to Quantum Field Theory</em>, this book will prove extraordinarily useful not only to students and graduate students but also to working physicists, for a number of reasons. Some sections of the textbook may also be useful for students of other specialties.</p>" +
+             "<p>This textbook differs from known books on quantum field theory and elementary particle physics in the breadth of material covered (from the foundations of relativistic quantum mechanics to renormalization and quantum anomalies) and in its original manner of presenting individual topics. Let me give concrete examples.</p>" +
+             "<p>The chapter on the relativistic Klein–Fock–Gordon equation is written in a lively and engaging way, with a detailed analysis of the problems that arise in the relativistic equation compared with the analogous non-relativistic Schrödinger equation.</p>" +
+             "<p>In the chapter on the Standard Model, the exposition begins with the choice of a model Lagrangian with a single generation of leptons. The properties of such a model are then studied in detail. Only afterwards does the transition take place to the realistic model with three generations of quarks and the derivation of the Feynman rules. This approach is fully justified, as it allows the reader to be gradually introduced into the complex world of the Standard Model.</p>" +
+             "<p>In the chapter on neutrino and antineutrino scattering on electrons, all the complex calculations are given with sufficient completeness for the beginner to follow every step. For a number of reactions, qualitative considerations are given that help the reader picture the result more clearly.</p>" +
+             "<p>The chapter on deep-inelastic scattering of charged leptons on a nucleon offers a detailed analysis not only of the theoretical problems of such processes, but also an excellent overview of a large body of experimental data from various experimental groups. Likewise, in the chapter devoted to quantum anomalies, both the theoretical questions related to chiral anomalies, decays of neutral pions, and triangle diagrams in the Standard Model, and the corresponding experiments, are discussed in detail. The author's magnificent ability to describe complex experiments in simple language, highlighting what matters and leaving aside inessential details, deserves particular note.</p>" +
+             "<p>An important and attractive feature of this textbook is the presence not only of a large number of carefully selected and instructive problems, but also of detailed solutions to those problems, which will undoubtedly prove very useful to a wide range of readers. One more attractive feature should be noted: this course is not a purely theoretical exercise; it bears directly on the daily work of modern experimental and theoretical physicists, and one feels in it the breath of modern physics.</p>" +
+             "<p>The excellent illustrations and the very interesting historical material that helps to understand the genesis of many complex concepts of modern elementary particle physics deserve special mention. Moreover, the book uses QR codes that allow readers, with a mobile phone, to access animations of complex concepts, making the study of the material still more illustrative. The language of the textbook is far from dry academicism; it is close to the conversational language of lectures, simple and precise.</p>" +
+             "<p>Additionally, I would like to note that after a careful reading of the manuscript I noted some minor inaccuracies and small errors, which were corrected by the author.</p>",
+    full_ru: "<p>Предлагаемое учебное пособие является оригинальной разработкой, основанной на многолетнем опыте преподавания автором соответствующих курсов в Объединённом институте ядерных исследований (ОИЯИ, Дубна). Оно соответствует высоким требованиям, предъявляемым к уровню знаний студентов и аспирантов, работающих в ОИЯИ.</p>" +
+             "<p>Несмотря на наличие таких прекрасных пособий по данному предмету, как Берестецкий, Лифшиц, Питаевский <em>Квантовая электродинамика</em> и Пескин, Шрёдер <em>Введение в квантовую теорию поля</em>, данная книга окажется чрезвычайно полезной не только для студентов и аспирантов, но и для работающих физиков по целому ряду причин. Некоторые разделы этого учебного пособия могут оказаться полезными и для студентов других специальностей.</p>" +
+             "<p>Этот учебник отличается от известных книг по квантовой теории поля и физике элементарных частиц широтой охватываемого материала (от основ релятивистской квантовой механики до перенормировок и квантовых аномалий) и оригинальной манерой изложения отдельных тем. Приведу конкретные примеры.</p>" +
+             "<p>Глава о релятивистском уравнении Клейна–Фока–Гордона написана живо и интересно, с детальным разбором проблем, которые обнаруживаются в релятивистском уравнении по сравнению с аналогичным нерелятивистским уравнением Шрёдингера.</p>" +
+             "<p>В главе про Стандартную модель изложение начинается с выбора модельного лагранжиана с одним поколением лептонов. Затем подробно изучаются свойства такой модели. И только потом происходит переход к реалистической модели с тремя поколениями кварков и с выводом правил Фейнмана. Такой подход вполне оправдан, так как позволяет постепенно вводить читателя в сложный мир Стандартной модели.</p>" +
+             "<p>В главе про рассеяние нейтрино и антинейтрино на электроне все сложные расчёты приведены с достаточной полнотой, чтобы начинающий читатель мог проследить все этапы вычислений. Для ряда реакций приведены качественные соображения, помогающие более наглядно представить полученный результат.</p>" +
+             "<p>В главе про глубоконеупругое рассеяние заряженных лептонов на нуклоне дан детальный разбор не только теоретических проблем таких процессов, но и отличный обзор большого набора экспериментальных данных различных экспериментальных групп. Точно так же в главе, посвящённой квантовым аномалиям, подробно разбираются как теоретические вопросы, связанные с киральными аномалиями, распадами нейтральных пионов и треугольными диаграммами в Стандартной модели, так и соответствующие эксперименты. Следует отметить великолепное умение автора рассказывать о сложных экспериментах простым языком, выделяя главное и опуская несущественные детали.</p>" +
+             "<p>Важной и привлекательной особенностью данного пособия является наличие не только большого числа тщательно отобранных и поучительных задач, но и подробных решений этих задач, что несомненно окажется очень полезным для целого ряда читателей. Важно отметить ещё одну привлекательную особенность этого пособия. Этот курс не относится к варианту чисто теоретической теории, он имеет непосредственное отношение к повседневной жизни современных физиков-экспериментаторов и физиков-теоретиков, в нём чувствуется дыхание современной физики.</p>" +
+             "<p>Особо следует отметить прекрасные иллюстрации и наличие очень интересных исторических сведений, помогающих понять генезис многих сложных понятий современной физики элементарных частиц. Более того, в книге используются QR-коды, которые позволяют читателям с помощью мобильного телефона получать доступ к анимациям сложных концепций, что делает изучение материала ещё более наглядным. Язык учебника далёк от сухого академизма, он близок к разговорному языку лекций, прост и точен.</p>" +
+             "<p>Дополнительно хочу сообщить, что после внимательного прочтения рукописи я отметил некоторые погрешности и небольшие ошибки, которые были исправлены автором.</p>"
+  },
+
+  /* ── Bednyakov — published on naumov.jinr.ru/1145/ ── */
+  {
+    id: "bednyakov-2026-05-25",
+    author: "Vadim A. Bednyakov",
+    author_ru: "Вадим А. Бедняков",
+    personal_url: "https://bedny.jinr.ru/",
+    personal_host: "bedny.jinr.ru",
+    source_url: "https://naumov.jinr.ru/1145/",
+    source_label_en: "Original on naumov.jinr.ru",
+    source_label_ru: "Оригинал на naumov.jinr.ru",
+    affiliation_en: "Doctor of Physical and Mathematical Sciences, V. P. Dzhelepov Laboratory of Nuclear Problems, JINR",
+    affiliation_ru: "Доктор физико-математических наук, Лаборатория ядерных проблем им. В. П. Джелепова, ОИЯИ",
+    date: "2026-05-25",
+    rating: 5,
+    books: ["all-qft"],
+    original_lang: "ru",
+    quote_en: "I would call this creation of a brilliant human mind a Guidebook to modern elementary particle physics and its deep theoretical foundations.",
+    quote_ru: "Я бы назвал это творение блестящего ума человеческого Путеводителем по современной физике элементарных частиц и её глубинным теоретическим основам.",
+    full_en: "<p>A few words about the remarkable book by my colleague, Doctor of Physical and Mathematical Sciences, Deputy Director of the V. P. Dzhelepov Laboratory of Nuclear Problems — Dmitry Vadimovich Naumov, <em>Quantum Field Theory for Experimentalists and Beyond</em>.</p>" +
+             "<p>Formally, this is a substantial, near the limit of the possible, printed construction of 1,000+ pages, modestly called a textbook. One can agree with that designation only as a nod to the centuries-old tradition of writing educational literature.</p>" +
+             "<p>I would call this creation of a brilliant human mind a Guidebook to modern elementary particle physics and its deep theoretical foundations. It is precisely a Guidebook, led by a wise teacher-guide invisibly present beside the reader, intimately familiar not only with the problems and complexities of modern precision experiments, but also with all the pitfalls of the difficult and at times sharply contradictory landscape of field theory.</p>" +
+             "<p>The structure of this Guidebook reflects a modern tendency of physical science itself — the mutually enriching union of new with old, of the well-known and accepted with what is only being born today at the most advanced frontiers of experimental and theoretical elementary particle physics, neutrino physics, and astrophysics.</p>" +
+             "<p>The author cares deeply about what he is telling, and equally deeply about those who are listening. For this reason he supplements each chapter of his engaging narrative with a substantial set of problems, a list of useful literature, varied and richly illustrated examples, and, in my view, an outstanding innovation in the form of QR codes. These instantly direct the interested reader to online resources containing video materials prepared by the author, which make even the most challenging propositions and facts visible and more understandable. In great measure this technique widens the horizon of the Book and, in my view, gives it the status of a Guidebook to the Map of Science mentioned above.</p>" +
+             "<p>In closing, I want to note that these 1,000 pages were written by the author practically before my eyes — in the office opposite mine, where he superbly combined the responsible and multifaceted work of a Deputy Director of LNP with the no less responsible and meticulous work of creating the Book that you, dear reader, are holding in your hands.</p>",
+    full_ru: "<p>Хочется сказать несколько слов о замечательной книге моего коллеги, доктора физико-математических наук, заместителя директора Лаборатории ядерных проблем им. В. П. Джелепова — Дмитрия Вадимовича Наумова «Квантовая теория поля для экспериментаторов и не только».</p>" +
+             "<p>С формальной точки зрения — это увесистая, на грани возможного, печатная конструкция из 1000+ страниц, скромно называемая учебником. С этим, если и можно согласиться, то лишь отдавая дань многовековой традиции написания учебной литературы.</p>" +
+             "<p>Я бы назвал это творение блестящего ума человеческого Путеводителем по современной физике элементарных частиц и её глубинным теоретическим основам. Это именно Путеводитель, возглавляемый незримо присутствующим рядом с читателем мудрым гидом-учителем, хорошо знающим не только проблемы и сложности современных прецизионных экспериментов, но и все подводные камни непростого и порой крайне противоречивого теоретико-полевого ландшафта.</p>" +
+             "<p>Структура этого Путеводителя отражает современную тенденцию самой физической науки — взаимообогащающее единство нового со старым, хорошо известного и общепринятого с тем, что только рождается сегодня на самых передовых рубежах экспериментальной и теоретической физики элементарных частиц, физики нейтрино и астрофизики.</p>" +
+             "<p>Автор Книги очень неравнодушен к тому, что он рассказывает, он также неравнодушен и к тем, кто его слушает. По этой причине он каждую главу своего увлекательного повествования дополняет большим числом задач, списком полезной литературы, разнообразными красочно оформленными примерами и, с моей точки зрения, выдающимся ноу-хау в виде QR-кодов. Они мгновенно отсылают заинтересованного читателя к интернет-ресурсам, где содержатся подготовленные автором видеоматериалы, делающие не самые простые научные положения и факты наглядными и более понятными. В значительной степени этот приём расширяет горизонт Книги и, с моей точки зрения, придаёт ей статус упомянутого выше Путеводителя по Карте Науки.</p>" +
+             "<p>В заключение хочется отметить, что эти 1000 страниц написаны автором практически на моих глазах — в кабинете напротив, где он прекрасно совмещал ответственную и многоплановую работу заместителя директора ЛЯП с не менее ответственной и тщательной работой по созданию Книги, которую вы, дорогой читатель, держите в своих руках.</p>"
+  },
+
+  /* ── Kazakov — published on naumov.jinr.ru/1323/ (no explicit date on source) ── */
+  {
+    id: "kazakov-2026",
+    author: "Dmitry I. Kazakov",
+    author_ru: "Дмитрий И. Казаков",
+    personal_url: "https://new.ras.ru/academy-new/staff/chlen-korrespondent-ran/kazakov-dmitriy-igorevich/",
+    personal_host: "new.ras.ru",
+    source_url: "https://naumov.jinr.ru/1323/",
+    source_label_en: "Original on naumov.jinr.ru",
+    source_label_ru: "Оригинал на naumov.jinr.ru",
+    affiliation_en: "Doctor of Physical and Mathematical Sciences, Corresponding Member of the Russian Academy of Sciences, Director of the Bogoliubov Laboratory of Theoretical Physics, JINR",
+    affiliation_ru: "Доктор физико-математических наук, член-корреспондент РАН, директор Лаборатории теоретической физики им. Боголюбова, ОИЯИ",
+    date: "",
+    rating: 5,
+    books: ["all-qft"],
+    original_lang: "ru",
+    quote_en: "The book is especially valuable because it shows quantum field theory as a working tool not only for theorists, but also for experimentalists.",
+    quote_ru: "Книга особенно ценна тем, что показывает квантовую теорию поля как рабочий инструмент не только для теоретиков, но и для экспериментаторов.",
+    full_en: "<p>Before you is an unusual textbook on quantum field theory. It combines rigour of formulation with accessibility of exposition, and a clear explanation of the physical nature of the phenomena discussed; it also tells the dramatic history of the birth of quantum theory. The book is especially valuable because it shows quantum field theory as a working tool not only for theorists, but also for experimentalists. A large place in it is given to calculations of real physical processes and work with Feynman diagrams.</p>" +
+             "<p>One can also note a rare strength of the book: one of the most difficult topics of quantum field theory — the theory of renormalization and quantum anomalies — is presented here clearly and accessibly, without losing rigour.</p>" +
+             "<p>At the same time this is a textbook of a new time: it contains not only superb illustrations, but also QR codes with animations and illustrative material, problems, and even topics for independent research. This book can confidently be recommended to those who intend not only to study quantum field theory, but also to put it to use in practice.</p>",
+    full_ru: "<p>Перед вами необычный учебник по квантовой теории поля. Он сочетает строгость формулировок и, в то же время, доступность изложения, ясное объяснение физической природы обсуждаемых явлений; в нём также рассказывается и о драматической истории рождения квантовой теории. Книга особенно ценна тем, что показывает квантовую теорию поля как рабочий инструмент не только для теоретиков, но и для экспериментаторов. Большое место в ней занимают вычисления реальных физических процессов и работа с диаграммами Фейнмана.</p>" +
+             "<p>Можно также отметить редкое достоинство книги: одна из самых сложных тем квантовой теории поля — теория перенормировок и квантовые аномалии — изложена здесь ясно и доступно, без потери строгости.</p>" +
+             "<p>В то же время это учебник нового времени: в нём есть не только замечательные иллюстрации, но и QR-коды с анимациями и наглядными материалами, задачи и даже темы для самостоятельных исследований. Эту книгу можно смело рекомендовать тем, кто собирается не только изучить квантовую теорию поля, но и применять её на практике.</p>"
+  }
+];

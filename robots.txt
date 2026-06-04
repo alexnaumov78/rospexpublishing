@@ -1,0 +1,7 @@
+# robots.txt for rospexpublishing.com
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /assets/pdfs/
+
+Sitemap: https://rospexpublishing.com/sitemap.xml

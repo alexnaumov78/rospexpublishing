@@ -25,9 +25,9 @@
 }
 .hero-inner {
   position: relative;
-  display: grid; grid-template-columns: 1fr 380px;
-  gap: 36px; align-items: center;
-  max-width: 1200px;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 44px; align-items: center;
+  max-width: 1280px; margin: 0 auto;
 }
 .hero-text { max-width: 580px; }
 .hero-eyebrow {
@@ -49,8 +49,26 @@
 }
 .hero-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .hero-actions .btn { padding: 9px 20px; font-size: 13px; }
-.hero-visual { position: relative; aspect-ratio: 1/1; max-width: 380px; }
-.hero-visual svg { width: 100%; height: 100%; display: block; }
+
+/* Hero visual: physics constellation image (1187x941 source, ~5:4 aspect) */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 1187 / 941;    /* match source image so nothing is cropped */
+  width: 100%;
+  max-width: 520px;            /* cap width so image is not oversized */
+  margin: 18px 0;              /* 18px buffer top/bottom inside the hero section */
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  justify-self: end;           /* keep image at the right edge of its grid column */
+}
+.hero-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;           /* image is composed to fill — no letterboxing */
+  object-position: center;
+  display: block;
+}
 
 .books-section { background: var(--surface); }
 .notify-section { background: var(--surface); text-align: center; }
@@ -64,9 +82,43 @@
 @media (max-width: 900px) {
   .hero { padding: 84px 24px 28px; }
   .hero-inner { grid-template-columns: 1fr; gap: 24px; }
-  .hero-visual { max-width: 320px; margin: 0 auto; }
+  .hero-visual { max-width: 480px; margin: 12px auto; aspect-ratio: 1187 / 941; justify-self: center; }
 }
 </style>
+<!-- W2: OG + Schema + Highwire (auto-injected) -->
+<!-- Open Graph / Twitter Card -->
+<meta property="og:type"        content="website" />
+<meta property="og:title"       content="Rospex Publishing — Russia's best science books for curious readers everywhere" />
+<meta property="og:description" content="Curated digital editions of physics, astrophysics, and modern science by leading Russian authors. Now featuring Quantum Field Theory for Experimentalists and Beyond by Dmitry V. Naumov — Breakthrough Prize laureate." />
+<meta property="og:url"         content="https://rospexpublishing.com/" />
+<meta property="og:image"       content="https://rospexpublishing.com/assets/images/social/rospex-og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name"   content="Rospex Publishing" />
+<meta property="og:locale"      content="en_US" />
+<meta property="og:locale:alternate" content="ru_RU" />
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Rospex Publishing — Russia's best science books for curious readers everywhere" />
+<meta name="twitter:description" content="Curated digital editions of physics, astrophysics, and modern science by leading Russian authors. Now featuring Quantum Field Theory for Experimentalists and Beyond by Dmitry V. Naumov — Breakthrough Prize laureate." />
+<meta name="twitter:image"       content="https://rospexpublishing.com/assets/images/social/rospex-og.jpg" />
+
+<!-- Publisher organization (Schema.org JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Rospex Publishing",
+  "url": "https://rospexpublishing.com",
+  "logo": "https://rospexpublishing.com/assets/images/logo.png",
+  "description": "Independent digital publisher of curated scientific and educational books from Russia for international readers.",
+  "founder": {
+    "@type": "Person",
+    "name": "Alex Naumov"
+  },
+  "areaServed": "Worldwide (excluding Russia)",
+  "sameAs": []
+}
+</script>
 </head>
 <body>
 
@@ -102,59 +154,9 @@
         <a href="authors.html" class="btn btn-ghost" data-i18n="hero_cta2">Our Authors</a>
       </div>
     </div>
-    <!-- HERO VISUAL: particle collision tracks + 6 visible equations -->
+    <!-- HERO VISUAL: physics constellations image (relativity, quantum mechanics, QFT, gravity, neutrino) -->
     <div class="hero-visual" aria-hidden="true">
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="vertex-glow" cx="50%" cy="50%" r="40%">
-            <stop offset="0%" stop-color="#C9953A" stop-opacity="0.5"/>
-            <stop offset="60%" stop-color="#C9953A" stop-opacity="0.08"/>
-            <stop offset="100%" stop-color="#C9953A" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-
-        <!-- Glow behind vertex -->
-        <circle cx="200" cy="220" r="120" fill="url(#vertex-glow)"/>
-
-        <!-- Particle tracks (contained within central area) -->
-        <g fill="none" stroke-linecap="round">
-          <path d="M 200 220 Q 160 170, 90 130" stroke="#C9953A" stroke-width="1.3" opacity="0.75"/>
-          <path d="M 200 220 Q 180 175, 175 100" stroke="#DDB865" stroke-width="1.0" opacity="0.65"/>
-          <path d="M 200 220 Q 230 175, 245 100" stroke="#DDB865" stroke-width="1.1" opacity="0.7"/>
-          <path d="M 200 220 Q 260 175, 320 135" stroke="#C9953A" stroke-width="1.2" opacity="0.75"/>
-          <path d="M 200 220 C 270 230, 320 245, 365 268" stroke="#6AAED6" stroke-width="0.9" opacity="0.6"/>
-          <path d="M 200 220 C 250 280, 290 330, 320 380" stroke="#6AAED6" stroke-width="1.0" opacity="0.65"/>
-          <path d="M 200 220 C 175 280, 140 330, 105 380" stroke="#6AAED6" stroke-width="1.0" opacity="0.6"/>
-          <path d="M 200 220 C 145 230, 95 245, 50 268" stroke="#DDB865" stroke-width="0.9" opacity="0.6"/>
-          <path d="M 200 220 Q 220 195, 215 165" stroke="#EDE0C8" stroke-width="0.6" opacity="0.45"/>
-          <path d="M 200 220 Q 180 195, 185 165" stroke="#EDE0C8" stroke-width="0.6" opacity="0.45"/>
-
-          <!-- End-point dots -->
-          <circle cx="90"  cy="130" r="2.2" fill="#C9953A" opacity="0.85"/>
-          <circle cx="175" cy="100" r="2"   fill="#DDB865" opacity="0.8"/>
-          <circle cx="245" cy="100" r="2"   fill="#DDB865" opacity="0.8"/>
-          <circle cx="320" cy="135" r="2.2" fill="#C9953A" opacity="0.85"/>
-          <circle cx="365" cy="268" r="2"   fill="#6AAED6" opacity="0.75"/>
-          <circle cx="320" cy="380" r="2"   fill="#6AAED6" opacity="0.75"/>
-          <circle cx="105" cy="380" r="2"   fill="#6AAED6" opacity="0.7"/>
-          <circle cx="50"  cy="268" r="2"   fill="#DDB865" opacity="0.7"/>
-        </g>
-
-        <!-- Central vertex - collision point -->
-        <circle cx="200" cy="220" r="14" fill="none" stroke="#C9953A" stroke-width="0.5" opacity="0.3"/>
-        <circle cx="200" cy="220" r="8"  fill="none" stroke="#C9953A" stroke-width="0.8" opacity="0.5"/>
-        <circle cx="200" cy="220" r="4"  fill="#FFFFFF" opacity="0.95"/>
-
-        <!-- Equations (top layer, visible) -->
-        <g opacity="0.6" font-family="Georgia, serif" fill="#EDE0C8" font-style="italic">
-          <text x="20"  y="40"  font-size="20">E = mc²</text>
-          <text x="245" y="40"  font-size="15">iℏ ∂ψ/∂t = Ĥψ</text>
-          <text x="10"  y="225" font-size="14">λ = h/p</text>
-          <text x="305" y="225" font-size="13">Δx · Δp ≥ ℏ/2</text>
-          <text x="20"  y="385" font-size="14">(iγ<tspan baseline-shift="super" font-size="10">μ</tspan>∂<tspan baseline-shift="sub" font-size="10">μ</tspan> − m)ψ = 0</text>
-          <text x="290" y="385" font-size="14">S = k log W</text>
-        </g>
-      </svg>
+      <img src="assets/images/hero-physics-constellation.jpg" alt="Physics constellations: relativity, quantum mechanics, quantum field theory, gravity, and the neutrino constellation, rendered as a star chart">
     </div>
   </div>
 </section>
@@ -169,59 +171,47 @@
 
   <div class="books-grid">
 
-    <div class="book-card">
-      <a href="books/qft-volume-1.html" class="book-card-link">
-        <div class="book-cover"><img src="assets/images/covers/qft-vol1-ru.png" alt="QFT Volume I Russian"></div>
-      </a>
+    <a href="books/qft-volume-1.html" class="book-card book-card-link" data-book-id="qft-vol1">
+      <div class="book-cover"><img src="assets/images/covers/qft-vol1-ru.png" alt="QFT Volume I Russian"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-vol">Volume I</span></div>
         <div class="book-title" data-i18n="qft_title_ru">Quantum Field Theory for Experimentalists and Beyond</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="qft1_ru_desc">554 pages. Foundations through advanced QFT.</div>
         <div class="book-footer">
+          <div class="book-rating" data-rating-for="qft-vol1"><!-- populated by JS --></div>
           <div class="book-price">$34.99</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <a href="https://buy.stripe.com/5kQ6oA7Tjdth4d7g127kc00" target="_blank" rel="noopener" class="btn-buy" data-i18n="btn_buy">Buy Now</a>
-            <button class="btn-notify" onclick="openPreview('assets/pdfs/qft-vol1-ru-preview.pdf','QFT Vol. I')" data-i18n="btn_preview">Preview</button>
-          </div>
         </div>
       </div>
-    </div>
+    </a>
 
-    <div class="book-card">
-      <a href="books/qft-volume-2.html" class="book-card-link">
-        <div class="book-cover"><img src="assets/images/covers/qft-vol2-ru.png" alt="QFT Volume II Russian"></div>
-      </a>
+    <a href="books/qft-volume-2.html" class="book-card book-card-link" data-book-id="qft-vol2">
+      <div class="book-cover"><img src="assets/images/covers/qft-vol2-ru.png" alt="QFT Volume II Russian"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-vol">Volume II</span></div>
         <div class="book-title" data-i18n="qft_title_ru">Quantum Field Theory for Experimentalists and Beyond</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="qft2_ru_desc">514 pages. Path integrals, QED, and the Standard Model.</div>
         <div class="book-footer">
+          <div class="book-rating" data-rating-for="qft-vol2"><!-- populated by JS --></div>
           <div class="book-price">$34.99</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <a href="https://buy.stripe.com/eVqaEQb5v3SHfVP2ac7kc01" target="_blank" rel="noopener" class="btn-buy" data-i18n="btn_buy">Buy Now</a>
-            <button class="btn-notify" onclick="openPreview('assets/pdfs/qft-vol2-ru-preview.pdf','QFT Vol. II')" data-i18n="btn_preview">Preview</button>
-          </div>
         </div>
       </div>
-    </div>
+    </a>
 
-    <div class="book-card">
-      <a href="books/qft-bundle.html" class="book-card-link">
-        <div class="book-cover"><img src="assets/images/covers/qft-bundle-ru.png" alt="QFT Bundle Russian"></div>
-      </a>
+    <a href="books/qft-bundle.html" class="book-card book-card-link" data-book-id="qft-bundle">
+      <div class="book-cover"><img src="assets/images/covers/qft-bundle-ru.png" alt="QFT Bundle Russian"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-bundle" data-i18n="bundle_save">Bundle, save 14%</span></div>
         <div class="book-title" data-i18n="bundle_ru_title">QFT Complete Edition: Volumes I and II</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="bundle_ru_desc">Both volumes at a reduced price. 1,068 pages.</div>
         <div class="book-footer">
+          <div class="book-rating" data-rating-for="qft-bundle"><!-- populated by JS --></div>
           <div class="book-price">$59.99</div>
-          <a href="https://buy.stripe.com/7sYdR26Pf1Kz8tn8yA7kc02" target="_blank" rel="noopener" class="btn-buy" data-i18n="btn_buy">Buy Now</a>
         </div>
       </div>
-    </div>
+    </a>
 
   </div>
 </section>
