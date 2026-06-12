@@ -34,7 +34,7 @@ const TRANSLATIONS = {
     qft2_ru_desc:    "514 pages. Path integrals, QED, non-abelian gauge theories, and the Standard Model.",
     bundle_ru_title: "QFT Complete Edition: Volumes I and II",
     bundle_ru_desc:  "Both volumes at a reduced price. 1,068 pages, from foundations to the Standard Model.",
-    bundle_save:     "Bundle, save 14%",
+    bundle_save:     "Bundle",
     qft_en_desc:     "Complete English translation of the two-volume series. Expected in 3 to 4 weeks.",
     solar_ru_title:  "Solar Neutrino",
     solar_ru_desc:   "Popular science for curious readers of all ages. Neutrino physics explained by a world-leading expert. Russian edition.",
@@ -56,6 +56,10 @@ const TRANSLATIONS = {
     digital_edition:        "Digital Edition (PDF)",
     digital_edition_bundle: "Complete Digital Edition (2 PDFs)",
     promo_code_note:        "If you have a promotional code, you can enter it on the checkout page after clicking Buy Now.",
+    /* LTO 2026-06-12 → 2026-07-12 — remove these three on July 13 revert */
+    lto_label:              "Limited-time offer, ends July 12",
+    gp_comparison:          "Both volumes here for $47.99 — save $12 vs. Google Play.",
+    bundle_meta_badge:      "Bundle: Both Volumes",
 
     /* BOOK PAGE – section headings */
     about_this_book:       "About This Book",
@@ -85,7 +89,7 @@ const TRANSLATIONS = {
     pub_val:         "Rospex Publishing",
 
     /* BOOK PAGE – upsell links */
-    also_bundle_link: "QFT Bundle (Vol. I and II), $59.99, save 14%",
+    also_bundle_link: "QFT Bundle (Vol. I and II), $47.99",
     bundle_delivery:  "Both PDFs delivered to your email within minutes of purchase.",
     whats_included:   "What's included",
 
@@ -325,7 +329,7 @@ const TRANSLATIONS = {
     qft2_ru_desc:    "514 страниц. Интеграл по траекториям, КЭД, неабелевы калибровочные теории и Стандартная модель.",
     bundle_ru_title: "КТП, полное издание: тома I и II",
     bundle_ru_desc:  "Оба тома по сниженной цене. 1 068 страниц, от основ до Стандартной модели.",
-    bundle_save:     "Комплект, скидка 14%",
+    bundle_save:     "Комплект",
     qft_en_desc:     "Полный английский перевод двухтомной серии. Ожидается через 3-4 недели.",
     solar_ru_title:  "Солнечное нейтрино",
     solar_ru_desc:   "Научно-популярная книга для читателей всех возрастов. Физика нейтрино от ведущего мирового эксперта. Русское издание.",
@@ -347,6 +351,10 @@ const TRANSLATIONS = {
     digital_edition:        "Цифровое издание (PDF)",
     digital_edition_bundle: "Полное цифровое издание (2 PDF)",
     promo_code_note:        "Если у вас есть промокод, введите его на странице оплаты после нажатия кнопки «Купить».",
+    /* LTO 2026-06-12 → 2026-07-12 — remove these three on July 13 revert */
+    lto_label:              "Промо-акция до 12 июля",
+    gp_comparison:          "Оба тома здесь за $47.99 — экономия $12 по сравнению с Google Play.",
+    bundle_meta_badge:      "Комплект: оба тома",
 
     /* BOOK PAGE – section headings */
     about_this_book:       "О книге",
@@ -376,7 +384,7 @@ const TRANSLATIONS = {
     pub_val:          "Rospex Publishing",
 
     /* BOOK PAGE – upsell links */
-    also_bundle_link: "Комплект КТП (Тома I и II), $59.99, скидка 14%",
+    also_bundle_link: "Комплект КТП (Тома I и II), $47.99",
     bundle_delivery:  "Оба PDF доставляются на email в течение нескольких минут после оплаты.",
     whats_included:   "Что включено",
 
