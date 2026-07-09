@@ -205,31 +205,6 @@ function toggleDesc(btn) {
   }
 }
 
-/* ─── Notify Modal ─── */
-function openNotifyModal(bookTitle) {
-  const modal = document.getElementById('notify-modal');
-  if (!modal) return;
-  document.getElementById('notify-modal-book').textContent = bookTitle;
-  document.getElementById('notify-modal-confirm').style.display = 'none';
-  document.getElementById('notify-modal-email').value = '';
-  modal.classList.add('open');
-}
-function closeNotifyModal() { const m = document.getElementById('notify-modal'); if (m) m.classList.remove('open'); }
-function submitNotifyModal() {
-  const email = document.getElementById('notify-modal-email').value;
-  if (!email || !email.includes('@')) return;
-  document.getElementById('notify-modal-confirm').style.display = 'block';
-}
-
-/* Inline notify form */
-function submitNotify() {
-  const email = document.getElementById('notify-email-input').value;
-  if (!email || !email.includes('@')) return;
-  const msg = document.getElementById('notify-confirm-msg');
-  if (msg) msg.style.display = 'block';
-  document.getElementById('notify-email-input').value = '';
-}
-
 /* ─── Learn More Modal ─── */
 function openLearnMoreModal() {
   const m = document.getElementById('learn-more-modal');
@@ -253,6 +228,11 @@ async function openPreview(pdfPath, bookTitle) {
     if (pdfPath.includes('vol1')) book = 'qft-vol1';
     else if (pdfPath.includes('vol2')) book = 'qft-vol2';
     else if (pdfPath.includes('bundle')) book = 'qft-bundle';
+    else {
+      /* IIKI titles: derive the product id from the preview filename */
+      const f = (pdfPath.split('/').pop() || '');
+      book = f.replace('-preview.pdf', '') || 'unknown';
+    }
     window.plausible('Preview Opened', { props: { book: book } });
   }
   modal.classList.add('open');
@@ -427,6 +407,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (p.includes('qft-volume-1')) book = 'qft-vol1';
     else if (p.includes('qft-volume-2')) book = 'qft-vol2';
     else if (p.includes('qft-bundle')) book = 'qft-bundle';
+    else {
+      /* IIKI titles: derive the slug from the page filename */
+      const slug = (p.split('/').pop() || '').replace('.html', '');
+      if (slug) book = slug;
+    }
     window.plausible('Buy Click', { props: { book: book } });
   });
 });

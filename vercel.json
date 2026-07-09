@@ -1,10 +1,10 @@
 {
   "functions": {
     "api/webhook.js": {
-      "maxDuration": 60
+      "maxDuration": 300
     },
     "api/encrypt.py": {
-      "maxDuration": 60
+      "maxDuration": 300
     }
   }
 }

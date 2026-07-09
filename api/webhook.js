@@ -18,6 +18,77 @@ const MASTER_PDFS = {
     filename:     'QFT-Volume-II-Naumov.pdf',
     title:        'Квантовая теория поля, Том II',
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // IIKI catalog titles (added v6, 2026-07-05). Same 3-layer protection as QFT.
+  // ⚠ Each url below MUST be replaced with the real Vercel Blob URL of the
+  //    master PDF before that title can deliver. Grep: REPLACE_WITH_BLOB_URL
+  // ─────────────────────────────────────────────────────────────────────────
+  'mech-problems-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/mech-problems-ru-cXM3jcMrdWMAiqijnCVR5RkA0uPvU2.pdf',
+    filename: 'Kotkin-Serbo_Classical-Mechanics-Problems.pdf',
+    title:    'Сборник задач по классической механике',
+  },
+  'analytical-mech-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/analytical-mech-ru-7zj5l0kG3a3bOTy48pTWgiJ5U8xa5U.pdf',
+    filename: 'Kotkin-Serbo-Chernykh_Analytical-Mechanics.pdf',
+    title:    'Лекции по аналитической механике',
+  },
+  'qm-lectures-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/qm-lectures-ru-G0a4Tl1W0Jx6W1F5BHcmC14C3w73IG.pdf',
+    filename: 'Serbo-Khriplovich_Quantum-Mechanics.pdf',
+    title:    'Лекции по квантовой механике',
+  },
+  'epp-lectures-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/epp-lectures-ru-Q8I3oO9oeBTo0446jR5oJU0HLySH1r.pdf',
+    filename: 'Serbo-Rudenko_Elementary-Particle-Physics.pdf',
+    title:    'Лекции по физике элементарных частиц',
+  },
+  'biophys-v1-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/biophys-v1-ru-tNSd8Tq4BycFPAk2G45pQEJVUXniIa.pdf',
+    filename: 'Rubin_Biophysics-Vol-I.pdf',
+    title:    'Биофизика. Том I. Теоретическая биофизика',
+  },
+  'biophys-v2-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/biophys-v2-ru-XNH19uiBjagMMvN2sMxn1tTiSXAhwR.pdf',
+    filename: 'Rubin_Biophysics-Vol-II.pdf',
+    title:    'Биофизика. Том II. Биофизика клеточных процессов. Биофизика мембранных процессов',
+  },
+  'biophys-v3-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/biophys-v3-ru-c1oIaPljDzkTQDTnbdzZBNs8FWJTFY.pdf',
+    filename: 'Rubin_Biophysics-Vol-III.pdf',
+    title:    'Биофизика. Том III. Биофизика клеточных процессов. Механизмы первичных фотобиологических процессов',
+  },
+  'geology-earth-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/geology-earth-ru-cEukhQaKSYMEylSQBGHLrJnutYk3Ja.pdf',
+    filename: 'Kuzmin-Yarmolyuk_Geological-Evolution-of-the-Earth.pdf',
+    title:    'Геологическая эволюция Земли: от космической пыли до обители человечества',
+  },
+  'astronomy-book-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/astronomy-book-ru-D3rTNLXMcaTf9hVTeuRTFOa8Jv6DMN.pdf',
+    filename: 'Kesselman_All-Astronomy-in-One-Book.pdf',
+    title:    'Вся астрономия в одной книге (книга для чтения по астрономии)',
+  },
+  'physics-book-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/physics-book-ru-onO2yy4vAooZJpmPeG6BoaAUP8se1W.pdf',
+    filename: 'Kesselman_All-of-Physics-in-One-Book.pdf',
+    title:    'Вся физика в одной книге: от плоской Земли до Большого взрыва',
+  },
+  'history-physics-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/history-physics-ru-j9vJmrMSNyc8q32cWESDWrx0PHzxXl.pdf',
+    filename: 'Kesselman_Another-History-of-Physics.pdf',
+    title:    'Другая история физики',
+  },
+  'lives-physicists-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/lives-physicists-ru-2Jeb7y6KGmyj516AQWXxsb4w5a8CN8.pdf',
+    filename: 'Kesselman_Lives-of-Famous-Physicists-and-Astronomers.pdf',
+    title:    'Жизнеописания знаменитых физиков и астрономов',
+  },
+  'believing-impossible-ru': {
+    url:      'https://wuoucjncdd6n4che.public.blob.vercel-storage.com/believing-impossible-ru-lQIyr4Y0LU1M5ezamuOBJpOgUUj0On.pdf',
+    filename: 'Kesselman_Believing-the-Impossible.pdf',
+    title:    'Поверить в невозможное: апгрейд здравого смысла',
+  },
 };
 
 const PRODUCTS = {
@@ -41,6 +112,99 @@ const PRODUCTS = {
     displayTitle: 'Quantum Field Theory for Experimentalists and Beyond',
     subtitle:     'Volumes I & II (Russian Edition) · Dmitry V. Naumov',
     coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/qft-bundle-ru.png',
+  },
+
+  // ── IIKI catalog titles (added v6) ──
+  'mech-problems-ru': {
+    pdfs:         ['mech-problems-ru'],
+    name:         'Collected Problems in Classical Mechanics (Russian Edition)',
+    displayTitle: 'Collected Problems in Classical Mechanics',
+    subtitle:     'Russian Edition · G. L. Kotkin, V. G. Serbo',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/mech-problems-ru.jpg',
+  },
+  'analytical-mech-ru': {
+    pdfs:         ['analytical-mech-ru'],
+    name:         'Lectures on Analytical Mechanics (Russian Edition)',
+    displayTitle: 'Lectures on Analytical Mechanics',
+    subtitle:     'Russian Edition · G. L. Kotkin, V. G. Serbo, A. I. Chernykh',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/analytical-mech-ru.jpg',
+  },
+  'qm-lectures-ru': {
+    pdfs:         ['qm-lectures-ru'],
+    name:         'Lectures on Quantum Mechanics (Russian Edition)',
+    displayTitle: 'Lectures on Quantum Mechanics',
+    subtitle:     'Russian Edition · V. G. Serbo, I. B. Khriplovich',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/qm-lectures-ru.jpg',
+  },
+  'epp-lectures-ru': {
+    pdfs:         ['epp-lectures-ru'],
+    name:         'Lectures on Elementary Particle Physics (Russian Edition)',
+    displayTitle: 'Lectures on Elementary Particle Physics',
+    subtitle:     'Russian Edition · V. G. Serbo, A. S. Rudenko',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/epp-lectures-ru.jpg',
+  },
+  'biophys-v1-ru': {
+    pdfs:         ['biophys-v1-ru'],
+    name:         'Biophysics, Vol. I — Theoretical Biophysics (Russian Edition)',
+    displayTitle: 'Biophysics, Vol. I — Theoretical Biophysics',
+    subtitle:     'Russian Edition · A. B. Rubin',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/biophys-v1-ru.jpg',
+  },
+  'biophys-v2-ru': {
+    pdfs:         ['biophys-v2-ru'],
+    name:         'Biophysics, Vol. II — Membrane Processes (Russian Edition)',
+    displayTitle: 'Biophysics, Vol. II — Membrane Processes',
+    subtitle:     'Russian Edition · A. B. Rubin',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/biophys-v2-ru.jpg',
+  },
+  'biophys-v3-ru': {
+    pdfs:         ['biophys-v3-ru'],
+    name:         'Biophysics, Vol. III — Photobiological Mechanisms (Russian Edition)',
+    displayTitle: 'Biophysics, Vol. III — Photobiological Mechanisms',
+    subtitle:     'Russian Edition · A. B. Rubin',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/biophys-v3-ru.jpg',
+  },
+  'geology-earth-ru': {
+    pdfs:         ['geology-earth-ru'],
+    name:         'Geological Evolution of the Earth (Russian Edition)',
+    displayTitle: 'Geological Evolution of the Earth',
+    subtitle:     'Russian Edition · M. I. Kuzmin, V. V. Yarmolyuk et al.',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/geology-earth-ru.jpg',
+  },
+  'astronomy-book-ru': {
+    pdfs:         ['astronomy-book-ru'],
+    name:         'All Astronomy in One Book (Russian Edition)',
+    displayTitle: 'All Astronomy in One Book',
+    subtitle:     'Russian Edition · V. S. Kesselman',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/astronomy-book-ru.jpg',
+  },
+  'physics-book-ru': {
+    pdfs:         ['physics-book-ru'],
+    name:         'All of Physics in One Book (Russian Edition)',
+    displayTitle: 'All of Physics in One Book',
+    subtitle:     'Russian Edition · V. S. Kesselman',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/physics-book-ru.jpg',
+  },
+  'history-physics-ru': {
+    pdfs:         ['history-physics-ru'],
+    name:         'Another History of Physics (Russian Edition)',
+    displayTitle: 'Another History of Physics',
+    subtitle:     'Russian Edition · V. S. Kesselman',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/history-physics-ru.jpg',
+  },
+  'lives-physicists-ru': {
+    pdfs:         ['lives-physicists-ru'],
+    name:         'Lives of Famous Physicists and Astronomers (Russian Edition)',
+    displayTitle: 'Lives of Famous Physicists and Astronomers',
+    subtitle:     'Russian Edition · V. S. Kesselman',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/lives-physicists-ru.jpg',
+  },
+  'believing-impossible-ru': {
+    pdfs:         ['believing-impossible-ru'],
+    name:         'Believing the Impossible (Russian Edition)',
+    displayTitle: 'Believing the Impossible',
+    subtitle:     'Russian Edition · V. S. Kesselman',
+    coverUrl:     'https://www.rospexpublishing.com/assets/images/covers/believing-impossible-ru.jpg',
   },
 };
 

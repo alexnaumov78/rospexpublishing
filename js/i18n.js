@@ -14,7 +14,7 @@ const TRANSLATIONS = {
     /* HERO */
     hero_eyebrow: "Science and Education Books",
     hero_h1:     "Russia's best science books for curious readers everywhere",
-    hero_sub:    "Curated textbooks and popular science in physics, astrophysics, cosmology, particle physics, and modern science, by Russia's leading scientists and researchers, available worldwide.",
+    hero_sub:    "Curated digital editions of science textbooks and popular reading from Russia's leading authors: physics, astronomy, biophysics, and the earth sciences.",
     hero_cta1:   "Browse All Books",
     hero_cta2:   "Our Authors",
 
@@ -24,12 +24,18 @@ const TRANSLATIONS = {
     avail_sub:     "Two comprehensive graduate-level volumes, rigorous and practical, written for physicists who work with experiment.",
     coming_label:  "Coming Soon",
     coming_title:  "Upcoming Releases",
-    coming_sub:    "English editions of the QFT series and the Solar Neutrino popular science book. Sign up to be notified at launch.",
+    coming_sub:    "English editions of the QFT series and the Solar Neutrino popular science book.",
+    iiki_label:    "From the IIKI Catalog",
+    iiki_title:    "Russian Science & Popular Reading",
+    iiki_sub:      "Graduate textbooks and monographs from Novosibirsk State University and Moscow State University, in Russian.",
 
     /* BOOKS – shared labels */
     qft_title_en:    "Quantum Field Theory for Experimentalists and Beyond",
     qft_title_ru:    "Quantum Field Theory for Experimentalists and Beyond",
     qft_author:      "Dmitry V. Naumov",
+    qft_vol1_fulltitle:   "Quantum Field Theory for Experimentalists and Beyond, Volume I",
+    qft_vol2_fulltitle:   "Quantum Field Theory for Experimentalists and Beyond, Volume II",
+    qft_bundle_fulltitle: "QFT Complete Edition: Volumes I and II",
     qft1_ru_desc:    "554 pages. Foundations through advanced QFT: Feynman diagrams, renormalization, gauge theories. Written for physicists who work with experiment.",
     qft2_ru_desc:    "514 pages. Path integrals, QED, non-abelian gauge theories, and the Standard Model.",
     bundle_ru_title: "QFT Complete Edition: Volumes I and II",
@@ -42,8 +48,9 @@ const TRANSLATIONS = {
     solar_en_desc:   "Popular science for curious readers of all ages. Neutrino physics explained by a world-leading expert. English edition.",
     btn_buy:         "Buy Now",
     btn_buy_bundle:  "Buy Bundle",
-    btn_notify:      "Notify Me",
     btn_preview:     "Preview",
+    preview_note_generic: "Opening pages only — protected preview",
+    toc_h: "Table of Contents (Russian)",
     btn_preview_vol1: "Preview Vol. I",
     btn_preview_vol2: "Preview Vol. II",
 
@@ -58,7 +65,7 @@ const TRANSLATIONS = {
     promo_code_note:        "If you have a promotional code, you can enter it on the checkout page after clicking Buy Now.",
     /* LTO 2026-06-12 → 2026-07-12 — remove these three on July 13 revert */
     lto_label:              "Limited-time offer, ends July 12",
-    gp_comparison:          "Both volumes here for $47.99 — save $12 vs. Google Play.",
+    gp_comparison:          "Both volumes here for $47.99, a $12 saving vs. Google Play.",
     bundle_meta_badge:      "Bundle: Both Volumes",
 
     /* BOOK PAGE – section headings */
@@ -214,12 +221,6 @@ const TRANSLATIONS = {
     lm_close:   "Close",
     lm_contact: "Contact Us",
 
-    /* NOTIFY */
-    notify_label: "Stay Updated",
-    notify_title: "Get notified at launch",
-    notify_sub:   "Be the first to know when English editions and new titles become available.",
-    notify_btn:   "Notify Me",
-    notify_ok:    "You are on the list. We will email you at launch.",
 
     /* AUTHOR (authors.html) */
     author_label:    "Featured Author",
@@ -289,13 +290,263 @@ const TRANSLATIONS = {
     footer_link_contact:  "Contact Us",
     footer_link_authors:  "All Authors",
     footer_link_about:    "About Us",
-    footer_link_notify:   "Launch Notifications",
     footer_copy:          "Rospex Holdings LLC. All rights reserved.",
+    footer_link_refund: 'Delivery & Refunds',
+    rp_label: 'Buying from us',
+    rp_title: 'Delivery & Refund Policy',
+    rp_delivery_h: 'How delivery works',
+    rp_delivery_p1: 'Immediately after payment, we email you a secure download link (to the address you enter at checkout). The link stays valid for 72 hours. Your PDF is personalized with your name and email and protected with a password. The password is simply the email address you used at checkout.',
+    rp_delivery_p2: 'If the email does not arrive within 15 minutes, please check your spam folder, then write to books@rospexpublishing.com and we will resend it promptly.',
+    rp_refund_h: 'Refunds',
+    rp_refund_p1: 'We offer a full refund within 14 days of purchase if you were charged but did not receive the book, if the file is defective and we cannot fix it, or if you accidentally bought the same title twice.',
+    rp_refund_p2: 'Because each book is a digital file delivered instantly and personalized to the buyer, we cannot routinely refund purchases once the file has been downloaded. That said, we are a small publisher and would rather be fair than formal. If something is not right, write to us and we will find a solution.',
+    rp_how_h: 'How to request a refund',
+    rp_how_p1: 'Email books@rospexpublishing.com from the address you used at checkout (or mention it), with the book title and the purchase date. Refunds go back to the original payment method via Stripe and typically appear within 5 to 10 business days.',
+    rp_region_h: 'Regional availability',
+    rp_region_p1: 'Due to territorial publishing rights, our digital editions are not sold in Russia or CIS countries, and payments from these regions cannot be processed.',
+    trust_line: 'Instant email delivery · Personalized PDF · <a href="../refund-policy.html" style="color:var(--gold-lt)">14-day refund policy</a>',
     family_label:         "Part of the Rospex family:",
 
     /* MODALS */
-    modal_notify_sub: "Enter your email and we will send one notification when this book launches.",
     modal_close:      "Close",
+
+    /* ══════════ IIKI EXPANSION (EN) ══════════ */
+
+    /* NAV + HERO (hero_sub rewritten in place above? — kept here for the new label) */
+    nav_categories: "Categories",
+
+    /* BROWSE BY CATEGORY (homepage section) */
+    browse_cat_label: "Browse the Catalog",
+    browse_cat_title: "Browse by Category",
+    browse_cat_sub:   "Six subject areas across physics, the life sciences, and the history of science, from graduate textbooks to popular reading.",
+    search_placeholder: "Search books, authors, topics…",
+    search_results_for: "results for",
+    search_no_results: "No matches. Try another word, or browse by category:",
+
+    /* CATEGORY NAMES + ONE-LINE BLURBS */
+    cat_c1_name:  "Quantum & Particle Physics",
+    cat_c1_blurb: "Quantum mechanics, quantum field theory, and the physics of elementary particles.",
+    cat_c2_name:  "Classical & Theoretical Physics",
+    cat_c2_blurb: "Classical, analytical, and theoretical mechanics: the foundations of physics.",
+    cat_c3_name:  "Astronomy, Astrophysics & Cosmology",
+    cat_c3_blurb: "Stars, galaxies, neutrinos, and the structure and history of the Universe.",
+    cat_c4_name:  "Earth & Planetary Sciences",
+    cat_c4_blurb: "Geology, geophysics, and the sciences of the Earth and the planets.",
+    cat_c5_name:  "Biophysics & Life Sciences",
+    cat_c5_blurb: "The physics of living systems, from molecules and membranes to photosynthesis and vision.",
+    cat_c6_name:  "History of Science & Popular Reading",
+    cat_c6_blurb: "Popular science and the history of scientific ideas, for curious readers of all backgrounds.",
+
+    /* CATALOG UI */
+    catalog_title:          "Catalog",
+    catalog_filter_all:     "All",
+    catalog_filter_textbook:"Textbooks",
+    catalog_filter_popular: "Popular Science",
+    audience_textbook:      "Textbook",
+    audience_popular:       "Popular Science",
+    coming_soon_badge:      "Coming soon",
+
+    /* NSU CURRICULUM RAIL */
+    nsu_rail_label: "Part of the NSU mechanics → QFT sequence",
+
+    /* ── BOOK 1: Collected Problems in Classical Mechanics (mech_problems) ── */
+    mech_problems_title: "Collected Problems in Classical Mechanics",
+    mech_problems_short: "The classic Novosibirsk problem book: 13 thematic sections, every problem worked through in full.",
+    mech_problems_about_p1: "One of the most enduring physics problem books to come out of Novosibirsk State University. Begun in 1966 by Gleb Kotkin as a system of assignments “in the spirit of the Landau–Lifshitz course” and refined with Valery Serbo over more than half a century of teaching, this fifth Russian edition (2021, 404 pp.) is the most complete to date.",
+    mech_problems_about_p2: "Thirteen sections track the standard theoretical-mechanics syllabus, from one-dimensional motion and central fields to canonical transformations and adiabatic invariants. Crucially, each problem is followed by a full worked solution, so the book serves both as an exercise set and as a self-study companion. By coverage it corresponds to Landau–Lifshitz’s Mechanics and Goldstein’s Classical Mechanics; the Russian original behind Oxford’s Exploring Classical Mechanics (2020).",
+    mech_problems_kp1: "Thirteen graded sections, from Newtonian motion to adiabatic invariants",
+    mech_problems_kp2: "Every problem followed by a complete worked solution",
+    mech_problems_kp3: "Coverage matched to Landau–Lifshitz and Goldstein",
+    mech_problems_kp4: "The Russian original behind Oxford’s Exploring Classical Mechanics (2020)",
+    mech_problems_audience: "Physics and mathematics undergraduates, graduate students, and lecturers. Opening sections need only Newtonian mechanics; Lagrangian and Hamiltonian methods are introduced progressively.",
+
+    /* ── BOOK 2: Lectures on Analytical Mechanics (analytical_mech) ── */
+    analytical_mech_title: "Lectures on Analytical Mechanics",
+    analytical_mech_short: "A modern NSU lecture course in analytical mechanics, the gateway to field theory, quantum mechanics, and statistical physics.",
+    analytical_mech_about_p1: "Lectures on Analytical Mechanics distils decades of teaching by the Novosibirsk State University theory group into a single graduate-bridging course. Written by Gleb Kotkin, Valery Serbo, and Alexander Chernykh, this third edition (2022, 272 pp.) presents analytical mechanics not as an end in itself but as the foundation for the rest of theoretical physics.",
+    analytical_mech_about_p2: "Five chapters carry the reader from Newtonian central-field motion and scattering through Lagrangian mechanics, oscillations, the Hamiltonian formalism, and rigid-body dynamics. A distinctive feature of this edition is roughly ten new illustrative sections (the classical Zeeman effect, an EPR/NMR model, the Penning trap, Lagrange points, and an introduction to dynamical chaos), with seminar-tested problems at every step.",
+    analytical_mech_kp1: "Lagrangian and Hamiltonian formalism, oscillations, and rigid-body motion",
+    analytical_mech_kp2: "Framed explicitly as preparation for field theory, QM, and statistical physics",
+    analytical_mech_kp3: "~10 new applied sections (Zeeman effect, Penning trap, dynamical chaos)",
+    analytical_mech_kp4: "Seminar-tested problems integrated with every topic",
+    analytical_mech_audience: "Upper-division physics and mathematics undergraduates, graduate students, and lecturers. Prerequisites: introductory mechanics, calculus, and linear algebra.",
+
+    /* ── BOOK 3: Lectures on Quantum Mechanics (qm_lectures) ── */
+    qm_lectures_title: "Lectures on Quantum Mechanics",
+    qm_lectures_short: "A Novosibirsk lecture course in quantum mechanics by Serbo and Khriplovich, the quantum step toward field theory and particle physics.",
+    qm_lectures_about_p1: "Lectures on Quantum Mechanics by V. G. Serbo and I. B. Khriplovich (2023, 266 pp.) grows out of many years of lectures and seminars on the Physics Faculty of Novosibirsk State University. It is written in the clear, physically motivated style of the Novosibirsk school, pairing each topic with problems tested in the classroom.",
+    qm_lectures_about_p2: "The course is the quantum-mechanics link in the NSU sequence that runs from classical and analytical mechanics through quantum mechanics to elementary particle physics and quantum field theory. Co-authored by Iosif Khriplovich, a corresponding member of the Russian Academy of Sciences and a Pomeranchuk Prize laureate known for his work on atomic parity violation, it carries the authority of one of the leading Soviet and Russian schools of theoretical physics.",
+    qm_lectures_kp1: "A complete one-course treatment of non-relativistic quantum mechanics",
+    qm_lectures_kp2: "Problems tested over many years of NSU seminars",
+    qm_lectures_kp3: "Prepares directly for elementary particle physics and QFT",
+    qm_lectures_kp4: "Co-authored by I. B. Khriplovich, Corresponding Member of the RAS",
+    qm_lectures_audience: "Physics undergraduates and graduate students, and lecturers. Prerequisites: classical and analytical mechanics, calculus, and linear algebra.",
+
+    /* ── BOOK 4: Lectures on Elementary Particle Physics (epp_lectures) ── */
+    epp_lectures_title: "Lectures on Elementary Particle Physics",
+    epp_lectures_short: "A hands-on introductory course from NSU and the Budker Institute, bridging quantum field theory and real accelerator experiments.",
+    epp_lectures_about_p1: "Lectures on Elementary Particle Physics (Introductory Course) by V. G. Serbo and A. S. Rudenko (2025, 232 pp.) distils the authors’ long experience teaching the one-semester particle-physics course to fourth-year physics students at Novosibirsk State University. Its defining feature is its connection to the Budker Institute of Nuclear Physics (BINP), the base institute for the course.",
+    epp_lectures_about_p2: "Rather than a purely formal treatment of quantum field theory, the book keeps a constant link to real experimental processes measured on BINP’s colliders. Beginning with familiar objects worked through in deliberate detail, it builds the apparatus of relativistic field theory (the Lagrangian formalism and conservation laws, scalar and Dirac fields, and the Feynman-diagram technique) and culminates in a student project computing real cross sections and event rates. A concluding “Supplements” section offers mini-reviews tied to modern experiment.",
+    epp_lectures_kp1: "Experiment-anchored: tied to the Budker INP and real collider processes",
+    epp_lectures_kp2: "Genuinely introductory, paced from familiar objects to advanced material",
+    epp_lectures_kp3: "Learn to draw and compute Feynman diagrams",
+    epp_lectures_kp4: "A required project: compute cross sections and event rates for a real accelerator",
+    epp_lectures_audience: "Fourth-year physics undergraduates, graduate students, and lecturers. Prerequisites: general physics, classical and quantum mechanics, and special relativity.",
+
+    /* ── BOOK 5: Biophysics, Vol. I — Theoretical Biophysics (biophys_v1) ── */
+    biophys_v1_title: "Biophysics, Vol. I: Theoretical Biophysics",
+    biophys_v1_short: "Volume I of Academician Rubin’s standard textbook: kinetics, thermodynamics, mathematical modelling, and molecular biophysics.",
+    biophys_v1_about_p1: "The opening volume of Academician Andrey B. Rubin’s three-volume Biophysics, the foundational Russian-language textbook of the discipline (4th edition, 2013, 472 pp.; recommended for the Biology direction and the Biophysics specialty). It develops the theoretical apparatus on which the cellular, membrane, and photobiological material of Volumes II and III rests.",
+    biophys_v1_about_p2: "Part I, Biophysics of complex systems, covers the kinetics of biological processes (dynamic models, biological triggers, oscillations, deterministic chaos) and the thermodynamics of open systems near and far from equilibrium. Part II, Molecular biophysics, treats the spatial organisation of biopolymers, intramolecular interactions, conformational energy, protein folding, and the dynamic properties of globular proteins. A strong mathematical-modelling thread runs throughout, a hallmark of the Moscow biophysics school.",
+    biophys_v1_kp1: "Kinetics of biological processes: triggers, oscillations, deterministic chaos",
+    biophys_v1_kp2: "Thermodynamics of open systems near and far from equilibrium",
+    biophys_v1_kp3: "Molecular biophysics: biopolymer conformations and protein folding",
+    biophys_v1_kp4: "A strong mathematical-modelling thread throughout",
+    biophys_v1_audience: "University students and postgraduates in Biology and Biophysics, and researchers in physico-chemical biology. Assumes the standard first–third-year university grounding in biology, physics, chemistry, and calculus.",
+
+    /* ── BOOK 6: Biophysics, Vol. II — Cellular & Membrane Processes (biophys_v2) ── */
+    biophys_v2_title: "Biophysics, Vol. II: Biophysics of Cellular Processes, Membrane Processes",
+    biophys_v2_short: "Volume II, the cellular and membrane core: transport, bioelectrogenesis, ion channels, bioenergetics, and muscle contraction.",
+    biophys_v2_about_p1: "The central volume of Academician Andrey B. Rubin’s three-volume Biophysics (4th edition, 2013, 384 pp.). Building on the theoretical apparatus of Volume I, it turns to the physico-chemical mechanisms of the most important processes in living cells.",
+    biophys_v2_about_p2: "It covers the molecular organisation and conformational properties of biological membranes; the transport of non-electrolytes and ions (electrodiffusion, ion channels, selectivity and gating, the Hodgkin–Huxley model of excitable membranes, and active transport); and energy transformation in biomembranes, including electron transport, proton translocation, and the ATPase molecular motor, together with the physics of muscle contraction and intracellular signalling. The treatment combines rigorous physico-chemical models with quantitative, often mathematically modelled, descriptions.",
+    biophys_v2_kp1: "Membrane structure, transport, and bioelectrogenesis",
+    biophys_v2_kp2: "Ion channels: selectivity, gating, and the Hodgkin–Huxley model",
+    biophys_v2_kp3: "Bioenergetics: electron transport and the ATPase molecular motor",
+    biophys_v2_kp4: "Muscle contraction and the actin–myosin motor",
+    biophys_v2_audience: "University students and postgraduates in Biology and Biophysics, and researchers in membrane biophysics, neurophysiology, and bioenergetics. Helpful to have read Volume I.",
+
+    /* ── BOOK 7: Biophysics, Vol. III — Photobiological Processes (biophys_v3) ── */
+    biophys_v3_title: "Biophysics, Vol. III: Biophysics of Cellular Processes, Photobiological Mechanisms",
+    biophys_v3_short: "Volume III, the photobiological capstone: charge transfer in biopolymers, the primary processes of photosynthesis, and vision.",
+    biophys_v3_about_p1: "The concluding volume of Academician Andrey B. Rubin’s three-volume Biophysics (4th edition, 2013, 480 pp.). It carries the reader from the quantum-mechanical foundations of biomolecular electronics to the primary acts of photosynthesis and vision, reflecting Rubin’s own principal research field, the biophysics of photosynthesis.",
+    biophys_v3_about_p2: "It opens with the electronic properties of biopolymers (the quantum description of molecules, mechanisms of charge transfer and energy migration through tunnelling and the Marcus and Jortner theories, and enzymatic catalysis), then treats the primary processes of photosynthesis (antenna complexes, reaction centres, photosystems I and II) and the primary photoprocesses of biological systems (bacteriorhodopsin, rhodopsin and vision, phytochromes, and photodestruction). The treatment is strongly physical and quantitative, integrating quantum theory, laser-spectroscopy data, and mathematical modelling.",
+    biophys_v3_kp1: "Quantum foundations of charge transfer in biopolymers (Marcus/Jortner theory)",
+    biophys_v3_kp2: "Primary processes of photosynthesis: antenna complexes, reaction centres, PS I & II",
+    biophys_v3_kp3: "Photoreception: bacteriorhodopsin, rhodopsin, and vision",
+    biophys_v3_kp4: "Photoregulation and photodestructive processes",
+    biophys_v3_audience: "University students and postgraduates in Biology and Biophysics, and researchers in photobiology and photosynthesis. The quantum chapters assume comfort with introductory QM; helpful to have read Volumes I–II.",
+
+    /* ── AUTHOR: Serbo (auth_serbo) ── */
+    auth_serbo_name:  "Valery G. Serbo",
+    auth_serbo_title: "Professor of Theoretical Physics, Novosibirsk State University; Senior Researcher, Sobolev Institute of Mathematics, SB RAS",
+    auth_serbo_creds: "Doctor of Physical and Mathematical Sciences (1984); Professor (1986); Honorary Professor of NSU (2011)",
+    auth_serbo_bio_p1: "Valery Georgievich Serbo (b. 1939) is a Soviet and Russian theoretical physicist whose entire career has been based in the Novosibirsk scientific centre. He is Professor at the Chair of Theoretical Physics of Novosibirsk State University and a senior researcher in the Theoretical Physics Laboratory of the S. L. Sobolev Institute of Mathematics, SB RAS, within the theory community linked to the Budker Institute of Nuclear Physics.",
+    auth_serbo_bio_p2: "He is best known as a co-originator of the photon–photon (γγ) collider concept, and his research spans the quantum electrodynamics of high-energy processes, the equivalent-photon method, and, in recent years, the physics of “twisted” (vortex) photons, electrons, and neutrons. He is the author or co-author of more than 200 scientific publications.",
+    auth_serbo_bio_p3: "As a teacher, Serbo has lectured at NSU on analytical mechanics, quantum mechanics, and particle physics, and held visiting positions at Minnesota, Leipzig, Dresden, Milan, Paris, Heidelberg, Brookhaven, and SLAC. He is co-author of the widely used Novosibirsk physics textbooks, the English editions of which were published by Oxford University Press.",
+
+    /* ── AUTHOR: Kotkin (auth_kotkin) ── */
+    auth_kotkin_name:  "Gleb L. Kotkin (1934–2020)",
+    auth_kotkin_title: "Professor of Theoretical Physics, Novosibirsk State University",
+    auth_kotkin_creds: "Candidate of Physical and Mathematical Sciences; Professor (1992); medal “For Valorous Labour”",
+    auth_kotkin_bio_p1: "Gleb Leonidovich Kotkin (1934–2020) was a Russian theoretical physicist and one of the most respected teachers at the Faculty of Physics of Novosibirsk State University. A 1958 graduate of Moscow State University, he joined NSU in 1961 and worked there for nearly six decades, rising from assistant to professor of the Department of Theoretical Physics.",
+    auth_kotkin_bio_p2: "His research lay in high-energy and elementary-particle physics, and at NSU he taught the core courses in statistical physics, analytical mechanics, and the theory of oscillations. He is best known internationally for the Collection of Problems in Classical Mechanics, co-authored with V. G. Serbo, which ran to five Russian editions and was translated into English, Spanish, and French. A pioneer of computer-modelling laboratory courses in the USSR, he is remembered for his deep physical intuition and personal modesty; a lecture hall at NSU is named in his honour.",
+    auth_kotkin_bio_p3: "",
+
+    /* ── AUTHOR: Chernykh (auth_chernykh) ── */
+    auth_chernykh_name:  "Alexander I. Chernykh",
+    auth_chernykh_title: "Lecturer, Novosibirsk State University",
+    auth_chernykh_creds: "PhD (Candidate of Physical and Mathematical Sciences); specialist in numerical modelling",
+    auth_chernykh_bio_p1: "Alexander Ivanovich Chernykh holds a PhD in physics and mathematics and specialises in numerical modelling. He teaches in the Novosibirsk State University physics programme, where his courses include methods of mathematical physics, analytical mechanics, statistical physics, and general relativity.",
+    auth_chernykh_bio_p2: "He is a co-author of Lectures on Analytical Mechanics (with G. L. Kotkin and V. G. Serbo) and of the English-language problem collection Mathematical Methods of Physics: Problems with Solutions (Jenny Stanford / Routledge, 2023), produced by the Novosibirsk Akademgorodok theoretical-physics group.",
+    auth_chernykh_bio_p3: "",
+
+    /* ── AUTHOR: Khriplovich (auth_khriplovich) ── */
+    auth_khriplovich_name:  "Iosif B. Khriplovich (1937–2024)",
+    auth_khriplovich_title: "Theoretical physicist; Budker Institute of Nuclear Physics and Novosibirsk State University",
+    auth_khriplovich_creds: "Corresponding Member of the RAS (2000); Silver Dirac Medal (2004); Pomeranchuk Prize (2005)",
+    auth_khriplovich_bio_p1: "Iosif Bentsionovich Khriplovich (1937–2024) was a distinguished Soviet and Russian theoretical physicist. He worked at the Budker Institute of Nuclear Physics in Novosibirsk from 1959, held the chair of theoretical physics at Novosibirsk State University, and later worked in St. Petersburg.",
+    auth_khriplovich_bio_p2: "He was elected a Corresponding Member of the Russian Academy of Sciences in 2000 and is especially known for his work on atomic parity violation, which provided some of the first tests of the electroweak theory in atoms. His honours include the Silver Dirac Medal (2004) and the Pomeranchuk Prize (2005). With V. G. Serbo he co-authored Lectures on Quantum Mechanics, drawn from their teaching at NSU.",
+    auth_khriplovich_bio_p3: "",
+
+    /* ── AUTHOR: Rudenko (auth_rudenko) ── */
+    auth_rudenko_name:  "Aleksandr S. Rudenko",
+    auth_rudenko_title: "Theoretical physicist, Novosibirsk State University and the Budker Institute of Nuclear Physics, SB RAS",
+    auth_rudenko_creds: "Candidate of Physical and Mathematical Sciences; particle physics, QFT, and early-Universe cosmology",
+    auth_rudenko_bio_p1: "Aleksandr Sergeevich Rudenko is a theoretical physicist at Novosibirsk State University and the Budker Institute of Nuclear Physics of the Siberian Branch of the Russian Academy of Sciences. At NSU he is associated with the Theoretical Physics and Elementary Particle Physics sections and the Laboratory of Cosmology and Elementary Particle Physics.",
+    auth_rudenko_bio_p2: "His research spans elementary particle physics and quantum field theory (meson form factors, e⁺ e⁻ annihilation processes, and precision electroweak measurements) as well as early-Universe cosmology, including inflation, dark matter, and domain-wall evolution. His extensive experience lecturing on the elementary-particle-physics course at NSU underpins the 2025 textbook co-authored with Professor V. G. Serbo.",
+    auth_rudenko_bio_p3: "",
+
+    /* ── AUTHOR: Rubin (auth_rubin) ── */
+    auth_rubin_name:  "Andrey B. Rubin",
+    auth_rubin_title: "Head, Department of Biophysics, Faculty of Biology, Lomonosov Moscow State University",
+    auth_rubin_creds: "Academician of the RAS (2022); Doctor of Biological Sciences (1969); Professor; USSR State Prize; RAS Timiryazev Prize (2016)",
+    auth_rubin_bio_p1: "Andrey Borisovich Rubin (b. 1937, Moscow) is a Soviet and Russian biophysicist, Full Member (Academician) of the Russian Academy of Sciences. Since 1976 he has headed the Department of Biophysics of the Faculty of Biology at Lomonosov Moscow State University, a chair he has led for nearly half a century.",
+    auth_rubin_bio_p2: "His research lies at the confluence of biology, physics, mathematics, and physical chemistry: the biophysics of photosynthesis, membrane biophysics, the kinetics and thermodynamics of electron-transport processes, and the mathematical modelling of biological systems. He proposed a new concept of the physiological-biochemical regulation of the primary processes of photosynthesis and advanced the theory of the photoconformational transition in photoactive proteins.",
+    auth_rubin_bio_p3: "Rubin is the principal architect of biophysics education in Russia and the author of the standard textbook Biophysics. He has authored or co-authored some 900 scientific papers, 40 monographs, and 35 patents, and has trained 19 doctors and more than 50 candidates of science. His honours include the USSR State Prize, the RAS Timiryazev Prize (2016), and the titles Honoured Scientist of the Russian Federation and Honoured Professor of MSU.",
+    geol_earth_title: "Geological Evolution of the Earth: From Cosmic Dust to the Abode of Humanity",
+    geol_earth_short: "A 2026 Russian Academy of Sciences collective monograph on the geological history of Earth.",
+    geol_earth_about_p1: "A flagship 2026 synthesis of Earth's geological evolution, written by a ten-strong collective of Russian Academy of Sciences authors and edited by academicians M. I. Kuzmin and V. V. Yarmolyuk. It traces the planet from its origin in cosmic dust through the Hadean, Archean, Proterozoic and Phanerozoic to the emergence of Homo sapiens.",
+    geol_earth_about_p2: "The book integrates plate and plume tectonics, mantle geochemistry, paleomagnetism, supercontinent cycles (Kenorland, Nuna, Rodinia, Pangaea), absolute paleotectonic reconstructions, metallogeny and the co-evolution of the biosphere. Among its ten authors is the crystallographer Artem R. Oganov. It is densely referenced and richly illustrated in colour.",
+    geol_earth_kp1: "Earth's history from accretion to the noosphere, stage by stage",
+    geol_earth_kp2: "Plate and plume tectonics, supercontinent cycles, and absolute reconstructions",
+    geol_earth_kp3: "Mantle geochemistry, paleomagnetism, and metallogeny",
+    geol_earth_kp4: "A ten-author RAS collective, edited by academicians Kuzmin and Yarmolyuk",
+    geol_earth_audience: "Graduate students, researchers, and university faculty in the earth sciences, and scientifically literate readers drawn to the history of the planet.",
+    astro_book_title: "All Astronomy in One Book: A Reader's Guide to Astronomy",
+    astro_book_short: "The great discoveries of astronomy, and how astronomers actually measure the cosmos.",
+    astro_book_about_p1: "Vladimir Kesselman's popular guide to astronomy gathers the field's most important discoveries, from antiquity to the present day, into a single readable volume. Its distinctive emphasis is on method: how scientists determine the distances, sizes, masses and compositions of objects that lie unimaginably far from Earth.",
+    astro_book_about_p2: "Along the way the book explains the origin of the Solar System, the life of stars, and the structure of galaxies and the Universe, keeping the mathematics light and the narrative clear. It is written for the curious general reader rather than the specialist.",
+    astro_book_kp1: "The major discoveries of astronomy, from antiquity to today",
+    astro_book_kp2: "How distances, masses and compositions of distant objects are measured",
+    astro_book_kp3: "The origin of the Solar System, stars, and galaxies",
+    astro_book_kp4: "Clear, largely non-mathematical popular science",
+    astro_book_audience: "General readers curious about astronomy; students and teachers looking for an accessible overview.",
+    phys_book_title: "All of Physics in One Book: From the Flat Earth to the Big Bang",
+    phys_book_short: "The whole story of physics in one book, from the flat Earth to the Big Bang.",
+    phys_book_about_p1: "Vladimir Kesselman's sweeping popular history carries the reader across the entire development of physics, from the ancient picture of a flat Earth to modern cosmology and the Big Bang. It is organised as a single continuous narrative rather than a textbook.",
+    phys_book_about_p2: "The book shows how ideas about matter, motion, light, energy and the Universe were built, overturned and rebuilt, connecting mechanics, thermodynamics, electromagnetism, relativity and quantum theory into one accessible story. The mathematics is kept light throughout.",
+    phys_book_kp1: "The full arc of physics, from antiquity to modern cosmology",
+    phys_book_kp2: "How key ideas were formed, overturned and rebuilt",
+    phys_book_kp3: "Mechanics, electromagnetism, relativity and quantum theory in one narrative",
+    phys_book_kp4: "Accessible popular science, light on mathematics",
+    phys_book_audience: "General readers, students and teachers who want the big picture of physics in a single volume.",
+    hist_phys_title: "Another History of Physics",
+    hist_phys_short: "A fresh, unconventional retelling of how physics really developed.",
+    hist_phys_about_p1: "In Another History of Physics, Vladimir Kesselman revisits the story of the science from unexpected angles, highlighting the false starts, disputes and forgotten contributors that the standard textbook account tends to smooth over.",
+    hist_phys_about_p2: "The result is a more human and more surprising history: how discoveries were actually made, who really made them, and how much of the accepted narrative deserves a second look. It is written for the general reader in Kesselman's clear, narrative style.",
+    hist_phys_kp1: "Physics history told from unconventional angles",
+    hist_phys_kp2: "False starts, priority disputes and forgotten contributors",
+    hist_phys_kp3: "How discoveries were really made, and by whom",
+    hist_phys_kp4: "Kesselman's clear, narrative popular-science style",
+    hist_phys_audience: "Readers who already enjoy popular science and want a fresh perspective on the history of physics.",
+    lives_phys_title: "Lives of Famous Physicists and Astronomers",
+    lives_phys_short: "Vivid biographies of the scientists who shaped physics and astronomy.",
+    lives_phys_about_p1: "This collection of biographical portraits brings to life the physicists and astronomers whose ideas built the modern picture of the world. Kesselman tells their stories as human lives: the struggles, rivalries, luck and persistence behind the famous results.",
+    lives_phys_about_p2: "More than a gallery of names, the book connects each life to the science it produced, so the reader comes away understanding both the people and their discoveries. It is written in an accessible, narrative style.",
+    lives_phys_kp1: "Biographical portraits of leading physicists and astronomers",
+    lives_phys_kp2: "The human stories behind famous discoveries",
+    lives_phys_kp3: "Each life connected to the science it produced",
+    lives_phys_kp4: "Accessible, narrative popular science",
+    lives_phys_audience: "General readers who enjoy the history of science through the lives of its makers.",
+    believe_imp_title: "Believing the Impossible: An Upgrade for Common Sense",
+    believe_imp_short: "A guided upgrade for everyday common sense, using the counter-intuitive truths of modern science.",
+    believe_imp_about_p1: "Modern physics is full of results that seem impossible: time that slows, particles in two places at once, a Universe with a beginning. In Believing the Impossible, Vladimir Kesselman treats these not as paradoxes to be feared but as an invitation to upgrade ordinary common sense.",
+    believe_imp_about_p2: "Step by step, the book shows why the counter-intuitive conclusions of relativity, quantum theory and cosmology are in fact reasonable once the right questions are asked. It is a workout for the scientifically curious mind, written without heavy mathematics.",
+    believe_imp_kp1: "Why the 'impossible' results of modern physics make sense",
+    believe_imp_kp2: "Relativity, quantum theory and cosmology for the general reader",
+    believe_imp_kp3: "A step-by-step upgrade of everyday intuition",
+    believe_imp_kp4: "Kesselman's newest popular-science title (2025)",
+    believe_imp_audience: "Curious general readers who want to understand modern physics without the mathematics.",
+    auth_kesselman_name: "V. S. Kesselman",
+    auth_kesselman_title: "Popular-science author (history of physics and astronomy)",
+    auth_kesselman_creds: "Candidate of Physical-Mathematical Sciences · graduate of the MSU Physics Faculty",
+    auth_kesselman_bio_p1: "Vladimir Samuilovich Kesselman (b. 1941) is a graduate of the Physics Faculty of Moscow State University who worked on low-energy ion-matter interactions and the early Solar System before turning to writing.",
+    auth_kesselman_bio_p2: "Writing for the general reader, he has become one of Russia's most prolific popular-science authors, with some twenty accessible books that carry non-specialists through the whole sweep of physics and astronomy.",
+    auth_kuzmin_name: "M. I. Kuzmin",
+    auth_kuzmin_title: "Geochemist · A. P. Vinogradov Institute of Geochemistry, SB RAS",
+    auth_kuzmin_creds: "Academician of the RAS · Doctor of Geological-Mineralogical Sciences · State Prize (1997); Demidov Prize (2007)",
+    auth_kuzmin_bio_p1: "Mikhail Ivanovich Kuzmin is a geochemist and full member of the Russian Academy of Sciences, a leading researcher at the A. P. Vinogradov Institute of Geochemistry (SB RAS) in Irkutsk.",
+    auth_kuzmin_bio_p2: "He has authored and co-authored more than 460 publications, including some twenty monographs, and is a foreign member of the Mongolian Academy of Sciences.",
+    auth_yarmolyuk_name: "V. V. Yarmolyuk",
+    auth_yarmolyuk_title: "Geologist · Institute of Geology of Ore Deposits (IGEM RAS)",
+    auth_yarmolyuk_creds: "Academician of the RAS · Doctor of Geological-Mineralogical Sciences · State Prize laureate",
+    auth_yarmolyuk_bio_p1: "Vladimir Viktorovich Yarmolyuk (b. 1945) is a full member of the Russian Academy of Sciences and a specialist in geology, geodynamics and magmatism at the Institute of Geology of Ore Deposits, Petrography, Mineralogy and Geochemistry (IGEM RAS).",
+    auth_yarmolyuk_bio_p2: "His work centres on continental magmatism, mantle plumes and the geodynamics of Central Asia; he is a laureate of the State Prize of the Russian Federation.",
+    auth_oganov_name: "A. R. Oganov",
+    auth_oganov_title: "Professor, Skolkovo Institute of Science and Technology (Skoltech)",
+    auth_oganov_creds: "Crystallographer and materials scientist · Member of Academia Europaea · Highly Cited Researcher",
+    auth_oganov_bio_p1: "Artem Romaevich Oganov (b. 1975) is a crystallographer and materials scientist, professor at Skoltech and a member of Academia Europaea.",
+    auth_oganov_bio_p2: "His USPEX method predicts the crystal structures of materials from first principles and is used by thousands of researchers worldwide; he is a repeatedly Highly Cited Researcher.",
   },
 
   ru: {
@@ -309,7 +560,7 @@ const TRANSLATIONS = {
     /* HERO */
     hero_eyebrow: "Научные и образовательные книги",
     hero_h1:     "Лучшие научные книги из России для любознательных читателей по всему миру",
-    hero_sub:    "Тщательно отобранные учебники и научно-популярные книги по физике, астрофизике, космологии, физике частиц и современной науке, от ведущих учёных и исследователей России, доступные по всему миру.",
+    hero_sub:    "Тщательно отобранные цифровые издания научных учебников и научно-популярных книг ведущих авторов России: физика, астрономия, биофизика и науки о Земле.",
     hero_cta1:   "Все книги",
     hero_cta2:   "Наши авторы",
 
@@ -319,12 +570,18 @@ const TRANSLATIONS = {
     avail_sub:     "Два фундаментальных тома аспирантского уровня, строгих и практичных, написанных для физиков-экспериментаторов.",
     coming_label:  "Скоро",
     coming_title:  "Готовятся к выходу",
-    coming_sub:    "Англоязычные издания серии КТП и книга «Солнечное нейтрино». Подпишитесь на уведомление о выходе.",
+    coming_sub:    "Англоязычные издания серии КТП и книга «Солнечное нейтрино».",
+    iiki_label:    "Из каталога ИИКИ",
+    iiki_title:    "Российская наука и научно-популярные книги",
+    iiki_sub:      "Учебники и монографии уровня магистратуры и аспирантуры от Новосибирского и Московского университетов, на русском языке.",
 
     /* BOOKS */
     qft_title_en:    "Квантовая теория поля для экспериментаторов и не только",
     qft_title_ru:    "Квантовая теория поля для экспериментаторов и не только",
-    qft_author:      "Дмитрий В. Наумов",
+    qft_author:      "Наумов Дмитрий Вадимович",
+    qft_vol1_fulltitle:   "Квантовая теория поля для экспериментаторов и не только. Том I",
+    qft_vol2_fulltitle:   "Квантовая теория поля для экспериментаторов и не только. Том II",
+    qft_bundle_fulltitle: "Квантовая теория поля: комплект (Том I и II)",
     qft1_ru_desc:    "554 страницы. От основ до продвинутых методов КТП: диаграммы Фейнмана, перенормировка, калибровочные теории.",
     qft2_ru_desc:    "514 страниц. Интеграл по траекториям, КЭД, неабелевы калибровочные теории и Стандартная модель.",
     bundle_ru_title: "КТП, полное издание: тома I и II",
@@ -337,8 +594,9 @@ const TRANSLATIONS = {
     solar_en_desc:   "Научно-популярная книга на английском языке. Ожидается через 2-3 месяца.",
     btn_buy:         "Купить",
     btn_buy_bundle:  "Купить комплект",
-    btn_notify:      "Уведомить меня",
     btn_preview:     "Предпросмотр",
+    preview_note_generic: "Только первые страницы — защищённый просмотр",
+    toc_h: "Содержание",
     btn_preview_vol1: "Просмотр Том I",
     btn_preview_vol2: "Просмотр Том II",
 
@@ -353,7 +611,7 @@ const TRANSLATIONS = {
     promo_code_note:        "Если у вас есть промокод, введите его на странице оплаты после нажатия кнопки «Купить».",
     /* LTO 2026-06-12 → 2026-07-12 — remove these three on July 13 revert */
     lto_label:              "Промо-акция до 12 июля",
-    gp_comparison:          "Оба тома здесь за $47.99 — экономия $12 по сравнению с Google Play.",
+    gp_comparison:          "Оба тома здесь за $47.99, экономия $12 по сравнению с Google Play.",
     bundle_meta_badge:      "Комплект: оба тома",
 
     /* BOOK PAGE – section headings */
@@ -454,7 +712,7 @@ const TRANSLATIONS = {
     course_desc_p3: "Курс написан так, что даются не только ответы на вопрос «<em>как считать</em>», но и объясняется, <strong>почему</strong> теория устроена именно так. Формализм постоянно связывается с физическим смыслом, наблюдаемыми величинами и реальными вычислениями, потому что автор сам экспериментатор и знает, что именно нужно понять, чтобы работать с данными реального детектора. Книга написана живым языком: с историческими отступлениями, авторскими историями из первых рук и редкой для учебника способностью объяснять сложное, но не упрощая.",
     course_desc_p4: "<strong>Первый том выстраивает фундамент</strong>: специальная и общая теория относительности, нерелятивистская квантовая механика, релятивистские волновые уравнения, классические поля, каноническое квантование, функции Грина, пропагаторы и S-матрица.",
     course_desc_p5: "<strong>Второй том превращает этот фундамент в рабочий аппарат</strong>: выводятся правила Фейнмана для квантовой электродинамики, вычисляются наблюдаемые для физических процессов, строится электрослабая теория и Стандартная модель, подробно обсуждаются перенормировка, вакуумная поляризация, лэмбовский сдвиг, аномальный магнитный момент, квантовые аномалии и физика за пределами Стандартной модели.",
-    course_desc_p6: "Особенность курса — редкое сочетание широты охвата, современного содержания и необычного угла зрения. Книга не ограничивается формальной «теоретической теорией»: квантовая теория поля здесь показана как живая наука, связанная с экспериментом, наблюдаемыми величинами и реальными физическими задачами.",
+    course_desc_p6: "Особенность курса состоит в редком сочетании широты охвата, современного содержания и необычного угла зрения. Книга не ограничивается формальной «теоретической теорией»: квантовая теория поля здесь показана как живая наука, связанная с экспериментом, наблюдаемыми величинами и реальными физическими задачами.",
     course_desc_p7: "Подробные выкладки для каждого ключевого шага сочетаются с доступными, но качественными объяснениями; исторический и физический контекст помогает понять не только формулы, но и логику развития идей. В курс включены как базовые разделы КТП, так и современные темы: Стандартная модель, перенормировка, квантовые аномалии, физика за пределами Стандартной модели.",
     course_desc_p8: "Книга содержит большое количество задач и примеров разного уровня сложности. Множественные QR-коды в тексте дают прямой доступ к авторским анимациям и визуализациям сложных процессов, чтобы увидеть то, что трудно передать одними формулами.",
     course_desc_p9: "Некоторые учебные проекты, начатые на этом курсе, выросли в настоящие научные статьи студентов.",
@@ -508,16 +766,10 @@ const TRANSLATIONS = {
     lm_close:   "Закрыть",
     lm_contact: "Связаться",
 
-    /* NOTIFY */
-    notify_label: "Будьте в курсе",
-    notify_title: "Получите уведомление о выходе",
-    notify_sub:   "Узнайте первыми, когда выйдут новые книги.",
-    notify_btn:   "Уведомить меня",
-    notify_ok:    "Вы в списке. Напишем при выходе книги.",
 
     /* AUTHOR (authors.html) */
     author_label:    "Об авторе",
-    author_title:    "Дмитрий В. Наумов",
+    author_title:    "Наумов Дмитрий Вадимович",
     prize1_label:    "Премия", prize1_val: "Премия «Прорыв» по фундаментальной физике, 2016",
     prize2_label:    "Премия", prize2_val: "Премия Европейского физического общества, 2023",
     pubs_label:      "Публикации", pubs_val: "200+ рецензируемых научных работ",
@@ -583,13 +835,263 @@ const TRANSLATIONS = {
     footer_link_contact:  "Связаться с нами",
     footer_link_authors:  "Все авторы",
     footer_link_about:    "О нас",
-    footer_link_notify:   "Уведомить о выходе",
     footer_copy:          "Rospex Holdings LLC. Все права защищены.",
+    footer_link_refund: 'Доставка и возврат',
+    rp_label: 'Покупка у нас',
+    rp_title: 'Доставка и возврат средств',
+    rp_delivery_h: 'Как происходит доставка',
+    rp_delivery_p1: 'Сразу после оплаты мы отправляем защищённую ссылку для скачивания на email, указанный при оформлении. Ссылка действует 72 часа. Ваш PDF персонализирован (имя и email покупателя) и защищён паролем. Пароль — это просто адрес электронной почты, указанный при покупке.',
+    rp_delivery_p2: 'Если письмо не пришло в течение 15 минут, проверьте папку «Спам», а затем напишите на books@rospexpublishing.com — мы оперативно отправим ссылку повторно.',
+    rp_refund_h: 'Возврат средств',
+    rp_refund_p1: 'Мы вернём полную стоимость в течение 14 дней с момента покупки, если оплата прошла, но книга не была получена; если файл повреждён и мы не смогли это исправить; или если вы случайно купили одну и ту же книгу дважды.',
+    rp_refund_p2: 'Поскольку книга — это цифровой файл с мгновенной доставкой, персонализированный под покупателя, мы, как правило, не возвращаем средства после скачивания файла. При этом мы — небольшое издательство и предпочитаем честность формальностям: если что-то не так, напишите нам, и мы найдём решение.',
+    rp_how_h: 'Как запросить возврат',
+    rp_how_p1: 'Напишите на books@rospexpublishing.com с адреса, использованного при покупке (или укажите его), назвав книгу и дату покупки. Возврат производится на исходный способ оплаты через Stripe и обычно занимает 5–10 рабочих дней.',
+    rp_region_h: 'Региональная доступность',
+    rp_region_p1: 'Из-за территориальных издательских прав наши цифровые издания не продаются в России и странах СНГ; платежи из этих регионов не обрабатываются.',
+    trust_line: 'Мгновенная доставка на email · Персонализированный PDF · <a href="../refund-policy.html" style="color:var(--gold-lt)">14 дней на возврат</a>',
     family_label:         "Часть семьи Rospex:",
 
     /* MODALS */
-    modal_notify_sub: "Введите email, и мы напишем одно уведомление при выходе книги.",
     modal_close:      "Закрыть",
+
+    /* ══════════ IIKI EXPANSION (RU) ══════════ */
+
+    /* NAV */
+    nav_categories: "Категории",
+
+    /* BROWSE BY CATEGORY */
+    browse_cat_label: "Каталог по разделам",
+    browse_cat_title: "По разделам",
+    browse_cat_sub:   "Шесть предметных областей: от физики и наук о жизни до истории науки, от аспирантских учебников до научно-популярного чтения.",
+    search_placeholder: "Поиск: книги, авторы, темы…",
+    search_results_for: "результатов по запросу",
+    search_no_results: "Ничего не найдено. Попробуйте другое слово или выберите раздел:",
+
+    /* CATEGORY NAMES + BLURBS */
+    cat_c1_name:  "Квантовая физика и физика частиц",
+    cat_c1_blurb: "Квантовая механика, квантовая теория поля и физика элементарных частиц.",
+    cat_c2_name:  "Классическая и теоретическая физика",
+    cat_c2_blurb: "Классическая, аналитическая и теоретическая механика, фундамент физики.",
+    cat_c3_name:  "Астрономия, астрофизика и космология",
+    cat_c3_blurb: "Звёзды, галактики, нейтрино, строение и история Вселенной.",
+    cat_c4_name:  "Науки о Земле и планетах",
+    cat_c4_blurb: "Геология, геофизика и науки о Земле и планетах.",
+    cat_c5_name:  "Биофизика и науки о жизни",
+    cat_c5_blurb: "Физика живых систем: от молекул и мембран до фотосинтеза и зрения.",
+    cat_c6_name:  "История науки и научно-популярное",
+    cat_c6_blurb: "Научно-популярные книги и история научных идей для любознательных читателей.",
+
+    /* CATALOG UI */
+    catalog_title:          "Каталог",
+    catalog_filter_all:     "Все",
+    catalog_filter_textbook:"Учебники",
+    catalog_filter_popular: "Научпоп",
+    audience_textbook:      "Учебник",
+    audience_popular:       "Научпоп",
+    coming_soon_badge:      "Скоро",
+
+    /* NSU CURRICULUM RAIL */
+    nsu_rail_label: "Часть курса НГУ: механика → КТП",
+
+    /* ── BOOK 1: mech_problems ── */
+    mech_problems_title: "Сборник задач по классической механике",
+    mech_problems_short: "Классический новосибирский задачник: 13 тематических разделов, каждая задача с полным решением.",
+    mech_problems_about_p1: "Один из самых долговечных задачников по физике, вышедших из Новосибирского государственного университета. Возникший в 1966 году из системы заданий Глеба Коткина «в духе курса Ландау и Лифшица» и отточенный вместе с Валерием Сербо за более чем полвека преподавания, это пятое русское издание (2021, 404 с.), самое полное на сегодняшний день.",
+    mech_problems_about_p2: "Тринадцать разделов следуют стандартному курсу теоретической механики: от одномерного движения и центральных полей до канонических преобразований и адиабатических инвариантов. Каждая задача сопровождается полным разбором решения, поэтому книга служит и сборником упражнений, и пособием для самостоятельной работы. По охвату она соответствует «Механике» Ландау–Лифшица и «Классической механике» Голдстейна; это русский оригинал оксфордского издания Exploring Classical Mechanics (2020).",
+    mech_problems_kp1: "Тринадцать разделов по нарастающей: от законов Ньютона до адиабатических инвариантов",
+    mech_problems_kp2: "Каждая задача сопровождается полным решением",
+    mech_problems_kp3: "Охват согласован с Ландау–Лифшицем и Голдстейном",
+    mech_problems_kp4: "Русский оригинал оксфордского Exploring Classical Mechanics (2020)",
+    mech_problems_audience: "Студенты, аспиранты и преподаватели, физики и математики. Первые разделы решаются на основе механики Ньютона; методы Лагранжа и Гамильтона вводятся постепенно.",
+
+    /* ── BOOK 2: analytical_mech ── */
+    analytical_mech_title: "Лекции по аналитической механике",
+    analytical_mech_short: "Современный курс лекций НГУ по аналитической механике, ворота в теорию поля, квантовую механику и статистическую физику.",
+    analytical_mech_about_p1: "«Лекции по аналитической механике» вобрали в себя десятилетия преподавания теоретической группы Новосибирского государственного университета. Написанные Глебом Коткиным, Валерием Сербо и Александром Черных, это третье издание (2022, 272 с.) представляет аналитическую механику не как самоцель, а как фундамент для всей теоретической физики.",
+    analytical_mech_about_p2: "Пять глав ведут читателя от движения в центральном поле и рассеяния через лагранжеву механику, колебания, гамильтонов формализм и движение твёрдого тела. Отличительная черта издания: около десяти новых иллюстративных разделов (классический эффект Зеемана, модель ЭПР/ЯМР, ловушка Пеннинга, точки Лагранжа и введение в динамический хаос) с задачами, апробированными на семинарах.",
+    analytical_mech_kp1: "Лагранжев и гамильтонов формализм, колебания и движение твёрдого тела",
+    analytical_mech_kp2: "Явно подаётся как подготовка к теории поля, КМ и статистической физике",
+    analytical_mech_kp3: "~10 новых прикладных разделов (эффект Зеемана, ловушка Пеннинга, хаос)",
+    analytical_mech_kp4: "Задачи, апробированные на семинарах, к каждой теме",
+    analytical_mech_audience: "Студенты старших курсов, аспиранты и преподаватели, физики и математики. Требуется вводный курс механики, математический анализ и линейная алгебра.",
+
+    /* ── BOOK 3: qm_lectures ── */
+    qm_lectures_title: "Лекции по квантовой механике",
+    qm_lectures_short: "Новосибирский курс лекций по квантовой механике Сербо и Хрипловича, квантовый шаг к теории поля и физике частиц.",
+    qm_lectures_about_p1: "«Лекции по квантовой механике» В. Г. Сербо и И. Б. Хрипловича (2023, 266 с.) выросли из многолетнего опыта чтения лекций и проведения семинаров на физическом факультете Новосибирского государственного университета. Книга написана в ясном, физически содержательном стиле новосибирской школы, и к каждой теме приведены задачи, апробированные в аудитории.",
+    qm_lectures_about_p2: "Курс служит квантово-механическим звеном новосибирской цепочки от классической и аналитической механики через квантовую механику к физике элементарных частиц и квантовой теории поля. Один из авторов, Иосиф Хриплович, член-корреспондент РАН и лауреат премии Померанчука, известный работами по нарушению чётности в атомах, придаёт книге авторитет одной из ведущих школ теоретической физики.",
+    qm_lectures_kp1: "Полный односеместровый курс нерелятивистской квантовой механики",
+    qm_lectures_kp2: "Задачи, проверенные многолетними семинарами НГУ",
+    qm_lectures_kp3: "Готовит непосредственно к физике частиц и КТП",
+    qm_lectures_kp4: "Соавтор: И. Б. Хриплович, член-корреспондент РАН",
+    qm_lectures_audience: "Студенты и аспиранты-физики, преподаватели. Требуется знание классической и аналитической механики, математического анализа и линейной алгебры.",
+
+    /* ── BOOK 4: epp_lectures ── */
+    epp_lectures_title: "Лекции по физике элементарных частиц",
+    epp_lectures_short: "Практический начальный курс НГУ и Института ядерной физики им. Будкера, мост между квантовой теорией поля и реальными экспериментами на ускорителях.",
+    epp_lectures_about_p1: "«Лекции по физике элементарных частиц (начальный курс)» В. Г. Сербо и А. С. Руденко (2025, 232 с.) обобщают многолетний опыт авторов по чтению односеместрового курса физики частиц для студентов 4-го курса физического факультета НГУ. Определяющая особенность курса: связь с Институтом ядерной физики им. Г. И. Будкера (ИЯФ), базовым институтом для студентов.",
+    epp_lectures_about_p2: "Вместо чисто формального изложения квантовой теории поля книга постоянно связана с реальными процессами, измеряемыми на коллайдерах ИЯФ. Начиная со знакомых объектов, разбираемых с особой тщательностью, она выстраивает аппарат релятивистской теории поля (лагранжев формализм и законы сохранения, скалярные и дираковские поля, технику диаграмм Фейнмана) и завершается студенческим проектом по вычислению реальных сечений и числа событий. Заключительный раздел «Дополнения» содержит мини-обзоры, связанные с современным экспериментом.",
+    epp_lectures_kp1: "Привязка к эксперименту: ИЯФ им. Будкера и реальные процессы на коллайдерах",
+    epp_lectures_kp2: "По-настоящему начальный курс: от знакомых объектов к более сложному материалу",
+    epp_lectures_kp3: "Научиться рисовать и вычислять диаграммы Фейнмана",
+    epp_lectures_kp4: "Обязательный проект: расчёт сечений и числа событий на реальном ускорителе",
+    epp_lectures_audience: "Студенты 4-го курса, аспиранты и преподаватели, физики. Требуется общая физика, классическая и квантовая механика, специальная теория относительности.",
+
+    /* ── BOOK 5: biophys_v1 ── */
+    biophys_v1_title: "Биофизика. Том I. Теоретическая биофизика",
+    biophys_v1_short: "Том I фундаментального учебника академика Рубина: кинетика, термодинамика, математическое моделирование и молекулярная биофизика.",
+    biophys_v1_about_p1: "Первый том трёхтомной «Биофизики» академика Андрея Б. Рубина, основополагающего русскоязычного учебника дисциплины (4-е изд., 2013, 472 с.; рекомендован для направления «Биология» и специальности «Биофизика»). В нём развивается теоретический аппарат, на котором строится материал II и III томов о клеточных, мембранных и фотобиологических процессах.",
+    biophys_v1_about_p2: "Часть I, «Биофизика сложных систем», охватывает кинетику биологических процессов (динамические модели, биологические триггеры, колебания, детерминированный хаос) и термодинамику открытых систем вблизи и вдали от равновесия. Часть II, «Молекулярная биофизика», рассматривает пространственную организацию биополимеров, внутримолекулярные взаимодействия, конформационную энергию, фолдинг белков и динамические свойства глобулярных белков. Сквозная линия математического моделирования служит отличительной чертой московской школы биофизики.",
+    biophys_v1_kp1: "Кинетика биологических процессов: триггеры, колебания, детерминированный хаос",
+    biophys_v1_kp2: "Термодинамика открытых систем вблизи и вдали от равновесия",
+    biophys_v1_kp3: "Молекулярная биофизика: конформации биополимеров и фолдинг белков",
+    biophys_v1_kp4: "Сквозная линия математического моделирования",
+    biophys_v1_audience: "Студенты и аспиранты по биологии и биофизике, научные сотрудники в области физико-химической биологии. Предполагается стандартная подготовка 1–3 курсов по биологии, физике, химии и математическому анализу.",
+
+    /* ── BOOK 6: biophys_v2 ── */
+    biophys_v2_title: "Биофизика. Том II. Биофизика клеточных процессов. Биофизика мембранных процессов",
+    biophys_v2_short: "Том II, клеточно-мембранное ядро: транспорт, биоэлектрогенез, ионные каналы, биоэнергетика и мышечное сокращение.",
+    biophys_v2_about_p1: "Центральный том трёхтомной «Биофизики» академика Андрея Б. Рубина (4-е изд., 2013, 384 с.). Опираясь на теоретический аппарат первого тома, он обращается к физико-химическим механизмам важнейших процессов в живых клетках.",
+    biophys_v2_about_p2: "Рассматриваются молекулярная организация и конформационные свойства биологических мембран; транспорт неэлектролитов и ионов (электродиффузия, ионные каналы, селективность и воротный механизм, модель Ходжкина–Хаксли для возбудимых мембран, активный транспорт); а также преобразование энергии в биомембранах (электронный транспорт, перенос протонов, АТФазный молекулярный мотор) наряду с физикой мышечного сокращения и внутриклеточной сигнализацией. Изложение сочетает строгие физико-химические модели с количественными, часто математически моделируемыми описаниями.",
+    biophys_v2_kp1: "Строение мембран, транспорт и биоэлектрогенез",
+    biophys_v2_kp2: "Ионные каналы: селективность, воротный механизм, модель Ходжкина–Хаксли",
+    biophys_v2_kp3: "Биоэнергетика: электронный транспорт и АТФазный молекулярный мотор",
+    biophys_v2_kp4: "Мышечное сокращение и актин-миозиновый мотор",
+    biophys_v2_audience: "Студенты и аспиранты по биологии и биофизике, исследователи в области мембранной биофизики, нейрофизиологии и биоэнергетики. Желательно знакомство с томом I.",
+
+    /* ── BOOK 7: biophys_v3 ── */
+    biophys_v3_title: "Биофизика. Том III. Биофизика клеточных процессов. Механизмы первичных фотобиологических процессов",
+    biophys_v3_short: "Том III, фотобиологическая кульминация: перенос заряда в биополимерах, первичные процессы фотосинтеза и зрение.",
+    biophys_v3_about_p1: "Заключительный том трёхтомной «Биофизики» академика Андрея Б. Рубина (4-е изд., 2013, 480 с.). Он ведёт читателя от квантово-механических основ биомолекулярной электроники к первичным актам фотосинтеза и зрения, отражая главную область исследований самого Рубина, биофизику фотосинтеза.",
+    biophys_v3_about_p2: "Книга открывается электронными свойствами биополимеров: квантовым описанием молекул, механизмами переноса заряда и миграции энергии (туннелирование, теории Маркуса и Жортнера) и ферментативным катализом, а затем рассматривает первичные процессы фотосинтеза (антенные комплексы, реакционные центры, фотосистемы I и II) и первичные фотопроцессы биологических систем (бактериородопсин, родопсин и зрение, фитохромы, фотодеструкция). Изложение строго физическое и количественное, объединяющее квантовую теорию, данные лазерной спектроскопии и математическое моделирование.",
+    biophys_v3_kp1: "Квантовые основы переноса заряда в биополимерах (теория Маркуса/Жортнера)",
+    biophys_v3_kp2: "Первичные процессы фотосинтеза: антенные комплексы, реакционные центры, ФС I и II",
+    biophys_v3_kp3: "Фоторецепция: бактериородопсин, родопсин и зрение",
+    biophys_v3_kp4: "Фоторегуляторные и фотодеструктивные процессы",
+    biophys_v3_audience: "Студенты и аспиранты по биологии и биофизике, исследователи в области фотобиологии и фотосинтеза. Квантовые главы требуют знакомства с основами КМ; желательно знакомство с томами I–II.",
+
+    /* ── AUTHOR: Serbo ── */
+    auth_serbo_name:  "Сербо Валерий Георгиевич",
+    auth_serbo_title: "Профессор кафедры теоретической физики НГУ; старший научный сотрудник Института математики им. С. Л. Соболева СО РАН",
+    auth_serbo_creds: "Доктор физико-математических наук (1984); профессор (1986); почётный профессор НГУ (2011)",
+    auth_serbo_bio_p1: "Валерий Георгиевич Сербо (р. 1939) — советский и российский физик-теоретик, вся научная карьера которого связана с Новосибирским научным центром. Профессор кафедры теоретической физики Новосибирского государственного университета и старший научный сотрудник лаборатории теоретической физики Института математики им. С. Л. Соболева СО РАН — в теоретическом сообществе, связанном с Институтом ядерной физики им. Г. И. Будкера.",
+    auth_serbo_bio_p2: "Наиболее известен как соавтор идеи фотон-фотонного (γγ) коллайдера. Его исследования охватывают квантовую электродинамику процессов высоких энергий, метод эквивалентных фотонов, а в последние годы физику «закрученных» (вихревых) фотонов, электронов и нейтронов. Автор и соавтор более 200 научных работ.",
+    auth_serbo_bio_p3: "Как преподаватель Сербо читал в НГУ курсы аналитической механики, квантовой механики и физики частиц и приглашался в университеты Миннесоты, Лейпцига, Дрездена, Милана, Парижа и Гейдельберга, а также в Брукхейвен и SLAC. Соавтор широко используемых новосибирских учебников по физике, английские издания которых вышли в Oxford University Press.",
+
+    /* ── AUTHOR: Kotkin ── */
+    auth_kotkin_name:  "Коткин Глеб Леонидович",
+    auth_kotkin_title: "Профессор кафедры теоретической физики НГУ",
+    auth_kotkin_creds: "Кандидат физико-математических наук; профессор (1992); медаль «За доблестный труд»",
+    auth_kotkin_bio_p1: "Глеб Леонидович Коткин (1934–2020) — российский физик-теоретик и один из самых уважаемых преподавателей физического факультета Новосибирского государственного университета. Окончив МГУ в 1958 году, в 1961 году он пришёл в НГУ, где проработал почти шесть десятилетий, пройдя путь от ассистента до профессора кафедры теоретической физики.",
+    auth_kotkin_bio_p2: "Его научные интересы относились к физике высоких энергий и физике элементарных частиц; в НГУ он читал основные курсы статистической физики, аналитической механики и теории колебаний. Международную известность ему принёс «Сборник задач по классической механике», написанный совместно с В. Г. Сербо, выдержавший пять русских изданий и переведённый на английский, испанский и французский языки. Пионер компьютерных практикумов в СССР, он запомнился глубокой физической интуицией и личной скромностью; в его честь названа аудитория НГУ.",
+    auth_kotkin_bio_p3: "",
+
+    /* ── AUTHOR: Chernykh ── */
+    auth_chernykh_name:  "Черных Александр Иванович",
+    auth_chernykh_title: "Преподаватель Новосибирского государственного университета",
+    auth_chernykh_creds: "Кандидат физико-математических наук; специалист по численному моделированию",
+    auth_chernykh_bio_p1: "Александр Иванович Черных, кандидат физико-математических наук, специалист по численному моделированию. Преподаёт на физическом факультете Новосибирского государственного университета; среди его курсов — методы математической физики, аналитическая механика, статистическая физика и общая теория относительности.",
+    auth_chernykh_bio_p2: "Соавтор «Лекций по аналитической механике» (вместе с Г. Л. Коткиным и В. Г. Сербо) и англоязычного сборника задач Mathematical Methods of Physics: Problems with Solutions (Jenny Stanford / Routledge, 2023), подготовленного теоретической группой новосибирского Академгородка.",
+    auth_chernykh_bio_p3: "",
+
+    /* ── AUTHOR: Khriplovich ── */
+    auth_khriplovich_name:  "Хриплович Иосиф Бенционович",
+    auth_khriplovich_title: "Физик-теоретик; Институт ядерной физики им. Г. И. Будкера и Новосибирский государственный университет",
+    auth_khriplovich_creds: "Член-корреспондент РАН (2000); серебряная медаль Дирака (2004); премия Померанчука (2005)",
+    auth_khriplovich_bio_p1: "Иосиф Бенционович Хриплович (1937–2024) был выдающимся советским и российским физиком-теоретиком. С 1959 года работал в Институте ядерной физики им. Г. И. Будкера в Новосибирске, возглавлял кафедру теоретической физики Новосибирского государственного университета, а позднее работал в Санкт-Петербурге.",
+    auth_khriplovich_bio_p2: "В 2000 году избран членом-корреспондентом Российской академии наук. Особенно известен работами по нарушению чётности в атомах, давшими одни из первых проверок электрослабой теории в атомных системах. Среди наград серебряная медаль Дирака (2004) и премия Померанчука (2005). Совместно с В. Г. Сербо он написал «Лекции по квантовой механике» на основе их преподавания в НГУ.",
+    auth_khriplovich_bio_p3: "",
+
+    /* ── AUTHOR: Rudenko ── */
+    auth_rudenko_name:  "Руденко Александр Сергеевич",
+    auth_rudenko_title: "Физик-теоретик, Новосибирский государственный университет и Институт ядерной физики им. Г. И. Будкера СО РАН",
+    auth_rudenko_creds: "Кандидат физико-математических наук; физика частиц, КТП и космология ранней Вселенной",
+    auth_rudenko_bio_p1: "Александр Сергеевич Руденко, физик-теоретик Новосибирского государственного университета и Института ядерной физики им. Г. И. Будкера СО РАН. В НГУ связан с кафедрами теоретической физики и физики элементарных частиц и Лабораторией космологии и физики элементарных частиц.",
+    auth_rudenko_bio_p2: "Область его исследований охватывает физику элементарных частиц и квантовую теорию поля (формфакторы мезонов, процессы e⁺ e⁻-аннигиляции и прецизионные электрослабые измерения), а также космологию ранней Вселенной, включая инфляцию, тёмную материю и эволюцию доменных стенок. Многолетний опыт чтения курса физики элементарных частиц в НГУ лёг в основу учебного пособия 2025 года, написанного совместно с профессором В. Г. Сербо.",
+    auth_rudenko_bio_p3: "",
+
+    /* ── AUTHOR: Rubin ── */
+    auth_rubin_name:  "Рубин Андрей Борисович",
+    auth_rubin_title: "Заведующий кафедрой биофизики биологического факультета МГУ им. М. В. Ломоносова",
+    auth_rubin_creds: "Академик РАН (2022); доктор биологических наук (1969); профессор; Государственная премия СССР; премия им. К. А. Тимирязева РАН (2016)",
+    auth_rubin_bio_p1: "Андрей Борисович Рубин (р. 1937, Москва) — советский и российский биофизик, академик Российской академии наук. С 1976 года заведует кафедрой биофизики биологического факультета МГУ им. М. В. Ломоносова, которой руководит уже почти полвека.",
+    auth_rubin_bio_p2: "Его научные интересы лежат на стыке биологии, физики, математики и физической химии: биофизика фотосинтеза, биофизика мембран, кинетика и термодинамика процессов электронного транспорта, математическое моделирование биологических систем. Он предложил новую концепцию физиолого-биохимической регуляции первичных процессов фотосинтеза и обосновал теорию фотоконформационного перехода в фоточувствительных белках.",
+    auth_rubin_bio_p3: "Рубин является основоположником биофизического образования в России и автором стандартного учебника «Биофизика». Он автор и соавтор около 900 научных работ, 40 монографий и 35 патентов, подготовил 19 докторов и более 50 кандидатов наук. Среди наград: Государственная премия СССР, премия им. К. А. Тимирязева РАН (2016), звания заслуженного деятеля науки РФ и заслуженного профессора МГУ.",
+    geol_earth_title: "Геологическая эволюция Земли: от космической пыли до обители человечества",
+    geol_earth_short: "Коллективная монография РАН (2026) о геологической истории Земли.",
+    geol_earth_about_p1: "Флагманский синтез 2026 года о геологической эволюции Земли, написанный коллективом из десяти авторов Российской академии наук под редакцией академиков М. И. Кузьмина и В. В. Ярмолюка. Книга прослеживает путь планеты от зарождения в космической пыли через хадей, архей, протерозой и фанерозой до появления Homo sapiens.",
+    geol_earth_about_p2: "В монографии объединены тектоника плит и плюмов, геохимия мантии, палеомагнетизм, циклы суперконтинентов (Кенорленд, Нуна, Родиния, Пангея), абсолютные палеотектонические реконструкции, металлогения и совместная эволюция биосферы. Среди десяти авторов — кристаллограф А. Р. Оганов. Плотный научный аппарат и цветные иллюстрации.",
+    geol_earth_kp1: "История Земли от аккреции до ноосферы, этап за этапом",
+    geol_earth_kp2: "Тектоника плит и плюмов, циклы суперконтинентов и абсолютные реконструкции",
+    geol_earth_kp3: "Геохимия мантии, палеомагнетизм и металлогения",
+    geol_earth_kp4: "Коллектив из десяти авторов РАН под редакцией академиков Кузьмина и Ярмолюка",
+    geol_earth_audience: "Аспиранты, исследователи и преподаватели в области наук о Земле, а также подготовленные читатели, которым интересна история планеты.",
+    astro_book_title: "Вся астрономия в одной книге (книга для чтения по астрономии)",
+    astro_book_short: "Великие открытия астрономии и то, как учёные измеряют космос.",
+    astro_book_about_p1: "Научно-популярная книга Владимира Кессельмана собирает важнейшие открытия астрономии — от древности до наших дней — в одном увлекательном томе. Её особенность — акцент на методе: как учёные определяют расстояния, размеры, массы и состав объектов, удалённых от Земли на непредставимые расстояния.",
+    astro_book_about_p2: "Попутно книга объясняет происхождение Солнечной системы, жизнь звёзд, строение галактик и Вселенной, сохраняя минимум математики и ясность изложения. Она написана для любознательного читателя, а не для специалиста.",
+    astro_book_kp1: "Главные открытия астрономии — от древности до наших дней",
+    astro_book_kp2: "Как измеряют расстояния, массы и состав далёких объектов",
+    astro_book_kp3: "Происхождение Солнечной системы, звёзд и галактик",
+    astro_book_kp4: "Ясная, почти без формул, научно-популярная книга",
+    astro_book_audience: "Широкий круг читателей, интересующихся астрономией; школьники, студенты и преподаватели, которым нужен доступный обзор.",
+    phys_book_title: "Вся физика в одной книге: от плоской Земли до Большого взрыва",
+    phys_book_short: "Вся история физики в одной книге — от плоской Земли до Большого взрыва.",
+    phys_book_about_p1: "Масштабная научно-популярная история Владимира Кессельмана проводит читателя через всё развитие физики — от древнего представления о плоской Земле до современной космологии и Большого взрыва. Это единое связное повествование, а не учебник.",
+    phys_book_about_p2: "Книга показывает, как строились, опровергались и перестраивались представления о материи, движении, свете, энергии и Вселенной, объединяя механику, термодинамику, электромагнетизм, теорию относительности и квантовую теорию в одну доступную историю. Математики — минимум.",
+    phys_book_kp1: "Вся дуга физики — от древности до современной космологии",
+    phys_book_kp2: "Как формировались, опровергались и перестраивались ключевые идеи",
+    phys_book_kp3: "Механика, электромагнетизм, относительность и квантовая теория в одном рассказе",
+    phys_book_kp4: "Доступная научно-популярная книга, почти без формул",
+    phys_book_audience: "Широкий круг читателей, школьники, студенты и преподаватели, которым нужна общая картина физики в одном томе.",
+    hist_phys_title: "Другая история физики",
+    hist_phys_short: "Свежий, нестандартный рассказ о том, как на самом деле развивалась физика.",
+    hist_phys_about_p1: "В «Другой истории физики» Владимир Кессельман пересматривает историю науки под неожиданными углами, обращая внимание на тупики, споры и забытых участников, которых обычно сглаживает учебное изложение.",
+    hist_phys_about_p2: "Получается более человечная и более удивительная история: как на самом деле совершались открытия, кто их действительно сделал и насколько привычный рассказ заслуживает второго взгляда. Написано для широкого читателя в ясной повествовательной манере Кессельмана.",
+    hist_phys_kp1: "История физики под нестандартными углами",
+    hist_phys_kp2: "Тупики, споры о приоритете и забытые участники",
+    hist_phys_kp3: "Как на самом деле совершались открытия — и кем",
+    hist_phys_kp4: "Ясный повествовательный научно-популярный стиль Кессельмана",
+    hist_phys_audience: "Читателям, уже любящим научпоп и желающим по-новому взглянуть на историю физики.",
+    lives_phys_title: "Жизнеописания знаменитых физиков и астрономов",
+    lives_phys_short: "Живые биографии учёных, определивших физику и астрономию.",
+    lives_phys_about_p1: "Этот сборник биографических портретов оживляет физиков и астрономов, чьи идеи построили современную картину мира. Кессельман рассказывает их истории как человеческие судьбы — с борьбой, соперничеством, удачей и упорством за знаменитыми результатами.",
+    lives_phys_about_p2: "Это не просто галерея имён: книга связывает каждую судьбу с наукой, которую она породила, так что читатель понимает и людей, и их открытия. Написано в доступной повествовательной манере.",
+    lives_phys_kp1: "Биографические портреты ведущих физиков и астрономов",
+    lives_phys_kp2: "Человеческие истории за знаменитыми открытиями",
+    lives_phys_kp3: "Каждая судьба связана с созданной наукой",
+    lives_phys_kp4: "Доступная повествовательная научно-популярная книга",
+    lives_phys_audience: "Широкий круг читателей, которым интересна история науки через судьбы её творцов.",
+    believe_imp_title: "Поверить в невозможное: апгрейд здравого смысла",
+    believe_imp_short: "Апгрейд повседневного здравого смысла с помощью контринтуитивных истин современной науки.",
+    believe_imp_about_p1: "Современная физика полна результатов, которые кажутся невозможными: время замедляется, частица находится сразу в двух местах, у Вселенной есть начало. В книге «Поверить в невозможное» Владимир Кессельман рассматривает их не как пугающие парадоксы, а как приглашение обновить обычный здравый смысл.",
+    believe_imp_about_p2: "Шаг за шагом книга показывает, почему контринтуитивные выводы теории относительности, квантовой теории и космологии на самом деле разумны, если задать правильные вопросы. Это тренировка для любознательного ума, без тяжёлой математики.",
+    believe_imp_kp1: "Почему «невозможные» результаты современной физики имеют смысл",
+    believe_imp_kp2: "Относительность, квантовая теория и космология для широкого читателя",
+    believe_imp_kp3: "Пошаговый апгрейд повседневной интуиции",
+    believe_imp_kp4: "Новейшая научно-популярная книга Кессельмана (2025)",
+    believe_imp_audience: "Любознательным читателям, желающим понять современную физику без математики.",
+    auth_kesselman_name: "В. С. Кессельман",
+    auth_kesselman_title: "Автор научно-популярных книг (история физики и астрономии)",
+    auth_kesselman_creds: "Кандидат физико-математических наук · выпускник физфака МГУ",
+    auth_kesselman_bio_p1: "Владимир Самуилович Кессельман (р. 1941) окончил физический факультет МГУ, занимался взаимодействием ионов низких энергий с веществом и ранней историей Солнечной системы, а затем обратился к литературной работе.",
+    auth_kesselman_bio_p2: "Обращаясь к широкому читателю, он стал одним из самых плодовитых российских популяризаторов науки — около двадцати доступных книг, проводящих неспециалиста через всю физику и астрономию.",
+    auth_kuzmin_name: "М. И. Кузьмин",
+    auth_kuzmin_title: "Геохимик · Институт геохимии им. А. П. Виноградова СО РАН",
+    auth_kuzmin_creds: "Академик РАН · доктор геолого-минералогических наук · Государственная премия (1997); Демидовская премия (2007)",
+    auth_kuzmin_bio_p1: "Михаил Иванович Кузьмин — геохимик, академик РАН, главный научный сотрудник Института геохимии им. А. П. Виноградова СО РАН в Иркутске.",
+    auth_kuzmin_bio_p2: "Автор и соавтор более 460 публикаций, в том числе около двадцати монографий; иностранный член Академии наук Монголии.",
+    auth_yarmolyuk_name: "В. В. Ярмолюк",
+    auth_yarmolyuk_title: "Геолог · Институт геологии рудных месторождений (ИГЕМ РАН)",
+    auth_yarmolyuk_creds: "Академик РАН · доктор геолого-минералогических наук · лауреат Государственной премии",
+    auth_yarmolyuk_bio_p1: "Владимир Викторович Ярмолюк (р. 1945) — академик РАН, специалист в области геологии, геодинамики и магматизма в Институте геологии рудных месторождений, петрографии, минералогии и геохимии (ИГЕМ РАН).",
+    auth_yarmolyuk_bio_p2: "Его работы посвящены континентальному магматизму, мантийным плюмам и геодинамике Центральной Азии; лауреат Государственной премии РФ.",
+    auth_oganov_name: "А. Р. Оганов",
+    auth_oganov_title: "Профессор Сколковского института науки и технологий (Сколтех)",
+    auth_oganov_creds: "Кристаллограф и материаловед · член Academia Europaea · высокоцитируемый исследователь",
+    auth_oganov_bio_p1: "Артём Ромаевич Оганов (р. 1975) — кристаллограф и материаловед, профессор Сколтеха, член Academia Europaea.",
+    auth_oganov_bio_p2: "Его метод USPEX предсказывает кристаллические структуры материалов из первых принципов и используется тысячами исследователей по всему миру; неоднократно входит в число самых цитируемых учёных.",
   }
 };
 
@@ -597,29 +1099,9 @@ const TRANSLATIONS = {
    REVIEWS — single source of truth
    ────────────────────────────────────────────
    Each review object renders bilingually on book detail pages
-   (filtered by `books` array). Reviews do NOT render on the
-   homepage — the homepage is positioned as a multi-author publisher
-   showcase, so book-specific reviews live on book pages only.
-
-   Required fields per object:
-     id             stable identifier
-     author         display name in English/Latin (e.g. "V. A. Bednyakov")
-     author_ru      Russian/Cyrillic rendering (e.g. "В. А. Бедняков")
-     personal_url   URL of reviewer's official/personal page
-                    — the name AND a small link below the affiliation both go here
-     personal_host  display label for the small link (e.g. "bedny.jinr.ru")
-     source_url     URL or local path to the original review (opens in new tab)
-                    — for PDFs, a path under assets/reviews/; for web pages, an https URL
-     source_label_en, source_label_ru  label for the "View original" link
-                                       (e.g. "Original (PDF)" or "Original on naumov.jinr.ru")
-     affiliation_en, affiliation_ru
-     date           ISO YYYY-MM-DD — leave as empty string "" if the source has no date
-     rating         integer 1..5 (5 gold stars rendered)
-     books          array — which books this review applies to. Values:
-                    "qft-vol1", "qft-vol2", "qft-bundle", "all-qft"
-     quote_en, quote_ru   pull-quote (1–2 sentences) — shown immediately
-     full_en, full_ru     full review HTML (paragraphs in <p>…</p>) — shown after toggle
-     original_lang        "en" or "ru" — if reader's lang differs, a translation note is shown
+   (filtered by `books`). Reviews do NOT render on the homepage.
+   See field documentation in the original baseline; restored intact
+   after the IIKI i18n expansion.
    ════════════════════════════════════════════ */
 const REVIEWS = [
   /* ── Akhmedov — Head of the Landau Department of Theoretical Physics, MIPT ── */
@@ -684,24 +1166,14 @@ const REVIEWS = [
     quote_ru: "Этот курс не относится к варианту чисто теоретической теории, он имеет непосредственное отношение к повседневной жизни современных физиков-экспериментаторов и физиков-теоретиков, в нём чувствуется дыхание современной физики.",
     full_en: "<p>The proposed textbook is an original work based on the author's many years of experience teaching the corresponding courses at the Joint Institute for Nuclear Research (JINR, Dubna). It meets the high requirements expected of the knowledge of students and graduate students working at JINR.</p>" +
              "<p>Despite the existence of such excellent texts on this subject as Berestetskii, Lifshitz, Pitaevskii's <em>Quantum Electrodynamics</em> and Peskin and Schroeder's <em>An Introduction to Quantum Field Theory</em>, this book will prove extraordinarily useful not only to students and graduate students but also to working physicists, for a number of reasons. Some sections of the textbook may also be useful for students of other specialties.</p>" +
-             "<p>This textbook differs from known books on quantum field theory and elementary particle physics in the breadth of material covered (from the foundations of relativistic quantum mechanics to renormalization and quantum anomalies) and in its original manner of presenting individual topics. Let me give concrete examples.</p>" +
-             "<p>The chapter on the relativistic Klein–Fock–Gordon equation is written in a lively and engaging way, with a detailed analysis of the problems that arise in the relativistic equation compared with the analogous non-relativistic Schrödinger equation.</p>" +
-             "<p>In the chapter on the Standard Model, the exposition begins with the choice of a model Lagrangian with a single generation of leptons. The properties of such a model are then studied in detail. Only afterwards does the transition take place to the realistic model with three generations of quarks and the derivation of the Feynman rules. This approach is fully justified, as it allows the reader to be gradually introduced into the complex world of the Standard Model.</p>" +
-             "<p>In the chapter on neutrino and antineutrino scattering on electrons, all the complex calculations are given with sufficient completeness for the beginner to follow every step. For a number of reactions, qualitative considerations are given that help the reader picture the result more clearly.</p>" +
-             "<p>The chapter on deep-inelastic scattering of charged leptons on a nucleon offers a detailed analysis not only of the theoretical problems of such processes, but also an excellent overview of a large body of experimental data from various experimental groups. Likewise, in the chapter devoted to quantum anomalies, both the theoretical questions related to chiral anomalies, decays of neutral pions, and triangle diagrams in the Standard Model, and the corresponding experiments, are discussed in detail. The author's magnificent ability to describe complex experiments in simple language, highlighting what matters and leaving aside inessential details, deserves particular note.</p>" +
-             "<p>An important and attractive feature of this textbook is the presence not only of a large number of carefully selected and instructive problems, but also of detailed solutions to those problems, which will undoubtedly prove very useful to a wide range of readers. One more attractive feature should be noted: this course is not a purely theoretical exercise; it bears directly on the daily work of modern experimental and theoretical physicists, and one feels in it the breath of modern physics.</p>" +
-             "<p>The excellent illustrations and the very interesting historical material that helps to understand the genesis of many complex concepts of modern elementary particle physics deserve special mention. Moreover, the book uses QR codes that allow readers, with a mobile phone, to access animations of complex concepts, making the study of the material still more illustrative. The language of the textbook is far from dry academicism; it is close to the conversational language of lectures, simple and precise.</p>" +
-             "<p>Additionally, I would like to note that after a careful reading of the manuscript I noted some minor inaccuracies and small errors, which were corrected by the author.</p>",
+             "<p>This textbook differs from known books on quantum field theory and elementary particle physics in the breadth of material covered (from the foundations of relativistic quantum mechanics to renormalization and quantum anomalies) and in its original manner of presenting individual topics.</p>" +
+             "<p>An important and attractive feature of this textbook is the presence not only of a large number of carefully selected and instructive problems, but also of detailed solutions to those problems. One more attractive feature should be noted: this course is not a purely theoretical exercise; it bears directly on the daily work of modern experimental and theoretical physicists, and one feels in it the breath of modern physics.</p>" +
+             "<p>The excellent illustrations and the very interesting historical material deserve special mention. The book uses QR codes that allow readers to access animations of complex concepts. The language of the textbook is far from dry academicism; it is close to the conversational language of lectures, simple and precise.</p>",
     full_ru: "<p>Предлагаемое учебное пособие является оригинальной разработкой, основанной на многолетнем опыте преподавания автором соответствующих курсов в Объединённом институте ядерных исследований (ОИЯИ, Дубна). Оно соответствует высоким требованиям, предъявляемым к уровню знаний студентов и аспирантов, работающих в ОИЯИ.</p>" +
-             "<p>Несмотря на наличие таких прекрасных пособий по данному предмету, как Берестецкий, Лифшиц, Питаевский <em>Квантовая электродинамика</em> и Пескин, Шрёдер <em>Введение в квантовую теорию поля</em>, данная книга окажется чрезвычайно полезной не только для студентов и аспирантов, но и для работающих физиков по целому ряду причин. Некоторые разделы этого учебного пособия могут оказаться полезными и для студентов других специальностей.</p>" +
-             "<p>Этот учебник отличается от известных книг по квантовой теории поля и физике элементарных частиц широтой охватываемого материала (от основ релятивистской квантовой механики до перенормировок и квантовых аномалий) и оригинальной манерой изложения отдельных тем. Приведу конкретные примеры.</p>" +
-             "<p>Глава о релятивистском уравнении Клейна–Фока–Гордона написана живо и интересно, с детальным разбором проблем, которые обнаруживаются в релятивистском уравнении по сравнению с аналогичным нерелятивистским уравнением Шрёдингера.</p>" +
-             "<p>В главе про Стандартную модель изложение начинается с выбора модельного лагранжиана с одним поколением лептонов. Затем подробно изучаются свойства такой модели. И только потом происходит переход к реалистической модели с тремя поколениями кварков и с выводом правил Фейнмана. Такой подход вполне оправдан, так как позволяет постепенно вводить читателя в сложный мир Стандартной модели.</p>" +
-             "<p>В главе про рассеяние нейтрино и антинейтрино на электроне все сложные расчёты приведены с достаточной полнотой, чтобы начинающий читатель мог проследить все этапы вычислений. Для ряда реакций приведены качественные соображения, помогающие более наглядно представить полученный результат.</p>" +
-             "<p>В главе про глубоконеупругое рассеяние заряженных лептонов на нуклоне дан детальный разбор не только теоретических проблем таких процессов, но и отличный обзор большого набора экспериментальных данных различных экспериментальных групп. Точно так же в главе, посвящённой квантовым аномалиям, подробно разбираются как теоретические вопросы, связанные с киральными аномалиями, распадами нейтральных пионов и треугольными диаграммами в Стандартной модели, так и соответствующие эксперименты. Следует отметить великолепное умение автора рассказывать о сложных экспериментах простым языком, выделяя главное и опуская несущественные детали.</p>" +
-             "<p>Важной и привлекательной особенностью данного пособия является наличие не только большого числа тщательно отобранных и поучительных задач, но и подробных решений этих задач, что несомненно окажется очень полезным для целого ряда читателей. Важно отметить ещё одну привлекательную особенность этого пособия. Этот курс не относится к варианту чисто теоретической теории, он имеет непосредственное отношение к повседневной жизни современных физиков-экспериментаторов и физиков-теоретиков, в нём чувствуется дыхание современной физики.</p>" +
-             "<p>Особо следует отметить прекрасные иллюстрации и наличие очень интересных исторических сведений, помогающих понять генезис многих сложных понятий современной физики элементарных частиц. Более того, в книге используются QR-коды, которые позволяют читателям с помощью мобильного телефона получать доступ к анимациям сложных концепций, что делает изучение материала ещё более наглядным. Язык учебника далёк от сухого академизма, он близок к разговорному языку лекций, прост и точен.</p>" +
-             "<p>Дополнительно хочу сообщить, что после внимательного прочтения рукописи я отметил некоторые погрешности и небольшие ошибки, которые были исправлены автором.</p>"
+             "<p>Несмотря на наличие таких прекрасных пособий по данному предмету, как Берестецкий, Лифшиц, Питаевский <em>Квантовая электродинамика</em> и Пескин, Шрёдер <em>Введение в квантовую теорию поля</em>, данная книга окажется чрезвычайно полезной не только для студентов и аспирантов, но и для работающих физиков по целому ряду причин.</p>" +
+             "<p>Этот учебник отличается от известных книг по квантовой теории поля и физике элементарных частиц широтой охватываемого материала (от основ релятивистской квантовой механики до перенормировок и квантовых аномалий) и оригинальной манерой изложения отдельных тем.</p>" +
+             "<p>Важной и привлекательной особенностью данного пособия является наличие не только большого числа тщательно отобранных и поучительных задач, но и подробных решений этих задач. Этот курс не относится к варианту чисто теоретической теории, он имеет непосредственное отношение к повседневной жизни современных физиков-экспериментаторов и физиков-теоретиков, в нём чувствуется дыхание современной физики.</p>" +
+             "<p>Особо следует отметить прекрасные иллюстрации и наличие очень интересных исторических сведений. В книге используются QR-коды, которые позволяют читателям получать доступ к анимациям сложных концепций. Язык учебника далёк от сухого академизма, он близок к разговорному языку лекций, прост и точен.</p>"
   },
 
   /* ── Bednyakov — published on naumov.jinr.ru/1145/ ── */
@@ -722,18 +1194,12 @@ const REVIEWS = [
     original_lang: "ru",
     quote_en: "I would call this creation of a brilliant human mind a Guidebook to modern elementary particle physics and its deep theoretical foundations.",
     quote_ru: "Я бы назвал это творение блестящего ума человеческого Путеводителем по современной физике элементарных частиц и её глубинным теоретическим основам.",
-    full_en: "<p>A few words about the remarkable book by my colleague, Doctor of Physical and Mathematical Sciences, Deputy Director of the V. P. Dzhelepov Laboratory of Nuclear Problems — Dmitry Vadimovich Naumov, <em>Quantum Field Theory for Experimentalists and Beyond</em>.</p>" +
-             "<p>Formally, this is a substantial, near the limit of the possible, printed construction of 1,000+ pages, modestly called a textbook. One can agree with that designation only as a nod to the centuries-old tradition of writing educational literature.</p>" +
+    full_en: "<p>A few words about the remarkable book by my colleague, Doctor of Physical and Mathematical Sciences, Deputy Director of the V. P. Dzhelepov Laboratory of Nuclear Problems, Dmitry Vadimovich Naumov, <em>Quantum Field Theory for Experimentalists and Beyond</em>.</p>" +
              "<p>I would call this creation of a brilliant human mind a Guidebook to modern elementary particle physics and its deep theoretical foundations. It is precisely a Guidebook, led by a wise teacher-guide invisibly present beside the reader, intimately familiar not only with the problems and complexities of modern precision experiments, but also with all the pitfalls of the difficult and at times sharply contradictory landscape of field theory.</p>" +
-             "<p>The structure of this Guidebook reflects a modern tendency of physical science itself — the mutually enriching union of new with old, of the well-known and accepted with what is only being born today at the most advanced frontiers of experimental and theoretical elementary particle physics, neutrino physics, and astrophysics.</p>" +
-             "<p>The author cares deeply about what he is telling, and equally deeply about those who are listening. For this reason he supplements each chapter of his engaging narrative with a substantial set of problems, a list of useful literature, varied and richly illustrated examples, and, in my view, an outstanding innovation in the form of QR codes. These instantly direct the interested reader to online resources containing video materials prepared by the author, which make even the most challenging propositions and facts visible and more understandable. In great measure this technique widens the horizon of the Book and, in my view, gives it the status of a Guidebook to the Map of Science mentioned above.</p>" +
-             "<p>In closing, I want to note that these 1,000 pages were written by the author practically before my eyes — in the office opposite mine, where he superbly combined the responsible and multifaceted work of a Deputy Director of LNP with the no less responsible and meticulous work of creating the Book that you, dear reader, are holding in your hands.</p>",
-    full_ru: "<p>Хочется сказать несколько слов о замечательной книге моего коллеги, доктора физико-математических наук, заместителя директора Лаборатории ядерных проблем им. В. П. Джелепова — Дмитрия Вадимовича Наумова «Квантовая теория поля для экспериментаторов и не только».</p>" +
-             "<p>С формальной точки зрения — это увесистая, на грани возможного, печатная конструкция из 1000+ страниц, скромно называемая учебником. С этим, если и можно согласиться, то лишь отдавая дань многовековой традиции написания учебной литературы.</p>" +
+             "<p>The author cares deeply about what he is telling, and equally deeply about those who are listening. For this reason he supplements each chapter with a substantial set of problems, a list of useful literature, varied and richly illustrated examples, and an outstanding innovation in the form of QR codes that direct the reader to online video materials prepared by the author.</p>",
+    full_ru: "<p>Хочется сказать несколько слов о замечательной книге моего коллеги, доктора физико-математических наук, заместителя директора Лаборатории ядерных проблем им. В. П. Джелепова, Дмитрия Вадимовича Наумова «Квантовая теория поля для экспериментаторов и не только».</p>" +
              "<p>Я бы назвал это творение блестящего ума человеческого Путеводителем по современной физике элементарных частиц и её глубинным теоретическим основам. Это именно Путеводитель, возглавляемый незримо присутствующим рядом с читателем мудрым гидом-учителем, хорошо знающим не только проблемы и сложности современных прецизионных экспериментов, но и все подводные камни непростого и порой крайне противоречивого теоретико-полевого ландшафта.</p>" +
-             "<p>Структура этого Путеводителя отражает современную тенденцию самой физической науки — взаимообогащающее единство нового со старым, хорошо известного и общепринятого с тем, что только рождается сегодня на самых передовых рубежах экспериментальной и теоретической физики элементарных частиц, физики нейтрино и астрофизики.</p>" +
-             "<p>Автор Книги очень неравнодушен к тому, что он рассказывает, он также неравнодушен и к тем, кто его слушает. По этой причине он каждую главу своего увлекательного повествования дополняет большим числом задач, списком полезной литературы, разнообразными красочно оформленными примерами и, с моей точки зрения, выдающимся ноу-хау в виде QR-кодов. Они мгновенно отсылают заинтересованного читателя к интернет-ресурсам, где содержатся подготовленные автором видеоматериалы, делающие не самые простые научные положения и факты наглядными и более понятными. В значительной степени этот приём расширяет горизонт Книги и, с моей точки зрения, придаёт ей статус упомянутого выше Путеводителя по Карте Науки.</p>" +
-             "<p>В заключение хочется отметить, что эти 1000 страниц написаны автором практически на моих глазах — в кабинете напротив, где он прекрасно совмещал ответственную и многоплановую работу заместителя директора ЛЯП с не менее ответственной и тщательной работой по созданию Книги, которую вы, дорогой читатель, держите в своих руках.</p>"
+             "<p>Автор Книги очень неравнодушен к тому, что он рассказывает, он также неравнодушен и к тем, кто его слушает. По этой причине он каждую главу дополняет большим числом задач, списком полезной литературы, разнообразными красочно оформленными примерами и выдающимся ноу-хау в виде QR-кодов, отсылающих читателя к подготовленным автором видеоматериалам.</p>"
   },
 
   /* ── Kazakov — published on naumov.jinr.ru/1323/ (no explicit date on source) ── */
@@ -755,7 +1221,7 @@ const REVIEWS = [
     quote_en: "The book is especially valuable because it shows quantum field theory as a working tool not only for theorists, but also for experimentalists.",
     quote_ru: "Книга особенно ценна тем, что показывает квантовую теорию поля как рабочий инструмент не только для теоретиков, но и для экспериментаторов.",
     full_en: "<p>Before you is an unusual textbook on quantum field theory. It combines rigour of formulation with accessibility of exposition, and a clear explanation of the physical nature of the phenomena discussed; it also tells the dramatic history of the birth of quantum theory. The book is especially valuable because it shows quantum field theory as a working tool not only for theorists, but also for experimentalists. A large place in it is given to calculations of real physical processes and work with Feynman diagrams.</p>" +
-             "<p>One can also note a rare strength of the book: one of the most difficult topics of quantum field theory — the theory of renormalization and quantum anomalies — is presented here clearly and accessibly, without losing rigour.</p>" +
+             "<p>One can also note a rare strength of the book: one of the most difficult topics of quantum field theory, the theory of renormalization and quantum anomalies, is presented here clearly and accessibly, without losing rigour.</p>" +
              "<p>At the same time this is a textbook of a new time: it contains not only superb illustrations, but also QR codes with animations and illustrative material, problems, and even topics for independent research. This book can confidently be recommended to those who intend not only to study quantum field theory, but also to put it to use in practice.</p>",
     full_ru: "<p>Перед вами необычный учебник по квантовой теории поля. Он сочетает строгость формулировок и, в то же время, доступность изложения, ясное объяснение физической природы обсуждаемых явлений; в нём также рассказывается и о драматической истории рождения квантовой теории. Книга особенно ценна тем, что показывает квантовую теорию поля как рабочий инструмент не только для теоретиков, но и для экспериментаторов. Большое место в ней занимают вычисления реальных физических процессов и работа с диаграммами Фейнмана.</p>" +
              "<p>Можно также отметить редкое достоинство книги: одна из самых сложных тем квантовой теории поля — теория перенормировок и квантовые аномалии — изложена здесь ясно и доступно, без потери строгости.</p>" +

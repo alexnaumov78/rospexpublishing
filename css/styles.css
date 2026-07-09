@@ -86,7 +86,7 @@ section { padding: 64px 48px; }
 }
 .section-sub {
   font-size: 15px; color: var(--muted);
-  max-width: 720px; line-height: 1.75;
+  max-width: 1180px; line-height: 1.75;
   margin-bottom: 40px;
 }
 
@@ -162,14 +162,6 @@ section { padding: 64px 48px; }
   display: inline-block; transition: background 0.2s;
 }
 .btn-buy:hover { background: var(--gold-lt); }
-.btn-notify {
-  background: transparent; color: var(--gold-lt);
-  font-size: 11px; font-weight: 500;
-  padding: 7px 12px; border-radius: var(--radius-sm);
-  border: 1px solid var(--gold-dim); cursor: pointer;
-  transition: all 0.2s; text-decoration: none; display: inline-block;
-}
-.btn-notify:hover { background: var(--badge-en); }
 .coming-overlay {
   position: absolute; top: 10px; right: 10px;
   background: var(--bg); border: 1px solid var(--gold-dim);
@@ -217,17 +209,6 @@ section { padding: 64px 48px; }
 .for-authors-cta p { font-size: 13px; color: var(--muted); line-height: 1.7; }
 .for-authors-cta-actions { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
 
-/* ─── NOTIFY ─── */
-.notify-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
-.notify-input {
-  flex: 1; background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 11px 14px;
-  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--cream);
-  outline: none; transition: border-color 0.2s;
-}
-.notify-input::placeholder { color: var(--muted); }
-.notify-input:focus { border-color: var(--gold-dim); }
-.notify-confirm { display: none; color: var(--gold-lt); font-size: 13px; margin-top: 10px; }
 
 /* ─── AUTHOR ELEMENTS ─── */
 .author-layout { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
@@ -565,8 +546,7 @@ html[lang="ru"] .modal-wide { max-width: 696px; }
   .family-bar { padding: 16px 24px; }
   .book-detail-grid { grid-template-columns: 1fr; padding: 24px; }
   .book-detail-cover { position: static; max-width: 260px; }
-  .notify-form { flex-direction: column; }
-  .author-mini { flex-direction: column; }
+    .author-mini { flex-direction: column; }
   .for-authors-cta { flex-direction: column; align-items: flex-start; padding: 24px; }
   .form-row { grid-template-columns: 1fr; }
 }
@@ -898,3 +878,123 @@ a.book-card-link {
   flex-direction: column;
 }
 a.book-card-link:hover .book-title { color: var(--gold-lt); }
+
+/* ════════════════════════════════════════════════════════════════
+   IIKI EXPANSION — audience badges, category grid, catalog filters,
+   catalog sections, NSU curriculum rail, and author monogram.
+   Matches the existing navy/gold theme and the .book-card hover.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ─── Audience badge (Textbook / Учебник vs Popular / Научпоп) ─── */
+.badge-audience {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.4px;
+  padding: 3px 9px; border-radius: 100px;
+  background: rgba(221,184,101,0.08);
+  color: var(--gold-lt);
+  border: 1px dashed var(--gold-dim);
+}
+.badge-audience-pop {
+  background: rgba(120,200,160,0.08);
+  color: #79c8a4;
+  border: 1px dashed rgba(120,200,160,0.4);
+}
+
+/* ─── Category grid + cards (hub page and homepage Browse row) ─── */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.category-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 13px 14px;
+  display: flex; flex-direction: column; gap: 8px;
+  text-decoration: none;
+  transition: transform 0.25s, border-color 0.25s;
+  position: relative;
+}
+.category-card:hover { transform: translateY(-4px); border-color: var(--gold-dim); }
+.category-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-weight: 600; color: var(--cream); line-height: 1.3;
+}
+.category-card:hover .category-card-title { color: var(--gold-lt); }
+.category-card-blurb { font-size: 12px; color: var(--muted); line-height: 1.6; flex: 1; }
+.category-card-count {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.4px;
+  color: var(--gold-lt);
+  padding-top: 8px; margin-top: auto;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Author "Books by this author" — simple vertical text-link list ─── */
+.author-book-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; }
+.author-book-list li { font-size: 14px; line-height: 1.7; }
+.author-book-list a {
+  color: var(--gold-lt); text-decoration: none;
+  transition: color 0.2s;
+}
+.author-book-list a:hover { color: var(--gold); text-decoration: underline; }
+.author-book-list .author-book-soon { color: var(--muted); }
+
+/* ─── Author-name jump link on book pages (links to #about-author) ─── */
+.author-jump { color: inherit; text-decoration: none; transition: color 0.2s; }
+.author-jump:hover { color: var(--gold-lt); text-decoration: underline; }
+
+/* ─── Catalog section heading (per-category bands on catalog page) ─── */
+.catalog-section { margin-top: 40px; scroll-margin-top: 90px; }
+.catalog-section:first-of-type { margin-top: 0; }
+.catalog-section-head {
+  display: flex; align-items: baseline; gap: 12px;
+  padding-bottom: 12px; margin-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.catalog-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px; font-weight: 700; color: var(--cream); line-height: 1.25;
+}
+.catalog-section-count { font-size: 12px; color: var(--gold-lt); font-weight: 500; }
+
+/* ─── NSU curriculum rail (mechanics → QFT sequence) ─── */
+.nsu-rail {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px 18px; margin: 24px 0;
+}
+.nsu-rail-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 12px; display: block;
+}
+.nsu-rail-steps { display: flex; align-items: stretch; flex-wrap: wrap; gap: 6px; }
+.nsu-rail-step {
+  flex: 1 1 0; min-width: 110px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  font-size: 11.5px; font-weight: 500; line-height: 1.35;
+  color: var(--muted); text-decoration: none;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 9px 10px;
+  transition: all 0.2s;
+}
+.nsu-rail-step:hover { color: var(--cream); border-color: var(--gold-dim); }
+.nsu-rail-step.current {
+  color: var(--gold-lt); border-color: var(--gold-dim);
+  background: var(--badge-en); cursor: default; font-weight: 600;
+}
+.nsu-rail-sep { display: flex; align-items: center; color: var(--gold-dim); font-size: 14px; flex: 0 0 auto; }
+@media (max-width: 900px) {
+  .nsu-rail-steps { flex-direction: column; }
+  .nsu-rail-step { min-width: 0; }
+  .nsu-rail-sep { transform: rotate(90deg); justify-content: center; padding: 2px 0; }
+}
+
+/* ─── Author monogram (text-first; placeholder for a future photo) ─── */
+.author-monogram {
+  width: 100%; aspect-ratio: 1 / 1;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(150deg, var(--surface), var(--card));
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font-family: 'Playfair Display', serif;
+  font-size: 34px; font-weight: 600; letter-spacing: 1px;
+  color: var(--gold-lt);
+}
+.author-books-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.author-books-row .btn-ghost { font-size: 12px; padding: 8px 16px; }

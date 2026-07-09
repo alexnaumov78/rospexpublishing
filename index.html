@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rospex Publishing - Russia's best science books for curious readers everywhere</title>
 <meta name="description" content="A curated showcase of Russia's best science and education books. Textbooks and popular science in physics, astrophysics, cosmology, particle physics, and modern science. Available worldwide.">
+<link rel="canonical" href="https://rospexpublishing.com/">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -71,8 +72,6 @@
 }
 
 .books-section { background: var(--surface); }
-.notify-section { background: var(--surface); text-align: center; }
-.notify-section .section-sub { margin: 0 auto 28px; }
 .publisher-section { background: var(--bg); }
 .coming-section { background: var(--bg); }
 .for-authors-section { background: var(--surface); }
@@ -89,7 +88,7 @@
 <!-- Open Graph / Twitter Card -->
 <meta property="og:type"        content="website" />
 <meta property="og:title"       content="Rospex Publishing — Russia's best science books for curious readers everywhere" />
-<meta property="og:description" content="Curated digital editions of physics, astrophysics, and modern science by leading Russian authors. Now featuring Quantum Field Theory for Experimentalists and Beyond by Dmitry V. Naumov — Breakthrough Prize laureate." />
+<meta property="og:description" content="Curated digital editions of physics, astrophysics, and modern science by leading Russian authors. Now featuring Quantum Field Theory for Experimentalists and Beyond by Dmitry V. Naumov, Breakthrough Prize laureate." />
 <meta property="og:url"         content="https://rospexpublishing.com/" />
 <meta property="og:image"       content="https://rospexpublishing.com/assets/images/social/rospex-og.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -99,7 +98,7 @@
 <meta property="og:locale:alternate" content="ru_RU" />
 <meta name="twitter:card"        content="summary_large_image" />
 <meta name="twitter:title"       content="Rospex Publishing — Russia's best science books for curious readers everywhere" />
-<meta name="twitter:description" content="Curated digital editions of physics, astrophysics, and modern science by leading Russian authors. Now featuring Quantum Field Theory for Experimentalists and Beyond by Dmitry V. Naumov — Breakthrough Prize laureate." />
+<meta name="twitter:description" content="Curated digital editions of physics, astrophysics, and modern science by leading Russian authors. Now featuring Quantum Field Theory for Experimentalists and Beyond by Dmitry V. Naumov, Breakthrough Prize laureate." />
 <meta name="twitter:image"       content="https://rospexpublishing.com/assets/images/social/rospex-og.jpg" />
 
 <!-- Publisher organization (Schema.org JSON-LD) -->
@@ -135,6 +134,7 @@
   </a>
   <ul class="nav-center">
     <li><a href="#books" data-i18n="nav_books">Books</a></li>
+    <li><a href="catalog.html" data-i18n="nav_categories">Categories</a></li>
     <li><a href="authors.html" data-i18n="nav_authors">Authors</a></li>
     <li><a href="#publisher" data-i18n="nav_about">About Us</a></li>
     <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
@@ -170,16 +170,57 @@
 
 <div class="divider"></div>
 
+<!-- BROWSE BY CATEGORY -->
+<section class="books-section" id="categories">
+  <div class="section-label" data-i18n="browse_cat_label">Browse the Catalog</div>
+  <h2 class="section-title" data-i18n="browse_cat_title">Browse by Category</h2>
+  <p class="section-sub" data-i18n="browse_cat_sub">Six subject areas across physics, the life sciences, and the history of science — from graduate textbooks to popular reading.</p>
+
+  <div class="category-grid">
+    <a href="catalog.html#c1" class="category-card">
+      <div class="category-card-title" data-i18n="cat_c1_name">Quantum &amp; Particle Physics</div>
+      <div class="category-card-blurb" data-i18n="cat_c1_blurb">Quantum mechanics, quantum field theory, and the physics of elementary particles.</div>
+      <div class="category-card-count">5 titles</div>
+    </a>
+    <a href="catalog.html#c2" class="category-card">
+      <div class="category-card-title" data-i18n="cat_c2_name">Classical &amp; Theoretical Physics</div>
+      <div class="category-card-blurb" data-i18n="cat_c2_blurb">Classical, analytical, and theoretical mechanics — the foundations of physics.</div>
+      <div class="category-card-count">2 titles</div>
+    </a>
+    <a href="catalog.html#c3" class="category-card">
+      <div class="category-card-title" data-i18n="cat_c3_name">Astronomy, Astrophysics &amp; Cosmology</div>
+      <div class="category-card-blurb" data-i18n="cat_c3_blurb">Stars, galaxies, neutrinos, and the structure and history of the Universe.</div>
+      <div class="category-card-count">1 title</div>
+    </a>
+    <a href="catalog.html#c4" class="category-card">
+      <div class="category-card-title" data-i18n="cat_c4_name">Earth &amp; Planetary Sciences</div>
+      <div class="category-card-blurb" data-i18n="cat_c4_blurb">Geology, geophysics, and the sciences of the Earth and the planets.</div>
+      <div class="category-card-count">1 title</div>
+    </a>
+    <a href="catalog.html#c5" class="category-card">
+      <div class="category-card-title" data-i18n="cat_c5_name">Biophysics &amp; Life Sciences</div>
+      <div class="category-card-blurb" data-i18n="cat_c5_blurb">The physics of living systems — from molecules and membranes to photosynthesis and vision.</div>
+      <div class="category-card-count">3 titles</div>
+    </a>
+    <a href="catalog.html#c6" class="category-card">
+      <div class="category-card-title" data-i18n="cat_c6_name">History of Science &amp; Popular Reading</div>
+      <div class="category-card-blurb" data-i18n="cat_c6_blurb">Popular science and the history of scientific ideas, for curious readers of all backgrounds.</div>
+      <div class="category-card-count">4 titles</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- AVAILABLE BOOKS -->
 <section class="books-section" id="books">
-  <div class="section-label" data-i18n="avail_label">Available Now</div>
   <h2 class="section-title" data-i18n="avail_title">Quantum Field Theory Series</h2>
   <p class="section-sub" data-i18n="avail_sub">Two comprehensive graduate-level volumes, rigorous and practical, written for physicists who work with experiment.</p>
 
   <div class="books-grid">
 
     <a href="books/qft-volume-1.html" class="book-card book-card-link" data-book-id="qft-vol1">
-      <div class="book-cover"><img src="assets/images/covers/qft-vol1-ru.png" alt="QFT Volume I Russian"></div>
+      <div class="book-cover"><img src="assets/images/covers/qft-vol1-ru.png" alt="QFT Volume I Russian" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-vol">Volume I</span></div>
         <div class="book-title" data-i18n="qft_title_ru">Quantum Field Theory for Experimentalists and Beyond</div>
@@ -193,7 +234,7 @@
     </a>
 
     <a href="books/qft-volume-2.html" class="book-card book-card-link" data-book-id="qft-vol2">
-      <div class="book-cover"><img src="assets/images/covers/qft-vol2-ru.png" alt="QFT Volume II Russian"></div>
+      <div class="book-cover"><img src="assets/images/covers/qft-vol2-ru.png" alt="QFT Volume II Russian" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-vol">Volume II</span></div>
         <div class="book-title" data-i18n="qft_title_ru">Quantum Field Theory for Experimentalists and Beyond</div>
@@ -207,7 +248,7 @@
     </a>
 
     <a href="books/qft-bundle.html" class="book-card book-card-link" data-book-id="qft-bundle">
-      <div class="book-cover"><img src="assets/images/covers/qft-bundle-ru.png" alt="QFT Bundle Russian"></div>
+      <div class="book-cover"><img src="assets/images/covers/qft-bundle-ru.png" alt="QFT Bundle Russian" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge badge-bundle" data-i18n="bundle_save">Bundle</span></div>
         <div class="book-title" data-i18n="bundle_ru_title">QFT Complete Edition: Volumes I and II</div>
@@ -227,71 +268,221 @@
 
 <!-- COMING SOON -->
 <section class="coming-section" id="coming">
-  <div class="section-label" data-i18n="coming_label">Coming Soon</div>
   <h2 class="section-title" data-i18n="coming_title">Upcoming Releases</h2>
   <p class="section-sub" data-i18n="coming_sub">English editions of the QFT series and the Solar Neutrino popular science book.</p>
 
   <div class="books-grid">
 
     <div class="book-card" style="opacity:0.82">
-      <div class="coming-overlay">3-4 Weeks</div>
-      <div class="book-cover"><img src="assets/images/covers/qft-vol1-en.png" alt="QFT Volume I English" style="opacity:0.7"></div>
+      <div class="coming-overlay" data-i18n="coming_label">Coming Soon</div>
+      <div class="book-cover"><img src="assets/images/covers/qft-vol1-en.png" alt="QFT Volume I English" style="opacity:0.7" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-en">English</span><span class="badge badge-vol">Volume I</span></div>
         <div class="book-title" data-i18n="qft_title_en">Quantum Field Theory for Experimentalists and Beyond</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="qft_en_desc">Complete English translation.</div>
-        <div class="book-footer"><div class="price-coming">$44.99</div><button class="btn-notify" onclick="openNotifyModal('QFT Vol. I, English')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
     </div>
 
     <div class="book-card" style="opacity:0.82">
-      <div class="coming-overlay">3-4 Weeks</div>
-      <div class="book-cover"><img src="assets/images/covers/qft-vol2-en.png" alt="QFT Volume II English" style="opacity:0.7"></div>
+      <div class="coming-overlay" data-i18n="coming_label">Coming Soon</div>
+      <div class="book-cover"><img src="assets/images/covers/qft-vol2-en.png" alt="QFT Volume II English" style="opacity:0.7" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-en">English</span><span class="badge badge-vol">Volume II</span></div>
         <div class="book-title" data-i18n="qft_title_en">Quantum Field Theory for Experimentalists and Beyond</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="qft_en_desc">Complete English translation.</div>
-        <div class="book-footer"><div class="price-coming">$44.99</div><button class="btn-notify" onclick="openNotifyModal('QFT Vol. II, English')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
     </div>
 
     <div class="book-card" style="opacity:0.82">
-      <div class="coming-overlay">3-4 Weeks</div>
-      <div class="book-cover"><img src="assets/images/covers/qft-bundle-en.png" alt="QFT Bundle English" style="opacity:0.7"></div>
+      <div class="coming-overlay" data-i18n="coming_label">Coming Soon</div>
+      <div class="book-cover"><img src="assets/images/covers/qft-bundle-en.png" alt="QFT Bundle English" style="opacity:0.7" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-en">English</span><span class="badge badge-bundle">Bundle</span></div>
         <div class="book-title" data-i18n="bundle_ru_title">QFT Complete Edition: Volumes I and II</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="qft_en_desc">Complete English translation.</div>
-        <div class="book-footer"><div class="price-coming">$74.99</div><button class="btn-notify" onclick="openNotifyModal('QFT Bundle, English')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
     </div>
 
     <div class="book-card" style="opacity:0.82">
-      <div class="coming-overlay">Coming Soon</div>
-      <div class="book-cover"><img src="assets/images/covers/solar-neutrino-ru.png" alt="Solar Neutrino Russian" style="opacity:0.75"></div>
+      <div class="coming-overlay" data-i18n="coming_label">Coming Soon</div>
+      <div class="book-cover"><img src="assets/images/covers/solar-neutrino-ru.png" alt="Solar Neutrino Russian" style="opacity:0.75" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-ru">Russian</span></div>
         <div class="book-title" data-i18n="solar_ru_title">Solar Neutrino</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="solar_ru_desc">Popular science. Russian edition.</div>
-        <div class="book-footer"><div class="price-coming">$19.99</div><button class="btn-notify" onclick="openNotifyModal('Solar Neutrino, Russian')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
     </div>
 
     <div class="book-card" style="opacity:0.72">
-      <div class="coming-overlay" style="border-color:rgba(141,173,196,0.3);color:var(--muted)">2-3 Months</div>
-      <div class="book-cover"><img src="assets/images/covers/solar-neutrino-en.png" alt="Solar Neutrino English" style="opacity:0.6"></div>
+      <div class="coming-overlay" data-i18n="coming_label">Coming Soon</div>
+      <div class="book-cover"><img src="assets/images/covers/solar-neutrino-en.png" alt="Solar Neutrino English" style="opacity:0.6" loading="lazy"></div>
       <div class="book-body">
         <div class="book-badges"><span class="badge badge-en">English</span></div>
         <div class="book-title" data-i18n="solar_en_title">Solar Neutrino</div>
         <div class="book-author" data-i18n="qft_author">Dmitry V. Naumov</div>
         <div class="book-desc" data-i18n="solar_en_desc">English edition.</div>
-        <div class="book-footer"><div class="price-coming">$24.99</div><button class="btn-notify" onclick="openNotifyModal('Solar Neutrino, English')" data-i18n="btn_notify">Notify Me</button></div>
       </div>
     </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMING SOON — NEW TITLES (IIKI) -->
+<section class="coming-section" id="new-titles">
+  <h2 class="section-title" data-i18n="iiki_title">Russian Physics & Biophysics</h2>
+  <p class="section-sub" data-i18n="browse_cat_sub">Six subject areas across physics, the life sciences, and the history of science — from graduate textbooks to popular reading.</p>
+
+  <div class="books-grid">
+
+    <a href="books/mechanics-problems.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/mech-problems-ru.jpg" alt="Collected Problems in Classical Mechanics" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Textbook</span></div>
+        <div class="book-title" data-i18n="mech_problems_title">Collected Problems in Classical Mechanics</div>
+        <div class="book-author">G. L. Kotkin, V. G. Serbo</div>
+        <div class="book-desc" data-i18n="mech_problems_short">The classic Novosibirsk problem book.</div>
+        <div class="book-footer"><div class="book-price">$17.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/analytical-mechanics.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/analytical-mech-ru.jpg" alt="Lectures on Analytical Mechanics" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Textbook</span></div>
+        <div class="book-title" data-i18n="analytical_mech_title">Lectures on Analytical Mechanics</div>
+        <div class="book-author">G. L. Kotkin, V. G. Serbo, A. I. Chernykh</div>
+        <div class="book-desc" data-i18n="analytical_mech_short">A modern NSU lecture course in analytical mechanics.</div>
+        <div class="book-footer"><div class="book-price">$14.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/quantum-mechanics.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/qm-lectures-ru.jpg" alt="Lectures on Quantum Mechanics" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Textbook</span></div>
+        <div class="book-title" data-i18n="qm_lectures_title">Lectures on Quantum Mechanics</div>
+        <div class="book-author">V. G. Serbo, I. B. Khriplovich</div>
+        <div class="book-desc" data-i18n="qm_lectures_short">A Novosibirsk lecture course in quantum mechanics.</div>
+        <div class="book-footer"><div class="book-price">$15.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/elementary-particle-physics.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/epp-lectures-ru.jpg" alt="Lectures on Elementary Particle Physics" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Textbook</span></div>
+        <div class="book-title" data-i18n="epp_lectures_title">Lectures on Elementary Particle Physics</div>
+        <div class="book-author">V. G. Serbo, A. S. Rudenko</div>
+        <div class="book-desc" data-i18n="epp_lectures_short">A hands-on introductory course bridging QFT and experiment.</div>
+        <div class="book-footer"><div class="book-price">$12.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/biophysics-vol-1.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/biophys-v1-ru.jpg" alt="Biophysics, Vol. I" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Textbook</span></div>
+        <div class="book-title" data-i18n="biophys_v1_title">Biophysics, Vol. I — Theoretical Biophysics</div>
+        <div class="book-author">A. B. Rubin</div>
+        <div class="book-desc" data-i18n="biophys_v1_short">Volume I — kinetics, thermodynamics, and molecular biophysics.</div>
+        <div class="book-footer"><div class="book-price">$21.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/biophysics-vol-2.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/biophys-v2-ru.jpg" alt="Biophysics, Vol. II" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Textbook</span></div>
+        <div class="book-title" data-i18n="biophys_v2_title">Biophysics, Vol. II — Membrane Processes</div>
+        <div class="book-author">A. B. Rubin</div>
+        <div class="book-desc" data-i18n="biophys_v2_short">Volume II — transport, ion channels, and bioenergetics.</div>
+        <div class="book-footer"><div class="book-price">$21.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/biophysics-vol-3.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/biophys-v3-ru.jpg" alt="Biophysics, Vol. III" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Textbook</span></div>
+        <div class="book-title" data-i18n="biophys_v3_title">Biophysics, Vol. III — Photobiological Mechanisms</div>
+        <div class="book-author">A. B. Rubin</div>
+        <div class="book-desc" data-i18n="biophys_v3_short">Volume III — charge transfer, photosynthesis, and vision.</div>
+        <div class="book-footer"><div class="book-price">$21.99</div></div>
+      </div>
+    </a>
+
+
+    <a href="books/geology-earth.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/geology-earth-ru.jpg" alt="Geological Evolution of the Earth" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_textbook">Popular Science</span></div>
+        <div class="book-title" data-i18n="geol_earth_title">Geological Evolution of the Earth</div>
+        <div class="book-author">M. I. Kuzmin, V. V. Yarmolyuk et al.</div>
+        <div class="book-desc" data-i18n="geol_earth_short"></div>
+        <div class="book-footer"><div class="book-price">$22.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/astronomy-book.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/astronomy-book-ru.jpg" alt="All Astronomy in One Book" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_popular">Popular Science</span></div>
+        <div class="book-title" data-i18n="astro_book_title">All Astronomy in One Book</div>
+        <div class="book-author">V. S. Kesselman</div>
+        <div class="book-desc" data-i18n="astro_book_short"></div>
+        <div class="book-footer"><div class="book-price">$14.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/physics-book.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/physics-book-ru.jpg" alt="All of Physics in One Book" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_popular">Popular Science</span></div>
+        <div class="book-title" data-i18n="phys_book_title">All of Physics in One Book</div>
+        <div class="book-author">V. S. Kesselman</div>
+        <div class="book-desc" data-i18n="phys_book_short"></div>
+        <div class="book-footer"><div class="book-price">$14.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/history-physics.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/history-physics-ru.jpg" alt="Another History of Physics" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_popular">Popular Science</span></div>
+        <div class="book-title" data-i18n="hist_phys_title">Another History of Physics</div>
+        <div class="book-author">V. S. Kesselman</div>
+        <div class="book-desc" data-i18n="hist_phys_short"></div>
+        <div class="book-footer"><div class="book-price">$15.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/lives-physicists.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/lives-physicists-ru.jpg" alt="Lives of Famous Physicists and Astronomers" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_popular">Popular Science</span></div>
+        <div class="book-title" data-i18n="lives_phys_title">Lives of Famous Physicists and Astronomers</div>
+        <div class="book-author">V. S. Kesselman</div>
+        <div class="book-desc" data-i18n="lives_phys_short"></div>
+        <div class="book-footer"><div class="book-price">$15.99</div></div>
+      </div>
+    </a>
+
+    <a href="books/believing-impossible.html" class="book-card book-card-link">
+      <div class="book-cover"><img src="assets/images/covers/believing-impossible-ru.jpg" alt="Believing the Impossible" loading="lazy"></div>
+      <div class="book-body">
+        <div class="book-badges"><span class="badge badge-ru">Russian</span><span class="badge-audience" data-i18n="audience_popular">Popular Science</span></div>
+        <div class="book-title" data-i18n="believe_imp_title">Believing the Impossible</div>
+        <div class="book-author">V. S. Kesselman</div>
+        <div class="book-desc" data-i18n="believe_imp_short"></div>
+        <div class="book-footer"><div class="book-price">$12.99</div></div>
+      </div>
+    </a>
 
   </div>
 </section>
@@ -315,18 +506,6 @@
 </section>
 
 <div class="divider"></div>
-
-<!-- NOTIFY -->
-<section class="notify-section" id="notify">
-  <div class="section-label" data-i18n="notify_label">Stay Updated</div>
-  <h2 class="section-title" data-i18n="notify_title">Get notified at launch</h2>
-  <p class="section-sub" data-i18n="notify_sub">Be the first to know when English editions and new titles become available.</p>
-  <div class="notify-form">
-    <input type="email" class="notify-input" id="notify-email-input" placeholder="your@email.com">
-    <button class="btn btn-primary" onclick="submitNotify()" data-i18n="notify_btn">Notify Me</button>
-  </div>
-  <div class="notify-confirm" id="notify-confirm-msg" data-i18n="notify_ok" style="margin-top:12px;display:none"></div>
-</section>
 
 <div class="divider"></div>
 
@@ -362,9 +541,9 @@
       <div class="footer-col-title" data-i18n="footer_col2">Contact and Info</div>
       <ul class="footer-links">
         <li><a href="contact.html" data-i18n="footer_link_contact">Contact Us</a></li>
+        <li><a href="refund-policy.html" data-i18n="footer_link_refund">Delivery &amp; Refunds</a></li>
         <li><a href="authors.html" data-i18n="footer_link_authors">All Authors</a></li>
         <li><a href="#publisher" data-i18n="footer_link_about">About Us</a></li>
-        <li><a href="#notify" data-i18n="footer_link_notify">Launch Notifications</a></li>
       </ul>
     </div>
   </div>
@@ -378,21 +557,6 @@
   </div>
   <div class="footer-bottom">&copy; <span id="current-year">2026</span> <span data-i18n="footer_copy">Rospex Holdings LLC. All rights reserved.</span></div>
 </footer>
-
-<!-- NOTIFY MODAL -->
-<div class="modal-backdrop" id="notify-modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeNotifyModal()">×</button>
-    <h2 data-i18n="notify_title">Get notified at launch</h2>
-    <p id="notify-modal-book" style="color:var(--gold-lt);font-size:12px;margin-bottom:4px"></p>
-    <p data-i18n="modal_notify_sub">Enter your email and we will send one notification when this book launches.</p>
-    <div class="notify-form" style="margin-top:14px">
-      <input type="email" class="notify-input" id="notify-modal-email" placeholder="your@email.com">
-      <button class="btn btn-primary" onclick="submitNotifyModal()" data-i18n="notify_btn">Notify Me</button>
-    </div>
-    <div class="notify-confirm" id="notify-modal-confirm" data-i18n="notify_ok" style="margin-top:10px;display:none"></div>
-  </div>
-</div>
 
 <!-- LEARN MORE MODAL -->
 <div class="modal-backdrop" id="learn-more-modal">
