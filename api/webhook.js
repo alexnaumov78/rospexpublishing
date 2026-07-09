@@ -238,14 +238,22 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
   const invisibleText = `${buyerEmail}|${txId}`;
 
   for (const page of pages) {
-    const { width, height } = page.getSize();
+    // Anchor to the visible area (CropBox), not the MediaBox: several IIKI
+    // interiors crop the page (y-offsets of 14pt to 147pt), so fixed MediaBox
+    // coordinates can land outside what viewers display. 2026-07-08 fix.
+    let crop = null;
+    try { crop = page.getCropBox(); } catch (_) { crop = null; }
+    if (!crop || !(crop.width > 0) || !(crop.height > 0)) {
+      const size = page.getSize();
+      crop = { x: 0, y: 0, width: size.width, height: size.height };
+    }
 
     // Layer 1: visible footer
     const fontSize  = 7;
     const textWidth = font.widthOfTextAtSize(visibleText, fontSize);
     page.drawText(visibleText, {
-      x:       Math.max(0, (width - textWidth) / 2),
-      y:       10,
+      x:       crop.x + Math.max(4, (crop.width - textWidth) / 2),
+      y:       crop.y + 10,
       size:    fontSize,
       font,
       color:   rgb(0.55, 0.55, 0.55),
@@ -254,8 +262,8 @@ async function applyWatermarks(pdfBytes, buyerName, buyerEmail, txId, purchaseDa
 
     // Layer 2a: invisible watermark in top margin
     page.drawText(invisibleText, {
-      x:       8,
-      y:       height - 6,
+      x:       crop.x + 8,
+      y:       crop.y + crop.height - 6,
       size:    3.5,
       font,
       color:   rgb(1, 1, 1),
